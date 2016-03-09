@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<root>
+    <broker BrokerID="4600" BrokerName="江苏弘业">
+		<FloatProfitAlgorithm>浮盈浮亏都计算</FloatProfitAlgorithm>		
+		<MarginAlgorithm>按开仓价计算</MarginAlgorithm>	
+		<IsDiscountCZCE>1</IsDiscountCZCE>
+		<IsOldRiskAlg>0</IsOldRiskAlg>
+		<Servers>
+			<Server>
+				<Name>电信线路</Name>
+				<Trading>
+					<item>180.166.45.35:41205</item>
+					<item>180.166.45.36:41205</item>
+				</Trading>
+				<MarketData>
+				    <item>180.166.45.35:41213</item>
+					<item>180.166.45.36:41213</item>
+				</MarketData>
+			</Server>
+			<Server>
+				<Name>联通线路</Name>
+				<Trading>
+					<item>140.206.102.195:41205</item>
+					<item>140.206.102.196:41205</item>
+				</Trading>
+				<MarketData>
+				    <item>140.206.102.195:41213</item>
+					<item>140.206.102.196:41213</item>
+				</MarketData>
+			</Server>
+		</Servers>
+	</broker>
+</root>

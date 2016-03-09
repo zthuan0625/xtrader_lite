@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<root>
+	<broker BrokerID="5030" BrokerName="国金期货">
+		<FloatProfitAlgorithm>浮盈浮亏都计算</FloatProfitAlgorithm>
+		<MarginAlgorithm>按开仓价计算</MarginAlgorithm>	
+		<IsDiscountCZCE>1</IsDiscountCZCE>
+		<IsOldRiskAlg>0</IsOldRiskAlg>		
+		<Servers>
+			<Server>
+				<Name>电信线路</Name>
+				<Trading>
+					<item>116.228.52.242:41205</item> 
+					<item>180.169.68.3:41205</item>
+				</Trading>
+				<MarketData>
+					<item>116.228.52.242:41213</item> 
+					<item>180.169.68.3:41213</item>
+				</MarketData>
+			</Server>
+			<Server>
+				<Name>联通线路</Name>
+				<Trading>
+					<item>112.65.179.242:41205</item> 
+				</Trading>
+				<MarketData>
+					<item>112.65.179.242:41213</item> 
+				</MarketData>
+			</Server>
+			<Server>
+				<Name>移动线路</Name>
+				<Trading>
+					<item>222.44.51.231:41205</item>
+				</Trading>
+				<MarketData>
+					<item>222.44.51.231:41213</item> 
+				</MarketData>
+			</Server>
+			<Server>
+				<Name>专线线路</Name>
+				<Trading>
+					<item>172.16.80.135:41205</item> 
+					<item>172.16.80.136:41205</item>
+				</Trading>
+				<MarketData>
+					<item>172.16.80.135:41213</item> 
+					<item>172.16.80.136:41213</item> 
+				</MarketData>
+			</Server>
+		</Servers>
+	</broker>
+</root>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<root>
+	<broker BrokerID="6010" BrokerName="浙商期货测试" BrokerEName="zsqh">
+		<FloatProfitAlgorithm>浮盈浮亏都计算</FloatProfitAlgorithm>
+		<MarginAlgorithm>按开仓价计算</MarginAlgorithm>	
+		<IsDiscountCZCE>1</IsDiscountCZCE>	
+		<Servers>
+			<Server>
+				<Name>电信线路</Name>
+				<Trading>
+					<item>180.166.1.28:51205</item>
+				</Trading>
+				<MarketData>
+					<item>180.166.1.28:51213</item>
+				</MarketData>
+			</Server>
+		</Servers>
+	</broker>
+</root>

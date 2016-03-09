@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<root>
+	<broker BrokerID="4090" BrokerName="东兴期货" BrokerEName="dxqh">
+		<FloatProfitAlgorithm>浮盈浮亏都计算</FloatProfitAlgorithm>
+		<MarginAlgorithm>按开仓价计算</MarginAlgorithm>	
+		<IsDiscountCZCE>1</IsDiscountCZCE>
+		<Servers>
+			<Server>
+				<Name>CTP上海电信</Name>
+				<Trading>
+					<item>116.228.171.155:41205</item>
+				</Trading>
+				<MarketData>
+					<item>116.228.171.155:41213</item>
+				</MarketData>
+			</Server>
+			<Server>
+				<Name>CTP上海联通</Name>
+				<Trading>
+					<item>27.115.57.157:41205</item>
+				</Trading>
+				<MarketData>
+					<item>27.115.57.157:41213</item>
+				</MarketData>
+			</Server>
+			<Server>
+				<Name>CTP北京电信</Name>
+				<Trading>
+					<item>60.247.45.122:41205</item>
+				</Trading>
+				<MarketData>
+					<item>60.247.45.122:41213</item>
+				</MarketData>
+			</Server>
+			<Server>
+				<Name>CTP北京联通</Name>
+				<Trading>
+					<item>123.125.28.85:41205</item>
+				</Trading>
+				<MarketData>
+					<item>123.125.28.85:41213</item>
+				</MarketData>
+			</Server>
+		</Servers>
+	</broker>
+</root>

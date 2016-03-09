@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<root>
+    <broker BrokerID="8888" BrokerName="徽商期货" Hide="0" TitleBarText="">
+		<FloatProfitAlgorithm>浮盈浮亏都计算</FloatProfitAlgorithm>
+		<MarginAlgorithm>按开仓价计算</MarginAlgorithm>	
+		<IsDiscountCZCE>1</IsDiscountCZCE>
+		<IsOldRiskAlg>0</IsOldRiskAlg>
+		<Servers>
+			<Server>
+				<Name>互联网</Name>
+				<Trading>
+					<item>118.242.3.178:41205</item>
+					<item>118.242.3.179:41205</item>
+					<item>49.239.1.90:41205</item>
+					<item>49.239.1.91:41205</item>
+					<item>27.115.57.196:41205</item>
+					<item>27.115.57.197:41205</item>
+				</Trading>	
+				<MarketData>
+				    <item>118.242.3.178:41173</item>
+					<item>118.242.3.179:41173</item>
+					<item>49.239.1.90:41173</item>
+					<item>49.239.1.91:41173</item>
+					<item>27.115.57.196:41173</item>
+					<item>27.115.57.197:41173</item>
+				</MarketData>
+			</Server>
+		</Servers>
+	</broker>
+</root>

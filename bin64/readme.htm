@@ -1,0 +1,381 @@
+<html lang="zh-cn">
+<head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>xTrader 文档</title>
+
+<style type="text/css">
+<!--
+.help_head1 {
+	color:#ff5555;
+	background-color:#0000cc;
+}
+.help_head2 {
+	color:white;
+	background-color:#0000cc;
+	margin-bottom:10px;
+}
+.help_head3 {
+	color:white;
+	background-color:#0000cc;
+	margin-bottom:5px;
+}
+.help_head4 {
+	margin-bottom:0px;
+}
+.help_table {
+	border-style:solid;
+	border-collapse: separate;
+	background-color: #ddffdd;
+	border-color: #aaaaaa;
+	font-size: 95%;
+}
+.tr_default {
+	background-color: #aaffaa;
+}
+.help_all {
+	font-size: 95%;
+}
+.help_section {
+	margin-left:25px;
+	margin-bottom:30px;
+}
+.help_sub_section {
+	margin-left:10px;
+	margin-bottom:10px;
+}
+.help_mini_section {
+	background-color: #cccccc;
+	padding:2%;
+}
+.help_mini_section2 {
+	margin-top:3px;
+	background-color: #eeffff;
+	padding:2%;
+}
+.help_license {
+	border-color:#777777; 
+	border-style:solid; 
+	padding:2%;
+	background-color: #dddddd;
+}
+.help_license_cond {
+	padding:5%;
+}
+-->
+</style>
+</head>
+<body bgcolor="#eeffff">
+
+<div align="center">
+<h1 class="help_head1">xTrader 2016</h1>
+</div>
+<div class="help_all">
+
+<div align="right">2016/02/22 t0trader</div>
+<a name="index"/>
+<h2 class="help_head2">目录</h2>
+<div class="help_section">
+  <a href="#about">1. 概览</a><br>
+  <a href="#license">2. 版权</a><br>
+  <a href="#environment">3. 要求</a><br>
+  <a href="#uninstall">4. 卸载</a><br>
+  <a href="#usage">5. 使用</a><br>
+  &nbsp;<a href="#trayico">5.1 托盘图标</a><br>
+  &nbsp;<a href="#miniui">5.2 迷你界面</a><br>
+  &nbsp;<a href="#mainui">5.3 主界面</a><br>
+  &nbsp;<a href="#login">5.4 登录界面</a><br>
+  &nbsp;<a href="#settings">5.5 设置选项</a><br>
+  &nbsp;<a href="#orderex">5.6 下单增强</a><br>
+  &nbsp;<a href="#parkcond">5.7 预埋/条件单</a><br>
+  <a href="#misc">6. 其它</a><br>
+  <a href="#support">7. 意见反馈</a><br>
+  <a href="#ToDo">8. 开发计划</a><br>
+  <a href="#history">9. 历史版本</a><br>
+</div>
+
+<a name="about">
+<h2 class="help_head2">1. 概览</h2>
+<div class="help_section">
+	xTrader是一款高效而便捷的期货/期权交易终端. <br>
+	程序基于windows M$ MFC/C++开发，<br>
+    结合上期技术CTP接口,支持国内四大期交所交易.<br><br>
+	本软件专注交易,轻量不带任何花哨功能.<br><br>
+	全局热键或灵活的鼠标操作,最大解放人力.<br><br>
+	支持CTP接口的期商均可使用,登录界面可首字母搜索.<br><br>
+	Ntp协议精准校时,保证本机时间无延迟.<br><br>
+	增强型下单以及条件单功能,全面覆盖交易所各种最新指令.<br><br>
+	最大亮点在于极简化,重视交易而轻界面设计.<br><br>
+	本软件能在上期CTP API之上加以扩充,支持诸如股票期权等.<br>
+	可通过微博或邮件与作者互动.<br>
+	<a href="http://weibo.com/t0trader">http://weibo.com/t0trader</a><br>
+	<a href="mailto:t0trader@qq.com">t0trader@qq.com</a><br>
+	<a href="http://www.sfit.com.cn/5_2_DocumentDown.htm">http://www.sfit.com.cn/5_2_DocumentDown.htm</a><br><br>
+	
+	<table class="help_table" border="4">
+	<tr><td><strong><span style="color: red">任何人使用此软件前请仔细阅读说明,因不当操作造成的损失作者概不负责.</span></strong></td></tr>
+	</table>
+</div>
+
+<a name="license"/>
+<h2 class="help_head2">2. 版权</h2>
+<div class="help_section">
+	<div class="help_license">
+	<strong>Copyright 2008-2020 ®t0trader All rights reserved.</strong><br>
+	<br>
+	xTrader由作者版权所有,其它任何个人或组织不得以盈利为目的传播,分发.<br>
+	简化版本开源,遵守GPL协议即可.<br>
+	<div class="help_license">
+	<strong>
+	THIS SOFTWARE IS PROVIDED BY ®t0trader ``AS IS'' AND ANY
+	EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+	THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
+	PARTICULAR PURPOSE ARE DISCLAIMED.
+	IN NO EVENT SHALL ®t0trader OR CONTRIBUTORS BE LIABLE
+	FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+	CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
+	OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+	OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+	LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+	(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
+	THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY
+	OF SUCH DAMAGE.
+	</strong>
+	</div>
+	</div>
+</div>
+
+<a name="environment"/>
+<h2 class="help_head2">3. 系统要求</h2>
+<div class="help_section">
+	Windows XP/Vista/Win7/8/8.1/10 (Windows2003/2008/2012) x86/x64<br>
+	(其它系统不作支持)<br>
+</div>
+
+<a name="uninstall"/>
+<h2 class="help_head2">4. 卸载</h2>
+<div class="help_section">
+	<div class="help_sub_section">
+		xTrader不写任何一条注册表,可直接删除以卸载. 
+	</div>
+</div>
+
+
+<a name="usage"/>
+<h2 class="help_head2">5. 使用</h2>
+<div class="help_section">
+建议64位系统使用x64版,效率会明显改善.<br>
+<a name="trayico"/>
+<h3 class="help_head3">托盘图标</h3>
+	<div class="help_sub_section">
+   最小化会隐藏到系统栏,左击托盘图标恢复主窗口.<br>
+   右击图标有一系列菜单,如同步时间/配置选项/从迷你界面恢复等.
+	</div>
+
+<a name="miniui"/>
+<h3 class="help_head3">迷你界面</h3>
+	<div class="help_sub_section">
+   从主窗口->界面->迷你即可切换.<br>
+   若要恢复,有两种方式:<br>
+   1. 从托盘图标<strong>右击->普通界面</strong><br>
+   2. 从配置选项里,<strong>交易选项->热键下单->杂项功能</strong>,里启用功能热键<br>
+   </div>
+ 
+ <a name="mainui"/>
+ <h3 class="help_head3">主界面</h3>
+	<div class="help_sub_section">
+
+	<strong>合约控件</strong> 鼠标左击并释放弹出合约面板<br>
+	  内置主力合约供选择,点击选中后会在编辑框列所有关联品种.<br>
+	  列表里可用Enter,或鼠标双击完成操作.<br><br>
+
+	<strong>单量控件</strong> 鼠标左击并释放弹出常用数量面板.<br>
+	  Enter,或鼠标双击完成操作.<br>
+	  常用数量可自行设定.
+	<br><br>
+
+   <strong>悬浮交易条</strong> 鼠标滑过买/卖1和最新价区域弹出.<br>
+   交易条提供四种快捷操作,单击即可.<br>
+   量来自界面设定,价取自对应区域揭示数据.<br><br>
+	<strong>挂单/委托列表</strong><br>
+   挂单列表显示未达完成状态的报单.<br>
+   委托列表显示本账户的所有报单.<br>
+   两列表条目均可右击鼠标弹出菜单,挂单多出全撤功能,其它一样.<br>
+   	状态颜色对应类别如下:<br>
+	<table class="help_table" border="4">
+	<tr><th>颜色</th><th>状态类别</th></tr>
+	<tr><td bgcolor="#ff0000"></td><td>本地记录的出错报单,非交易所回报</td></tr>
+	<tr><td bgcolor="#007f00"></td><td>完全成交的报单,交易所回报</td></tr>
+	<tr><td bgcolor="#007f7f"></td><td>未成交的挂单,交易所回报</td></tr>
+	<tr><td bgcolor="#cbac00"></td><td>已撤销的报单,交易所回报</td></tr>
+	<tr><td bgcolor="#000000"></td><td>其它状态报单,交易所回报</td></tr>
+	</table>
+	<br><br>
+   <strong>持仓列表</strong><br>
+	显示此账户所有持仓合约.<br>
+	选中条目右击鼠标弹出菜单可市价反手.<br>
+	双击条目可快速市价平仓.<br><br>
+   	<strong>成交列表</strong><br>
+    显示已经成交的每笔报单.<br><br>
+	<strong>合约列表</strong><br>
+	显示所有可交易的合约详情. <br><br>
+	<strong>条件单列表</strong><br>
+	此列表显示预埋和条件单细节.<br>
+	可通过右键菜单做更多操作,如清除/撤单/删除等.<br><br>
+	以上各列表通过Tab控件切换每次仅显示一项.<br>
+	</div>
+
+<a name="login"/>
+<h3 class="help_head3">登录界面</h3>
+	<div class="help_sub_section">
+    登录功能多次优化改进,已非常人性化.<br><br>
+    <strong>期商组合框</strong>:支持汉字首字母模糊搜索,会给出所有符合的列表.<br>
+   下拉表里选中任一期商,会自动搜索一组服务器,也可手动选择.<br>
+    终端会在登录时注册一组里的多个前置,随机选择一条连接.<br><br>
+    <strong>动态密码</strong>:可选功能,未设置过请忽略.<br><br>
+    <strong>登录历史</strong>:展开[>>]可设置是否保存最近登录历史.<br>
+    数据里的密码用可逆编码保存.<br>
+    选中一条双击就能直接完成登录.<br><br>
+    <i>以下功能点击[测速]设置</i><br>
+	<strong>测速功能</strong>:仅测试连接速度<br>
+	如要更可靠地测速,需要测试登录后报单的时延.<br><br>
+    <strong>代理设置</strong>:根据网络情况自行设定.<br>
+	支持sock4/sock4a/sock5类别代理服务器.<br><br>
+	<strong>前置编辑</strong>:选中一条单击编辑即可自动保存.<br>
+	格式请严格按照<b>[tcp://][地址]:[端口]</b><br><br>
+	</div>
+
+<a name="settings"/>
+<h3 class="help_head3">设置选项</h3>
+	<div class="help_sub_section">
+	 用户配置比较丰富,从 主界面->高级->选项配置 里操作.<br><br>
+
+	<strong>交易选项</strong><br><br>
+	<table class="help_table" border="4">
+	<tr><th>子项</th><th>备注</th></tr>
+	<tr><td>热键下单</td><td>具体请参考[下单增强]里的工具提示.</td></tr>
+	<tr><td>杂项功能</td><td>使用热键切换合约以及其它可选功能.</td></tr>
+	<tr><td>自选合约</td><td>此处设置供切换合约.</td></tr>
+	<tr><td>鼠标下单</td><td>多种控件方便鼠标交易.</td></tr>
+	<tr><td>风险控制</td><td>定时清仓设定时间会自动往下一日调整.</td></tr>
+	</table>
+    <br><br>
+	<strong>行情配置</strong><br><br>
+	默认tcp模式,内网支持udp.CTPmini行情模块可支持多播.<br><br>
+	<strong>其它设定</strong><br><br>
+	<table class="help_table" border="4">
+	<tr><th>子项</th><th>备注</th></tr>
+	<tr><td>Ntp校时</td><td>可使用NTP协议校准时间.</td></tr>
+	<tr><td>提示弹窗</td><td>设定是否弹出风险提示和中金所通告.</td></tr>
+	<tr><td>提示音</td><td>设定wav文件提示音.</td></tr>
+	</table><br>
+	</div>
+
+<a name="orderex"/>
+<h3 class="help_head3">下单增强</h3>
+	<div class="help_sub_section">
+	提供丰富的交易指令支持.<br>
+	<table class="help_table" border="4">
+	<tr><th>指令</th><th>交易所支持情况</th></tr>
+	<tr><td>市价单</td><td>上期所内测中.其它交易所均良好支持<br>中金所还提供最优/五档市价,市转限价等.</td></tr>
+	<tr><td>止损/盈</td><td>仅大商所明确支持.最新价大于/小于触发价<br>(CTP中为StopPrice)时触发新报单,可市价/限价</td></tr>
+	<tr><td>特殊指令</td><td>FAK,FOK当日有效.</td></tr>
+	<tr><td>套利</td><td>大商所跨期/跨品种/互换,<br>郑商所跨期/跨品种.<br>中金所未来会支持期货期权套利.</td></tr>
+	</table>
+	</div>
+	
+<a name="parkcond"/>
+<h3 class="help_head3">预埋/条件单</h3>
+	<div class="help_sub_section">
+	提供本地/远程条件单功能,还能定时报单.<br>
+	本地单在交易所之上扩充了对价以及市价支持.<br>
+	其中服务器预埋单必须在<b>非交易时段</b>报出.<br>
+	</div>
+</div>
+
+<a name="misc"/>
+<h2 class="help_head2">6. 其它</h2>
+<div class="help_section">
+根目录配置xml均为utf-8编码,brokers目录xml为gbk编码.<br>
+还有其它不少细节功能,待添加说明.
+<br><br>
+</div>
+
+<a name="support">
+<h2 class="help_head2">7. 意见反馈</h2>
+<div class="help_section">
+
+任何反馈, 建议和意见欢迎交流 <br>
+Email:<a href="mailto:t0trader@qq.com">t0trader@qq.com</a><br>
+报告前请附上以下信息:<br>
+终端版本, 操作系统, 具体问题描述.
+
+</div>
+
+<a name="ToDo">
+<h2 class="help_head2">8. 开发计划</h2>
+<div class="help_section">
+
+- 简单自动撸单策略LUA脚本支持.<br>
+- 详细LOG信息同步记录.<br>
+
+</div>
+
+<a name="history"/>
+<h2 class="help_head2">9. 历史版本</h2>
+<div class="help_section">
+
+<table class="help_table" border="4">
+<tr><th>版本</th><th>更新细节</th></tr>
+<tr><td>最新</td><td>
+改进:登陆选择期商可用首字母模糊搜索.<br>
+改进:站点地址列表支持编辑并保存.<br>
+增加:行情面板悬浮交易条.<br>
+增加:合约控件/单量控件支持鼠标选择面板.<br>
+</td></tr>
+<tr><td>v2.01</td><td>
+改进:丰富的配置功能,热键等设置更灵活.<br>
+修正界面处理细节,简化代码但增强功能.<br>
+</td></tr>
+<tr><td>v2.0</td><td>
+增加x64版,在64位系统运行更高效.<br>
+改进:本地计算实时更新持仓/盈亏数据.<br>
+改进:重写下单线程逻辑,若干细节修复.<br>
+增加:自动迅速平仓,自动定时撤单以及清仓功能.<br>
+</td></tr>
+<tr><td>v1.8</td><td>
+改进:ListCtrl为高效虚表模式.<br>
+支持条件/预埋单/定时单,本地/远程可选.<br>
+支持FAK/FOK,大商所止损/止盈单.<br>
+支持中金所增强市价单.<br>
+支持Win8以上高DPI界面自适应.<br>
+支持迷你界面.<br>
+</td></tr>
+<tr><td>v1.5</td><td>
+改进:界面和下单独立线程.<br>
+支持Ntp协议网络校时.<br>
+支持主界面横向伸缩.<br>
+支持对价改单.<br>
+支持市价反手.<br>
+支持热键下单,未作设置界面.<br>
+支持手续费/保证金率等非高频刷新数据本地存储.<br>
+</td></tr>
+<tr><td>v1.01</td><td>
+支持任意可用期商.<br>
+支持银期转账.<br>
+支持查询结算单.<br>
+支持实时订阅/揭示行情.<br>
+支持普通限价/市价/FAK指令单.<br>
+支持报单/挂单/持仓/成交/合约列表.<br>
+支持自动拆分大单批量下单.<br>
+支持测试服务器连接延迟.<br>
+</td></tr>
+<tr><td>v1.00</td><td>初始公开最简版 (2012/08/19)</td></tr>
+</table>
+
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<root>
+    <broker BrokerID="6090" BrokerName="新湖期货"  >
+		<FloatProfitAlgorithm>浮盈浮亏都计算</FloatProfitAlgorithm>
+		<MarginAlgorithm>按开仓价计算</MarginAlgorithm>	
+		<IsDiscountCZCE>1</IsDiscountCZCE>
+		<IsOldRiskAlg>0</IsOldRiskAlg>
+		<Servers>
+			<Server>
+				<Name>电信网络</Name>
+				<Trading>
+					<item>116.228.171.213:41205</item>
+					<item>116.228.171.214:41205</item>
+				</Trading>
+				<MarketData>
+					<item>116.228.171.213:41213</item>
+					<item>116.228.171.214:41213</item>
+				</MarketData>
+			</Server>
+			<Server>
+				<Name>网通网络</Name>
+				<Trading>
+					<item>210.13.70.237:41205</item>
+					<item>210.13.70.238:41205</item>
+				</Trading>
+				<MarketData>
+					<item>210.13.70.237:41213</item>
+					<item>210.13.70.238:41213</item>
+				</MarketData>
+			</Server>
+		</Servers>
+
+	</broker>
+</root>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<root>
+	<broker BrokerID="0187" BrokerName="国贸期货">
+		<FloatProfitAlgorithm>浮盈浮亏都计算</FloatProfitAlgorithm>	
+		<MarginAlgorithm>按开仓价计算</MarginAlgorithm>	
+		<IsDiscountCZCE>1</IsDiscountCZCE>
+		<IsOldRiskAlg>0</IsOldRiskAlg>		
+		<Servers>
+			<Server>
+				<Name>电信线路</Name>
+				<Trading>
+					<item>101.95.8.190:41205</item> 
+				</Trading>
+				<MarketData>
+					<item>101.95.8.190:41213</item> 
+				</MarketData>
+			</Server>
+			<Server>
+				<Name>联通线路</Name>
+				<Trading>
+					<item>220.248.44.146:41205</item> 
+				</Trading>
+				<MarketData>
+					<item>220.248.44.146:41213</item> 
+				</MarketData>
+			</Server>
+		</Servers>
+	</broker>
+</root>

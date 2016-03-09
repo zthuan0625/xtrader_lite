@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<root>
+    <broker BrokerID="6868" BrokerName="中融汇信专线" Hide="0" TitleBarText="">
+		<FloatProfitAlgorithm>浮盈浮亏都计算</FloatProfitAlgorithm>
+		<MarginAlgorithm>按开仓价计算</MarginAlgorithm>	
+		<IsDiscountCZCE>1</IsDiscountCZCE>
+		<IsOldRiskAlg>0</IsOldRiskAlg>
+		<Servers>
+			<Server>
+				<Name>内网</Name>
+				<Trading>
+					<item>172.18.21.31:41205</item>
+					<item>172.18.21.32:41205</item>
+				</Trading>
+				<MarketData>
+					<item>172.18.21.31:41213</item>
+					<item>172.18.21.32:41213</item>
+				</MarketData>
+			</Server>
+		</Servers>
+	</broker>
+</root>

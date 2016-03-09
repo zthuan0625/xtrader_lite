@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<root>
+	<broker BrokerID="0001" BrokerName="宝城期货" BrokerEName="bcqh"
+	HomePage="http://www.bcqhgs.com/" >
+		<FloatProfitAlgorithm>浮盈浮亏都计算</FloatProfitAlgorithm>		
+		<MarginAlgorithm>按开仓价计算</MarginAlgorithm>	
+		<IsDiscountCZCE>1</IsDiscountCZCE>	
+		<Servers>
+			<Server>
+				<Name>电信线路</Name>
+				<Trading>
+					<item>222.68.181.33:41205</item>
+					<item>222.68.181.34:41205</item>
+				</Trading>
+				<MarketData>
+					<item>222.68.181.33:41213</item>
+					<item>222.68.181.34:41213</item>
+				</MarketData>
+			</Server>
+			<Server>
+				<Name>联通线路</Name>
+				<Trading>
+					<item>27.115.57.219:41205</item>
+					<item>27.115.57.220:41205</item>
+				</Trading>
+				<MarketData>
+					<item>27.115.57.219:41213</item>
+					<item>27.115.57.220:41213</item>
+				</MarketData>
+			</Server>
+			<Server>
+				<Name>电信盘后查询</Name>
+				<Trading>
+					<item>222.68.181.37:41205</item>
+				</Trading>
+				<MarketData>
+					<item>222.68.181.37:41213</item>
+				</MarketData>
+			</Server>
+			<Server>
+			    <Name>联通盘后查询</Name>
+				<Trading>
+					<item>27.115.57.221:41205</item>
+				</Trading>
+				<MarketData>
+					<item>27.115.57.221:41213</item>
+				</MarketData>
+			</Server>
+		</Servers>
+	</broker>
+</root>

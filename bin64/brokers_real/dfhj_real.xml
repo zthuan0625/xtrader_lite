@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<root>
+	<broker BrokerID="0001" BrokerName="东方汇金" BrokerEName="dfhj">
+		<FloatProfitAlgorithm>浮盈浮亏都计算</FloatProfitAlgorithm>
+		<MarginAlgorithm>按开仓价计算</MarginAlgorithm>	
+		<IsDiscountCZCE>1</IsDiscountCZCE>	
+		<Servers>
+			<Server>
+				<Name>电信网络</Name>
+				<Trading>
+					<item>61.152.165.50:41205</item>
+				</Trading>
+				<MarketData>
+					<item>61.152.165.50:41213</item>
+				</MarketData>
+			</Server>
+			<Server>
+				<Name>联通网络</Name>
+				<Trading>
+					<item>211.144.193.106:41205</item>
+				</Trading>
+				<MarketData>
+					<item>211.144.193.106:41213</item>
+				</MarketData>
+			</Server>
+		</Servers>
+	</broker>
+</root>

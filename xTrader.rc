@@ -1,0 +1,786 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE MOVEABLE PURE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\xTrader.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\xTrader.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// 24
+//
+
+1                       24      MOVEABLE PURE   "res\\xTrader.xml"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// STUFF
+//
+
+IDR_CONFBAK             STUFF   MOVEABLE PURE   "res\\conf.bin"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// HTML
+//
+
+EMPTY.HTM               HTML    MOVEABLE PURE   "res\\empty.htm"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINMENU MENU DISCARDABLE 
+BEGIN
+    POPUP "账户(&A)"
+    BEGIN
+        MENUITEM "账户信息(&I)",                ID_USERINFO
+        MENUITEM "银期转账(&T)",                ID_TRANSBF
+        MENUITEM "修改密码(&C)",                ID_MODPASS
+        MENUITEM "切换账户(&R)",                ID_RELOGIN
+        MENUITEM SEPARATOR
+        MENUITEM "期市监控中心(&F)",            ID_CFMMC
+        MENUITEM "历史结算单(&S)",              ID_HISETTINF
+        MENUITEM SEPARATOR
+        MENUITEM "锁定账户(&L)",                ID_LOCK
+        MENUITEM "退出软件(&E)",                ID_EXIT
+        MENUITEM SEPARATOR
+    END
+    POPUP "高级(&V)"
+    BEGIN
+        MENUITEM "下单增强(&E)",                ID_ORDER_EXT
+        MENUITEM "预埋/条件(&P)",               ID_TOOL_PARKED
+        MENUITEM SEPARATOR
+        MENUITEM "快捷键(&H)",                  ID_HKEY
+        MENUITEM "选项配置(&S)",                ID_COMMCFG
+        MENUITEM SEPARATOR
+    END
+    POPUP "界面(&G)"
+    BEGIN
+        MENUITEM "置顶(&O)",                    ID_VIEW_TOP
+        MENUITEM SEPARATOR
+        MENUITEM "迷你(&M)",                    ID_MINI_MENU
+        MENUITEM SEPARATOR
+    END
+    POPUP "帮助(&H)"
+    BEGIN
+        MENUITEM "关于(&A)",                    ID_HELP_ABOUT
+        MENUITEM "说明(&T)",                    ID_TIPS
+        MENUITEM SEPARATOR
+        MENUITEM "工具(&G)",                    ID_GENMDFEE
+        MENUITEM SEPARATOR
+        MENUITEM "期商通知(&B)",                ID_BKRNOTICE
+        MENUITEM "交易通知(&R)",                ID_TDNOTICE
+        MENUITEM SEPARATOR
+        MENUITEM "查看日志(&L)",                ID_VIEWLOG
+        MENUITEM SEPARATOR
+    END
+END
+
+IDR_LSTRMENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "Rmenu"
+    BEGIN
+        MENUITEM "撤单",                        ID_CANCEL_ORD
+        MENUITEM "全撤",                        ID_CANCEL_ALL
+        MENUITEM "撤单预埋",                    ID_PK_CANCEL
+        MENUITEM SEPARATOR
+        MENUITEM "对价改单",                    ID_MOD_DSJ
+        MENUITEM "反向改单",                    ID_REVORD
+        MENUITEM SEPARATOR
+        MENUITEM "导出列表",                    ID_CSV_EXPORT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_XTRADER_DIALOG DIALOGEX 0, 0, 320, 200
+STYLE WS_MINIMIZEBOX | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | 
+    WS_THICKFRAME
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "xTrader"
+MENU IDR_MAINMENU
+FONT 9, "新宋体", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "下单(&R)",IDC_BTORDER,190,159,34,20,NOT WS_TABSTOP
+    EDITTEXT        IDC_EDVOL,230,164,52,14,ES_RIGHT | ES_AUTOHSCROLL | 
+                    ES_NUMBER | WS_GROUP,WS_EX_TRANSPARENT
+    CONTROL         "",IDC_SPINVOL,"msctls_updown32",UDS_ALIGNRIGHT | 
+                    UDS_AUTOBUDDY | UDS_ARROWKEYS | WS_GROUP,262,164,6,14,
+                    WS_EX_TRANSPARENT
+    EDITTEXT        IDC_EDPRICE,278,164,52,14,ES_RIGHT | ES_AUTOHSCROLL | WS_GROUP,WS_EX_TRANSPARENT
+    CONTROL         "",IDC_SPINPRICE,"msctls_updown32",UDS_ALIGNRIGHT | 
+                    UDS_AUTOBUDDY | UDS_ARROWKEYS | WS_GROUP,312,164,6,14,
+                    WS_EX_TRANSPARENT
+    EDITTEXT        IDC_INST,190,136,54,14,ES_CENTER | ES_AUTOHSCROLL | 
+                    WS_GROUP,WS_EX_TRANSPARENT | WS_EX_STATICEDGE
+    COMBOBOX        IDC_COMB_BS,252,136,32,30,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_GROUP | WS_TABSTOP
+    GROUPBOX        "",IDC_MDPAN,190,0,128,130,BS_CENTER | BS_NOTIFY
+    RTEXT           "",IDC_SS1,194,12,20,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_SLAST,194,28,20,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_SB1,194,44,20,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_S1P,224,12,32,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_S1V,268,12,28,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_LASTP,224,28,32,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_LASTV,268,28,28,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_B1P,224,44,32,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_B1V,268,44,28,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_STOTAL,196,98,17,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_VTOTAL,214,98,38,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_SOPEN,256,98,20,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_VOPEN,278,98,36,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_SUPDOWN,194,66,20,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_DUPDOWN,216,66,36,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_SHIGHEST,256,66,20,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_DHIGHEST,278,66,36,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_SOPT,194,82,20,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_DOPT,216,82,36,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_SLOWEST,256,82,20,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_DLOWEST,278,82,36,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_SSMP,194,114,20,10,0,WS_EX_TRANSPARENT
+    RTEXT           "",IDC_DSMP,216,114,36,10,0,WS_EX_TRANSPARENT
+    CTEXT           "",IDC_UPTIME,256,114,58,10,0,WS_EX_TRANSPARENT
+    COMBOBOX        IDC_COMB_OC,286,136,32,30,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_GROUP | WS_TABSTOP
+    CTEXT           "手数",IDC_STAVOL,226,153,58,8
+    CONTROL         "跟盘",IDC_CHK_NEWP,"Button",BS_AUTOCHECKBOX | WS_GROUP | 
+                    WS_TABSTOP,289,152,27,10
+    CONTROL         "ListOnRoad",IDC_LST_ONROAD,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_OWNERDATA | WS_TABSTOP,2,50,180,136
+    CONTROL         "ListOrd",IDC_LST_ODINF,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_OWNERDATA | WS_TABSTOP,2,50,180,136
+    CONTROL         "ListTD",IDC_LST_TRADE,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_OWNERDATA | WS_TABSTOP,2,50,180,136
+    CONTROL         "ListInVPos",IDC_LST_INVPOS,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_OWNERDATA | WS_TABSTOP,2,50,180,136
+    CONTROL         "ListAllInst",IDC_LST_ALLINST,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_OWNERDATA | WS_TABSTOP,2,50,180,136
+    CONTROL         "ListParkOrd",IDC_LST_PARKORD,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_OWNERDATA | WS_TABSTOP,2,50,180,136
+    CONTROL         "TabOPt",IDC_TABPAGE,"SysTabControl32",TCS_HOTTRACK,1,36,
+                    181,150
+    GROUPBOX        " 平仓盈亏 │   持仓盈亏   │ 手续费  ",IDC_GRPACC,2,0,
+                    184,34,BS_NOTIFY
+    CTEXT           "0",IDC_CPYK,4,15,46,14,0,WS_EX_TRANSPARENT
+    CTEXT           "0",IDC_HPYK,54,15,62,14,0,WS_EX_TRANSPARENT
+    CTEXT           "0",IDC_TDFEE,116,15,44,14,0,WS_EX_TRANSPARENT
+    PUSHBUTTON      "&Qry",IDC_BTQRYACC,163,10,21,18
+END
+
+IDD_LOGIN DIALOGEX 0, 0, 183, 130
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "xTrader 登录"
+FONT 9, "新宋体", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "登录",IDC_LOGIN,52,111,38,14
+    PUSHBUTTON      "退出",IDC_LOGOUT,102,111,38,14
+    PUSHBUTTON      "测速",IDC_NETSET,160,9,21,14
+    GROUPBOX        "",IDC_STATIC,2,2,180,79
+    LTEXT           "登录站点:",IDC_STATIC,8,11,37,8
+    COMBOBOX        IDC_ISPLIST,111,9,48,30,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "用户代码:",IDC_STATIC,8,31,37,8
+    EDITTEXT        IDC_USERNAME,48,28,71,14,ES_AUTOHSCROLL
+    LTEXT           "交易密码:",IDC_STATIC,8,49,37,8
+    EDITTEXT        IDC_PASSWORD,48,46,71,14,ES_PASSWORD | ES_AUTOHSCROLL
+    LTEXT           "动态密码:",IDC_STATIC,8,67,37,8
+    EDITTEXT        IDC_DYMPWD,48,64,71,14,ES_PASSWORD | ES_AUTOHSCROLL
+    CONTROL         "保存密码",IDC_SAVE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,126,48,48,10
+    CONTROL         "Progress1",IDC_PROGRESS,"msctls_progress32",PBS_SMOOTH,
+                    5,99,171,8,WS_EX_TRANSPARENT
+    LTEXT           "",IDC_LOGINFO,90,86,88,13,0,WS_EX_TRANSPARENT
+    COMBOBOX        IDC_BKR_LIST,48,9,61,30,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      ">>",IDC_EXTRA,159,30,22,14,0,WS_EX_CLIENTEDGE
+    LTEXT           "可置空",IDC_STATIC,136,67,33,8
+END
+
+IDD_DLG_BKRNT DIALOGEX 34, 22, 541, 400
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "通知"
+FONT 9, "新宋体", 0, 0, 0x1
+BEGIN
+    LTEXT           "Static",IDC_HTMLVIEW,2,2,537,380,SS_SUNKEN
+    PUSHBUTTON      "确定(&O)",IDOK,463,384,50,14
+END
+
+IDD_DLG_NOTICE DIALOGEX 0, 0, 268, 266
+STYLE DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "通知"
+FONT 9, "新宋体", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确认",IDOK,62,246,50,14
+    EDITTEXT        IDC_NTMSG,0,3,268,238,ES_MULTILINE | ES_AUTOVSCROLL | 
+                    ES_READONLY | WS_VSCROLL
+    PUSHBUTTON      "取消",IDCANCEL,145,246,50,14
+END
+
+IDD_DLG_NETSET DIALOGEX 0, 0, 353, 256
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "服务器选定"
+FONT 9, "新宋体", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "测速(&T)",ID_TESTSPEED,231,235,38,12
+    PUSHBUTTON      "确定",IDOK,285,235,38,12
+    LTEXT           "选中条目点击即可编辑并保存.",IDC_STACHKMSG,94,237,109,
+                    11
+    GROUPBOX        "",IDC_STATIC,7,9,339,41
+    COMBOBOX        IDC_CBNETTYPE,11,31,48,30,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    CONTROL         "代理使用",IDC_CHK_SOCK,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,15,7,48,10
+    LTEXT           "类型",IDC_STATIC,16,19,17,8
+    LTEXT           "地址",IDC_STATIC,102,19,17,8
+    EDITTEXT        IDC_SOCKSERV,77,31,65,14,ES_CENTER | ES_AUTOHSCROLL,
+                    WS_EX_STATICEDGE
+    LTEXT           "端口",IDC_STATIC,167,19,17,8
+    EDITTEXT        IDC_SOCK_PORT,160,31,40,14,ES_CENTER | ES_AUTOHSCROLL | 
+                    ES_NUMBER,WS_EX_STATICEDGE
+    EDITTEXT        IDC_SK_USER,213,31,47,14,ES_CENTER | ES_AUTOHSCROLL,
+                    WS_EX_STATICEDGE
+    LTEXT           "用户名",IDC_STATIC,219,19,25,8
+    LTEXT           "密码",IDC_STATIC,291,19,17,8
+    EDITTEXT        IDC_SKPWD,275,31,49,14,ES_CENTER | ES_AUTOHSCROLL,
+                    WS_EX_STATICEDGE
+    GROUPBOX        "服务器测速",IDC_STATIC,7,55,339,176
+    CONTROL         "",IDC_LST_TRADE,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | 
+                    WS_TABSTOP,11,66,326,80
+    CONTROL         "",IDC_LST_MD,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | 
+                    WS_TABSTOP,12,148,326,80
+END
+
+IDD_DLG_MODPASS DIALOGEX 0, 0, 176, 162
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "修改密码"
+FONT 9, "新宋体", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "更改(&M)",IDOK,30,140,50,14
+    PUSHBUTTON      "取消(&C)",IDCANCEL,101,140,50,14
+    LTEXT           "原密码:",IDC_STATIC,24,49,30,8
+    EDITTEXT        IDC_ORIPASS,66,46,78,14,ES_PASSWORD | ES_AUTOHSCROLL,
+                    WS_EX_STATICEDGE
+    LTEXT           "新密码:",IDC_STATIC,24,79,30,8
+    EDITTEXT        IDC_NEWPASS,66,76,78,14,ES_PASSWORD | ES_AUTOHSCROLL,
+                    WS_EX_STATICEDGE
+    LTEXT           "请确认:",IDC_STATIC,24,109,30,8
+    EDITTEXT        IDC_NEWPASSCFM,66,106,78,14,ES_PASSWORD | ES_AUTOHSCROLL,
+                    WS_EX_STATICEDGE
+    CONTROL         "修改交易密码",IDC_TRADEPASS,"Button",BS_AUTORADIOBUTTON,
+                    24,17,61,10
+    CONTROL         "修改资金密码",IDC_ACCPASS,"Button",BS_AUTORADIOBUTTON,
+                    97,17,62,10
+    GROUPBOX        "",IDC_STATIC,16,9,144,23
+    GROUPBOX        "",IDC_STATIC,16,36,144,96
+END
+
+IDD_BFTRANS DIALOGEX 0, 0, 195, 168
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "银期转账@xTrader"
+FONT 9, "新宋体", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "取消",IDCANCEL,102,136,74,14
+    LTEXT           "选择银行",IDC_STATIC,20,12,54,10
+    COMBOBOX        IDC_CBBKLST,84,10,86,30,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    LTEXT           "资金密码",IDC_STATIC,20,28,54,10
+    EDITTEXT        IDC_ACCPASSWD,84,26,86,14,ES_PASSWORD | ES_AUTOHSCROLL,
+                    WS_EX_STATICEDGE
+    LTEXT           "银行密码",IDC_STATIC,20,44,54,10
+    EDITTEXT        IDC_BKPASSWD,84,42,86,14,ES_PASSWORD | ES_AUTOHSCROLL,
+                    WS_EX_STATICEDGE
+    LTEXT           "转账金额",IDC_STATIC,20,60,54,10
+    EDITTEXT        IDC_TRANSAMT,84,58,86,14,ES_AUTOHSCROLL,WS_EX_STATICEDGE
+    LTEXT           "币种选择",IDC_STATIC,20,76,54,10
+    COMBOBOX        IDC_CBEXHTYPE,84,74,86,30,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "查询银行账户",IDC_BTNQRYBK,16,104,74,14
+    PUSHBUTTON      "查询期货账户",IDC_BTNQRYFT,102,104,74,14
+    PUSHBUTTON      "期货资金转银行",IDC_BTNFT2BK,16,120,74,14
+    PUSHBUTTON      "银行资金转期货",IDC_BTNBK2FT,102,120,74,14
+    PUSHBUTTON      "查询转账明细",IDC_QRYDETAIL,15,136,74,14
+    GROUPBOX        "",IDC_STATIC,14,1,163,94
+END
+
+IDD_DLG_GENMRFEE DIALOGEX 0, 0, 188, 50
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "生成保证金手续费率文件"
+FONT 9, "新宋体", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "本地保证金率",IDC_BT_GENMR,6,10,56,14
+    PUSHBUTTON      "本地手续费率",IDC_BT_GENFEE,66,10,56,14
+    CTEXT           "生成失败",IDC_GENSTAT,19,34,155,8
+    PUSHBUTTON      "本地报单费率",IDC_BT_GENORDFR,127,10,56,14
+END
+
+IDD_DLG_HISETM DIALOGEX 0, 0, 503, 320
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "查询历史结算单"
+FONT 9, "新宋体", 0, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_DTPICK,"SysDateTimePick32",DTS_RIGHTALIGN | 
+                    WS_TABSTOP,7,7,100,15
+    PUSHBUTTON      "查日结算单(&D)",IDC_BT_QRYDAY,121,7,70,14
+    PUSHBUTTON      "查月结算单(&M)",IDC_BT_QRYMONTH,215,7,58,14
+    PUSHBUTTON      "保存到文件(&S)",IDC_BT_SAVEFILE,291,7,64,14
+    EDITTEXT        IDC_EDIT_HISOD,0,24,499,292,ES_MULTILINE | ES_READONLY | 
+                    NOT WS_BORDER | WS_VSCROLL | WS_HSCROLL,WS_EX_CLIENTEDGE | 
+                    WS_EX_STATICEDGE
+    PUSHBUTTON      "关闭(&C)",IDC_BTCLOSE,433,7,46,14
+    PUSHBUTTON      "打印(&P)",ID_FILE_PRINT,373,7,44,14
+END
+
+IDD_DLG_BFDETAILS DIALOGEX 0, 0, 465, 206
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "银期转账记录"
+FONT 9, "新宋体", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,408,187,50,14
+    CONTROL         "",IDC_LST_BFDETAILS,"SysListView32",LVS_REPORT | 
+                    LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | 
+                    WS_TABSTOP,1,2,463,182
+END
+
+IDD_DLG_RECENT DIALOGEX 0, 0, 183, 128
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "最近登录列表"
+FONT 9, "新宋体", 0, 0, 0x1
+BEGIN
+    LISTBOX         IDC_LBRECENT,2,3,180,110,LBS_NOINTEGRALHEIGHT | NOT 
+                    WS_BORDER | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    CONTROL         "自动保存不同账户记录",IDC_CHK_RECENT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,5,115,94,12
+    PUSHBUTTON      "确定",IDOK,144,115,32,12
+    PUSHBUTTON      "删除(&D)",IDC_BTLBDEL,106,115,32,12
+END
+
+IDD_PARKORD_DLG DIALOGEX 0, 0, 221, 201
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "设定 条件/预埋单"
+FONT 9, "新宋体", 0, 0, 0x1
+BEGIN
+    CONTROL         "预埋本地,当重新进入交易状态时",IDC_PARK_LOCAL,"Button",
+                    BS_AUTORADIOBUTTON,9,11,146,10
+    CONTROL         "定时:",IDC_PARK_TMORD,"Button",BS_AUTORADIOBUTTON,9,42,
+                    31,10
+    CONTROL         "预埋(服务器),当重新进入交易状态时",IDC_PARK_REMT,"Button",
+                    BS_AUTORADIOBUTTON,9,26,157,10
+    CONTROL         "条件(本地)",IDC_CONDLOCAL,"Button",BS_AUTORADIOBUTTON,9,
+                    57,56,10
+    CONTROL         "条件(服务器)",IDC_CONDORD,"Button",BS_AUTORADIOBUTTON,
+                    115,57,66,10
+    CONTROL         "止损(大商所)",IDC_TOUCH,"Button",BS_AUTORADIOBUTTON,9,
+                    71,64,10
+    CONTROL         "止盈(大商所)",IDC_TOUCHPROF,"Button",BS_AUTORADIOBUTTON,
+                    115,72,64,10
+    LTEXT           "合约",IDC_STATIC,8,90,17,8
+    CONTROL         "主力",IDC_CHK_MAIN,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,27,88,29,10
+    LTEXT           "买卖",IDC_STATIC,65,90,17,8
+    LTEXT           "开平",IDC_STATIC,100,90,17,8
+    LTEXT           "价格",IDC_STATIC,139,90,17,8
+    LTEXT           "手数",IDC_STATIC,186,90,17,8
+    EDITTEXT        IDC_CBPKINST,7,103,48,14,ES_CENTER | ES_AUTOHSCROLL,
+                    WS_EX_STATICEDGE
+    COMBOBOX        IDC_CBBSPK,58,103,32,30,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    COMBOBOX        IDC_CBOCPK,94,103,31,30,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    EDITTEXT        IDC_EDPXPK,128,103,52,14,ES_CENTER | ES_AUTOHSCROLL
+    CONTROL         "Spin1",IDC_SPPXPK,"msctls_updown32",UDS_ALIGNRIGHT | 
+                    UDS_AUTOBUDDY | UDS_ARROWKEYS | WS_GROUP,160,103,10,14
+    EDITTEXT        IDC_EDVOLPK,178,103,43,14,ES_CENTER | ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    CONTROL         "Spin2",IDC_SPVOLPK,"msctls_updown32",UDS_ALIGNRIGHT | 
+                    UDS_AUTOBUDDY | UDS_ARROWKEYS | WS_GROUP,211,103,10,14
+    CONTROL         "对价",IDC_RD_DSJ,"Button",BS_AUTORADIOBUTTON,103,122,26,
+                    10
+    CONTROL         "限价",IDC_RDLMTPX,"Button",BS_AUTORADIOBUTTON,141,122,
+                    27,10
+    CONTROL         "市价",IDC_RDPKANY,"Button",BS_AUTORADIOBUTTON,175,122,
+                    26,10
+    DEFPUSHBUTTON   "报单(&O)",IDOK,102,182,39,14
+    PUSHBUTTON      "取消(&C)",IDCANCEL,164,182,42,14
+    COMBOBOX        IDC_CBBASEPX,20,139,46,30,CBS_DROPDOWNLIST | WS_VSCROLL
+    COMBOBOX        IDC_CBCONDS,72,139,39,30,CBS_DROPDOWNLIST | WS_VSCROLL
+    EDITTEXT        IDC_STOPPX,117,139,55,14,ES_CENTER | ES_AUTOHSCROLL| WS_GROUP,WS_EX_TRANSPARENT
+    CONTROL         "Spin3",IDC_SPSTOPPX,"msctls_updown32",UDS_ALIGNRIGHT | 
+                    UDS_AUTOBUDDY | UDS_ARROWKEYS | WS_GROUP,156,139,10,14
+    EDITTEXT        IDC_TMEDIT,46,40,82,14,ES_AUTOHSCROLL
+    CTEXT           "",IDC_PARKORDSTAT,10,161,198,16
+    LTEXT           "当",IDC_STATIC,7,143,9,8
+    LTEXT           "时",IDC_STATIC,176,143,9,8
+    GROUPBOX        "",IDC_STATIC,2,3,217,83
+    LTEXT           "当行情满足以下条件时:",IDC_STATIC,9,123,85,8
+    GROUPBOX        "",IDC_STATIC,98,116,111,20
+    LTEXT           "于此刻报单.",IDC_STATIC,134,42,45,8
+END
+
+IDD_DLG_ORDEX DIALOGEX 0, 0, 200, 194
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "增强指令下单"
+FONT 9, "新宋体", 0, 0, 0x1
+BEGIN
+    LTEXT           "合约:",IDC_STATIC,6,5,20,8
+    CONTROL         "主力",IDC_CHKMAIN_EX,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,29,4,26,10
+    LTEXT           "价格:",IDC_STATIC,61,6,21,8
+    LTEXT           "手数:",IDC_STATIC,113,6,21,8
+    CONTROL         "自动平",IDC_AUTOCLOSE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,159,5,36,10
+    EDITTEXT        IDC_CBINST_EX,6,18,48,14,ES_CENTER | ES_AUTOHSCROLL,
+                    WS_EX_STATICEDGE
+    EDITTEXT        IDC_EDPX_EX,59,18,53,14,ES_RIGHT | ES_AUTOHSCROLL,WS_EX_STATICEDGE
+    CONTROL         "SpinPx",IDC_SPPXEX,"msctls_updown32",UDS_ALIGNRIGHT | 
+                    UDS_AUTOBUDDY | UDS_ARROWKEYS | WS_GROUP,96,18,10,14
+    EDITTEXT        IDC_EDVOL_EX,111,18,50,14,ES_RIGHT | ES_AUTOHSCROLL | 
+                    ES_NUMBER,WS_EX_STATICEDGE
+    CONTROL         "SpinVol",IDC_SPVOLEX,"msctls_updown32",UDS_ALIGNRIGHT | 
+                    UDS_AUTOBUDDY | UDS_ARROWKEYS | WS_GROUP,144,18,10,14
+    EDITTEXT        IDC_NPXTICK,160,18,50,14,ES_RIGHT | ES_AUTOHSCROLL,WS_EX_STATICEDGE
+    CONTROL         "",IDC_SPPXTICK,"msctls_updown32",UDS_ALIGNRIGHT | 
+                    UDS_AUTOBUDDY | UDS_ARROWKEYS | WS_GROUP,192,18,10,14
+    GROUPBOX        "限价",IDC_GRPLMT,6,99,183,26
+    CONTROL         "普通",IDC_RDNORMAL,"Button",BS_AUTORADIOBUTTON,10,110,
+                    31,10
+    CONTROL         "FOK",IDC_RDFOK,"Button",BS_AUTORADIOBUTTON,48,110,25,10
+    CONTROL         "FAK",IDC_RDFAK,"Button",BS_AUTORADIOBUTTON,80,110,28,10
+    CONTROL         "任意",IDC_RDANYNORMAL,"Button",BS_AUTORADIOBUTTON,10,
+                    140,32,10
+    CONTROL         "最优对手价",IDC_RDBESTANY,"Button",BS_AUTORADIOBUTTON,
+                    57,140,56,10
+    CONTROL         "最优五档价",IDC_RDL2BEST,"Button",BS_AUTORADIOBUTTON,
+                    120,140,56,10
+    CONTROL         "市转限",IDC_RDANYLMT,"Button",BS_AUTORADIOBUTTON,10,158,
+                    37,10
+    CONTROL         "最优转限价",IDC_RDBESTLMT,"Button",BS_AUTORADIOBUTTON,
+                    57,158,56,10
+    CONTROL         "五档转限价",IDC_RDL2LMT,"Button",BS_AUTORADIOBUTTON,120,
+                    158,56,10
+    GROUPBOX        "市价",IDC_GRPANY,6,128,184,45
+    PUSHBUTTON      "买开",IDC_BTBUYOPEN,6,36,30,14
+    PUSHBUTTON      "买平",IDC_BTBUYCLOSE,76,36,30,14
+    PUSHBUTTON      "卖开",IDC_BTSELLOPEN,42,36,30,14
+    PUSHBUTTON      "卖平",IDC_BTSELLCLOSE,110,36,30,14
+    PUSHBUTTON      "备兑开",IDC_BTCOVOPEN,144,36,35,14,WS_DISABLED
+    PUSHBUTTON      "备兑平",IDC_BTCOVCLOSE,144,54,35,14,WS_DISABLED
+    PUSHBUTTON      "行权",IDC_BTEXEC,76,54,30,14,WS_DISABLED
+    PUSHBUTTON      "放弃",IDC_BTABANDON,110,54,30,14,WS_DISABLED
+    PUSHBUTTON      "组合",IDC_BTCOMB,6,54,30,14,WS_DISABLED
+    PUSHBUTTON      "拆分",IDC_BTUNCOMB,42,54,30,14,WS_DISABLED
+    CONTROL         "≥",IDC_CHKMINVOL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    111,111,18,8
+    EDITTEXT        IDC_EDITMINVOL,130,108,44,14,ES_CENTER | ES_AUTOHSCROLL | 
+                    ES_NUMBER,WS_EX_STATICEDGE
+    CONTROL         "SpinMinVol",IDC_SPMINVOLEX,"msctls_updown32",
+                    UDS_ALIGNRIGHT | UDS_AUTOBUDDY | UDS_ARROWKEYS | 
+                    WS_GROUP,164,108,10,14
+    LTEXT           "手",IDC_STATIC,175,110,11,8
+    GROUPBOX        "投保类型",IDC_GRPTBTYPE,6,72,182,25
+    CONTROL         "投机",IDC_RDSPECU,"Button",BS_AUTORADIOBUTTON | 
+                    WS_DISABLED,10,83,30,10
+    CONTROL         "套利",IDC_RDARBIT,"Button",BS_AUTORADIOBUTTON | 
+                    WS_DISABLED,48,83,30,10
+    CONTROL         "套保",IDC_RDHEDGE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_DISABLED,84,83,30,10
+    CONTROL         "做市商",IDC_RDMARKETM,"Button",BS_AUTORADIOBUTTON | 
+                    WS_DISABLED,120,83,40,10
+    PUSHBUTTON      "退出(&Q)",IDC_BTQUITEX,155,177,32,14
+    PUSHBUTTON      "<<",IDC_BTEXPAND,184,38,13,11
+END
+
+IDD_UNLOCK DIALOGEX 0, 0, 211, 79
+STYLE DS_MODALFRAME | WS_MINIMIZEBOX | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "解除锁定"
+FONT 9, "新宋体", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "解锁(&U)",ID_UNLOCKOK,118,51,32,14
+    LTEXT           "交易终端已锁定,请输入交易密码返回主界面!",IDC_STATIC,20,
+                    12,166,13
+    EDITTEXT        IDC_UNLOCKPWD,26,51,87,14,ES_CENTER | ES_PASSWORD | 
+                    ES_AUTOHSCROLL,WS_EX_STATICEDGE
+    LTEXT           "密码:",IDC_STATIC,20,32,21,8
+    PUSHBUTTON      "退出(&Q)",IDC_ULQUIT,155,51,31,14
+    LTEXT           "",IDC_STAULMSG,44,32,147,8
+END
+
+IDD_SILOGIN DIALOGEX 0, 0, 228, 30
+STYLE DS_MODALFRAME | WS_POPUP
+FONT 9, "新宋体", 0, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_PRGSILOGIN,"msctls_progress32",WS_BORDER,2,15,223,
+                    14
+    LTEXT           "",IDC_SLISTAMSG,143,3,77,11
+END
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 2,0,1,6
+ PRODUCTVERSION 2,0,1,6
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "FileDescription", "xTrader win\0"
+            VALUE "FileVersion", "2, 0, 1, 6\0"
+            VALUE "InternalName", "xTrader win\0"
+            VALUE "LegalCopyright", "(C) 2016 by t0trader\0"
+            VALUE "OriginalFilename", "xTrader.EXE\0"
+            VALUE "ProductName", "xTrader win\0"
+            VALUE "ProductVersion", "2, 0, 1, 6\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 xTrader(&A)..."
+    IDS_TRADE_STAT          "TD★"
+    IDS_MD_STAT             "MD★"
+    IDS_RESPINFO            "反馈信息"
+    IDS_SFETIME             "09:10:22"
+    IDS_DCETIME             "09:10:23"
+    IDS_ZCETIME             "09:10:24"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CFXTIME             "09:10:25"
+    IDS_INETIME             "09:10:26"
+    IDS_DISCONTIPS          "网络故障导致CTP平台断开连接!\n\n请检查以排除故障后软件会自动重连!"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_MD_TIPS             "行情在线"
+    IDS_TRADE_TIPS          "交易在线"
+    IDS_SHFE                "上期所"
+    IDS_DCE                 "大商所"
+    IDS_CZCE                "郑商所"
+    IDS_CFFEX               "中金所"
+    IDS_CINE                "能交所"
+    IDS_BFTRANS_OK          "转账成功!"
+    IDS_QRYBKERR            "无任何可查询银行账户!"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TITLE               "xTrader CTP"
+    IDS_STREMPTY            "请输入密码!\n"
+    IDS_CFMPASSERR          "请再次确认新密码!\n"
+    IDS_STRTIPS             "xTrader提示"
+    IDS_USERPASSERR         "修改用户密码错误!"
+    IDS_ACCPASSERR          "修改资金密码错误!"
+    IDS_MODPASSOK           "密码修改成功!"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CFMQUIT             "xTrader可在断线后自动重连,本软件无故障时无需盘中重启.\n你确信要退出吗?"
+    IDC_PARK_LOCAL          "本地预埋,开盘时生成普通报单."
+    IDC_PARK_TMORD          "本地定时生成普通报单,独立线程支持随时下单!"
+    IDC_PARK_REMT           "远程预埋,开盘时由CTP服务器生成普通报单发出,\n只支持在非交易时段下单!"
+    IDS_XTHELP              "软件说明"
+    IDC_CONDORD             "远程条件单,需要期商开通权限."
+    IDS_GERR                "错误"
+    IDS_ACC_DETAILS         "期货资金账户详情"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TDNT_TITLE          "交易通知信息"
+    IDS_BKRNT_TITLE         "期商通知信息"
+    IDS_CFMMC_TITLE         "期市监控中心"
+    IDS_BKACC_LEFT          "银行资金账户"
+    IDS_BFTRANS_TITLE       "银期转账@%s"
+    IDS_CONN_ERR            "连接失败"
+    IDS_ACC_FBINFO          "开户信息"
+    IDS_CFG_FILE            "config.xml"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_CFGERR              "config.xml加载失败!"
+    IDS_CFXBT_TITLE         "交易所公告"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_DIFORD_TITLE        "非本机报单提示"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_STRBID1             "买①"
+    IDS_STRASK1             "卖①"
+    IDS_CNYSIGN             "￥"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_HK_CFG              "hkcfg.xml"
+    IDC_CONDLOCAL           "本地条件单,服务器条件单的扩充."
+    IDS_BKRS_DIR            "brokers\\*.xml"
+    IDS_NOUIDPWD            "用户名或密码为空!"
+    IDS_LOADFEE_ERR         "载入fee文件错误,请在帮助->工具里面生成!"
+    IDS_LOADMGR_ERR         "载入mgr文件错误,请在帮助->工具里面生成!"
+    IDS_MY_TIPS             "xTrader 提示"
+    IDS_F2BKMSG             "出金 %.2f 元!\n账户可取 %.2f 元."
+    IDS_BK2FMSG             "入金 %.2f 元!\n账户可取 %.2f 元."
+    IDS_TMLESSNOW           "请设定一个未来合适的报单时刻!\n"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_OPTIONS_CFG         "参数设置"
+    IDS_UNLPWDERR           "匹配错误,无法解锁.请重新输入!"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_SVRURLERR           "输入的服务器地址格式有误!\n"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_AUTOCLOSE           "设定以后会在每笔成交价之上±若干个\nPriceTick作为平仓价自动挂单,慎用!"
+    IDS_ORDCONFIRM          "请确认下单:\n\n合约 %s, %s, %s, %s, %d 手"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDC_RDFOK               "立即全部成交否则自动撤销(FOK),\n交易所一般不计入撤单总量."
+    IDC_RDFAK               "立即成交剩余自动撤销(FAK),\n可指定最小成交量."
+    IDC_RDANYNORMAL         "普通市价指令"
+    IDC_RDBESTANY           "市价单与对手方最优一档价报单尝试成交,\n剩余未成交部分撤销."
+    IDC_RDL2BEST            "市价单与对手方五档价报单尝试成交,\n剩余未成交部分撤销."
+    IDC_RDANYLMT            "市价单未成交部分转为最新价限价单."
+    IDC_RDBESTLMT           "市价单与对手方最优一档价报单尝试成交,\n剩余未成交部分转为最新价限价单."
+    IDC_RDL2LMT             "市价单与对手方五档价报单尝试成交,\n剩余未成交部分转为最新价限价单."
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\xTrader.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

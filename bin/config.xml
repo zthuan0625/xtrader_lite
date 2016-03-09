@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<InstList>au1606</InstList>
+	<NtpSvr Url="cn.pool.ntp.org" Port="123" />
+	<MdConf IsUdp="false" IsMulcast="false" />
+	<Proxy Enable="false" Url="socks4://:@183.57.27.163:1080" />
+	<General SavePwd="true" IdleLock="false" TmoSec="300" foLast="false" />
+	<Recent bSave="true">
+		<item Uid="123456" Pass="" BkrGroup="0" SvrGroup="0" />
+	</Recent>
+	<WndInfo MinGui="false" OnTop="true" IsTrans="false" Alpha="157" xPos="546" yPos="211" width="661" height="359" />
+</root>
