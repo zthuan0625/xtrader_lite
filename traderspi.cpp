@@ -28,7 +28,7 @@ void CtpTdSpi::ReqAuth(TThostFtdcProductInfoType prodInf,TThostFtdcAuthCodeType	
 	m_pApi->ReqAuthenticate(&req,++m_iReqId);
 }
 
-//Èç¹ûĞèÒªÈÏÖ¤ ¾ÍÔÚ³É¹¦ºó¼ÌĞøµÇÂ¼
+//å¦‚æœéœ€è¦è®¤è¯ å°±åœ¨æˆåŠŸåç»§ç»­ç™»å½•
 void CtpTdSpi::OnRspAuthenticate(CThostFtdcRspAuthenticateField *pRspAuthenticateField, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if (pRspInfo) { memcpy(&m_RspMsg,pRspInfo,sizeof(CThostFtdcRspInfoField)); }
@@ -59,7 +59,7 @@ void CtpTdSpi::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin,
 
 	if (!IsErrorRspInfo(pRspInfo) && pRspUserLogin )
 	{  
-		// ±£´æ»á»°²ÎÊı	
+		// ä¿å­˜ä¼šè¯å‚æ•°	
 		m_iFrtId = pRspUserLogin->FrontID;
 		m_iSesId = pRspUserLogin->SessionID;
 		strcpy(m_sTdday,pRspUserLogin->TradingDay);
@@ -94,7 +94,7 @@ void CtpTdSpi::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin,
 
 const char* CtpTdSpi::GetTradingDay()
 {
-	//µÇÂ¼²ÅÄÜ×¼È·»ñÈ¡
+	//ç™»å½•æ‰èƒ½å‡†ç¡®è·å–
 	return m_sTdday;
 }
 
@@ -107,7 +107,7 @@ void CtpTdSpi::ReqUserLogout()
 	m_pApi->ReqUserLogout(&req, ++m_iReqId);
 }
 
-///µÇ³öÇëÇóÏìÓ¦
+///ç™»å‡ºè¯·æ±‚å“åº”
 void CtpTdSpi::OnRspUserLogout(CThostFtdcUserLogoutField *pUserLogout, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pUserLogout)
@@ -356,7 +356,7 @@ void CtpTdSpi::ReqQryTdAcc()
 	} 
 }
 
-//Èç¹ûÓĞµ£±£ ĞÅÓÃÕË»§ ¿ÉÄÜĞèÒªvecÀ´½ÓÊÕ¶àÕË»§ĞÅÏ¢
+//å¦‚æœæœ‰æ‹…ä¿ ä¿¡ç”¨è´¦æˆ· å¯èƒ½éœ€è¦vecæ¥æ¥æ”¶å¤šè´¦æˆ·ä¿¡æ¯
 void CtpTdSpi::OnRspQryTradingAccount(
     CThostFtdcTradingAccountField *pTradingAccount, 
    CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
@@ -381,7 +381,7 @@ void CtpTdSpi::OnRspQryTradingAccount(
 	}
 }
 
-//INSTRUMENT_IDÉè³É²¿·Ö×Ö¶Î,ÀıÈçIF10,¾ÍÄÜ²é³öËùÓĞIF10´òÍ·µÄÍ·´ç
+//INSTRUMENT_IDè®¾æˆéƒ¨åˆ†å­—æ®µ,ä¾‹å¦‚IF10,å°±èƒ½æŸ¥å‡ºæ‰€æœ‰IF10æ‰“å¤´çš„å¤´å¯¸
 void CtpTdSpi::ReqQryInvPos(TThostFtdcInstrumentIDType instId)
 {
 	CThostFtdcQryInvestorPositionField req;
@@ -465,11 +465,11 @@ void CtpTdSpi::JoinTdYdPos(const CThostFtdcInvestorPositionField *pInv)
 	}
 	//else if (pInv->Position == 0)
 	//{
-	//	//³Ö²ÖÁ¿Îª0µÄ±íÊ¾Çå¹ı²Ö µ«ÀïÃæ¼ÇÂ¼ÁËYdPosµÄÔ­Ê¼Öµ
+	//	//æŒä»“é‡ä¸º0çš„è¡¨ç¤ºæ¸…è¿‡ä»“ ä½†é‡Œé¢è®°å½•äº†YdPosçš„åŸå§‹å€¼
 	//}	
 }
 
-//INSTRUMENT_IDÉè³É²¿·Ö×Ö¶Î,ÀıÈçIF10,¾ÍÄÜ²é³öËùÓĞIF10´òÍ·µÄÍ·´ç
+//INSTRUMENT_IDè®¾æˆéƒ¨åˆ†å­—æ®µ,ä¾‹å¦‚IF10,å°±èƒ½æŸ¥å‡ºæ‰€æœ‰IF10æ‰“å¤´çš„å¤´å¯¸
 void CtpTdSpi::ReqQryInvPosEx(TThostFtdcInstrumentIDType instId)
 {
 	CThostFtdcQryInvestorPositionDetailField req;
@@ -542,7 +542,7 @@ void CtpTdSpi::OnRspQryInvestorPositionCombineDetail(CThostFtdcInvestorPositionC
 	if(bIsLast) SetEvent(g_hEvent);
 }
 
-///ÇëÇó²éÑ¯½»Ò×Ëù
+///è¯·æ±‚æŸ¥è¯¢äº¤æ˜“æ‰€
 void CtpTdSpi::ReqQryExh(TThostFtdcExchangeIDType ExhId)
 {
 	CThostFtdcQryExchangeField req;
@@ -557,7 +557,7 @@ void CtpTdSpi::ReqQryExh(TThostFtdcExchangeIDType ExhId)
 	} 
 }
 
-///ÇëÇó²éÑ¯½»Ò×ËùÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢äº¤æ˜“æ‰€å“åº”
 void CtpTdSpi::OnRspQryExchange(CThostFtdcExchangeField *pExchange, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pExchange){ m_ExhVec.push_back(*pExchange); }
@@ -576,7 +576,7 @@ void CtpTdSpi::OnRspQryExchange(CThostFtdcExchangeField *pExchange, CThostFtdcRs
 	}
 }
 
-///ÇëÇó²éÑ¯ĞĞÇé
+///è¯·æ±‚æŸ¥è¯¢è¡Œæƒ…
 void CtpTdSpi::ReqQryDepthMD(TThostFtdcInstrumentIDType instId)
 {
 	CThostFtdcQryDepthMarketDataField req;
@@ -593,7 +593,7 @@ void CtpTdSpi::ReqQryDepthMD(TThostFtdcInstrumentIDType instId)
 	} 	
 }
 
-///ÇëÇó²éÑ¯ĞĞÇéÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢è¡Œæƒ…å“åº”
 void CtpTdSpi::OnRspQryDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {	
 	if( !IsErrorRspInfo(pRspInfo) &&  pDepthMarketData)
@@ -617,7 +617,7 @@ void CtpTdSpi::OnRspQryDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMar
 	if(bIsLast) { SetEvent(g_hEvent); }
 }
 
-///ÇëÇó²éÑ¯±¨µ¥
+///è¯·æ±‚æŸ¥è¯¢æŠ¥å•
 void CtpTdSpi::ReqQryOrd(TThostFtdcInstrumentIDType instId,TThostFtdcExchangeIDType ExhId,TThostFtdcOrderSysIDType ordSysId,
 							 TThostFtdcTimeType tmStart,TThostFtdcTimeType tmEnd)
 {
@@ -640,7 +640,7 @@ void CtpTdSpi::ReqQryOrd(TThostFtdcInstrumentIDType instId,TThostFtdcExchangeIDT
 	} 
 }
 
-///ÇëÇó²éÑ¯±¨µ¥ÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢æŠ¥å•å“åº”
 void CtpTdSpi::OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pOrder )
@@ -653,14 +653,14 @@ void CtpTdSpi::OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoFiel
 			else
 			{ m_orderVec.push_back(order); }
 			
-			//µôÏßÖØ²éÊ±´Ë´¦ĞèÒªĞŞÕı
+			//æ‰çº¿é‡æŸ¥æ—¶æ­¤å¤„éœ€è¦ä¿®æ­£
 			if(JgCancelStat(&order)){ m_onRoadVec.push_back(order); }
 		}
 		else
 		{
 			PARKEDEX pkEx;
 			OrdConvter(*pOrder,pkEx,ORD2PARKED);
-			if (pOrder->ContingentCondition > THOST_FTDC_CC_ParkedOrder) //Ìõ¼şµ¥
+			if (pOrder->ContingentCondition > THOST_FTDC_CC_ParkedOrder) //æ¡ä»¶å•
 			{ pkEx.ordType = COND_SERVER; }
 			else if (pOrder->ContingentCondition == THOST_FTDC_CC_Touch)
 			{ pkEx.ordType = TOUCH_ZS; }
@@ -696,7 +696,7 @@ void CtpTdSpi::OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoFiel
   }
 }
 
-///ÇëÇó²éÑ¯³É½»
+///è¯·æ±‚æŸ¥è¯¢æˆäº¤
 void CtpTdSpi::ReqQryTd(TThostFtdcInstrumentIDType instId,TThostFtdcExchangeIDType ExhId,TThostFtdcTradeIDType tdId,
 							TThostFtdcTimeType tmStart,TThostFtdcTimeType tmEnd)
 {
@@ -720,7 +720,7 @@ void CtpTdSpi::ReqQryTd(TThostFtdcInstrumentIDType instId,TThostFtdcExchangeIDTy
 	} 	
 }
 
-///ÇëÇó²éÑ¯³É½»ÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢æˆäº¤å“åº”
 void CtpTdSpi::OnRspQryTrade(CThostFtdcTradeField *pTrade, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pTrade )
@@ -756,10 +756,10 @@ UINT CtpTdSpi::TmOutAutoDellThd(LPVOID pParam)
 	{
 		Sleep(1000*pAutoDel->uTmOut+1);
 		
-		//Î¨Ò»¶¨Î»Ö´ĞĞ³·µ¥Á¢¼´·µ»Ø
+		//å”¯ä¸€å®šä½æ‰§è¡Œæ’¤å•ç«‹å³è¿”å›
 		if (strlen(pAutoDel->ordSysId))
 		{
-			//Ìõ¼şµ¥
+			//æ¡ä»¶å•
 			VIT_pk vpk=td->m_pkExVec.begin();
 			for(vpk;vpk!=td->m_pkExVec.end();vpk++)
 			{
@@ -774,7 +774,7 @@ UINT CtpTdSpi::TmOutAutoDellThd(LPVOID pParam)
 		}
 		else
 		{
-			//ÆÕÍ¨µ¥
+			//æ™®é€šå•
 			VIT_ord vord = td->m_orderVec.begin();
 			for (vord;vord!=td->m_orderVec.end();vord++)
 			{
@@ -814,7 +814,7 @@ void CtpTdSpi::AutoDelLocOrd(const CThostFtdcInputOrderField *pInp)
 void CtpTdSpi::AutoDelNoLocOrd(const CThostFtdcOrderField *pOrder)
 {
 	CAppCfgs& s = g_s;
-	/////////////////////ÆäËüÖÕ¶Ë±¨µ¥Ò²¼à²â////////////////////////
+	/////////////////////å…¶å®ƒç»ˆç«¯æŠ¥å•ä¹Ÿç›‘æµ‹////////////////////////
 	if (/*s.m_bOrdTmOut &&*/
 		(strcmp(pOrder->IPAddress,s.m_sLocIp) || 
 		strcmp(pOrder->MacAddress,s.m_sLocMac) ||
@@ -830,7 +830,7 @@ void CtpTdSpi::AutoDelNoLocOrd(const CThostFtdcOrderField *pOrder)
 	}
 }
 
-//¶¯Ì¬Ö¹ËğÖ»ÄÜÊÇ±¾µØµ¥,ÆÕÍ¨Ö¹Ëğ¿ÉÎª·şÎñÆ÷»ò±¾µØÌõ¼şµ¥
+//åŠ¨æ€æ­¢æŸåªèƒ½æ˜¯æœ¬åœ°å•,æ™®é€šæ­¢æŸå¯ä¸ºæœåŠ¡å™¨æˆ–æœ¬åœ°æ¡ä»¶å•
 void CtpTdSpi::StopAfterTd(const TThostFtdcPriceType dStopPx,bool bDym)
 {
 
@@ -876,7 +876,7 @@ void CtpTdSpi::ReqOrdLimit(TThostFtdcInstrumentIDType instId,TThostFtdcDirection
 	ReqOrds(&req);
 }
 
-///ÊĞ¼Ûµ¥
+///å¸‚ä»·å•
 void CtpTdSpi::ReqOrdAny(TThostFtdcInstrumentIDType instId,TThostFtdcDirectionType dir, TThostFtdcOffsetFlagType kpp,TThostFtdcVolumeType vol)
 {
 	CThostFtdcInputOrderField req;
@@ -897,7 +897,7 @@ void CtpTdSpi::ReqOrdAny(TThostFtdcInstrumentIDType instId,TThostFtdcDirectionTy
 	ReqOrds(&req);
 }
 
-//ÖĞ½ğËù¸ß¼¶ÊĞ¼Ûµ¥
+//ä¸­é‡‘æ‰€é«˜çº§å¸‚ä»·å•
 void CtpTdSpi::ReqOrdAnyCfx(TThostFtdcInstrumentIDType instId,TThostFtdcDirectionType dir,TThostFtdcOffsetFlagType kpp,
 		TThostFtdcVolumeType vol,TThostFtdcOrderPriceTypeType OrdPxType,TThostFtdcTimeConditionType tmCond)
 {
@@ -941,7 +941,7 @@ void CtpTdSpi::ReqOrdCond(TThostFtdcInstrumentIDType instId,TThostFtdcDirectionT
 	ReqOrds(&req);
 }
 
-//´óÉÌËùÖ¹ËğÖ¹Ó¯ ×îĞÂ>/<´¥·¢¼ÛÊ±´¥·¢ĞÂ±¨µ¥,ÊĞ¼Û»òÏŞ¼Û
+//å¤§å•†æ‰€æ­¢æŸæ­¢ç›ˆ æœ€æ–°>/<è§¦å‘ä»·æ—¶è§¦å‘æ–°æŠ¥å•,å¸‚ä»·æˆ–é™ä»·
 //ContingentCondition:Touch/TouchProfit
 void CtpTdSpi::ReqOrdTouch(TThostFtdcInstrumentIDType instId,TThostFtdcDirectionType dir, TThostFtdcOffsetFlagType kpp,
 	TThostFtdcPriceType price,TThostFtdcVolumeType vol,TThostFtdcPriceType stopPx,TThostFtdcContingentConditionType conType)
@@ -966,10 +966,10 @@ void CtpTdSpi::ReqOrdTouch(TThostFtdcInstrumentIDType instId,TThostFtdcDirection
 	ReqOrds(&req);
 }
 
-//FAK(Fill And Kill)Ö¸Áî¾ÍÊÇ½«±¨µ¥µÄÓĞĞ§ÆÚÉèÎªTHOST_FTDC_TC_IOC,Í¬Ê±,³É½»Á¿ÀàĞÍÉèÎªTHOST_FTDC_VC_AV,¼´ÈÎÒâÊıÁ¿;
-//FOK(Fill Or Kill)Ö¸ÁîÊÇ½«±¨µ¥µÄÓĞĞ§ÆÚÀàĞÍÉèÖÃÎªTHOST_FTDC_TC_IOC,Í¬Ê±½«³É½»Á¿ÀàĞÍÉèÖÃÎªTHOST_FTDC_VC_CV,¼´È«²¿ÊıÁ¿.
-//´ËÍâ,ÔÚFAKÖ¸ÁîÏÂ,»¹¿ÉÖ¸¶¨×îĞ¡³É½»Á¿,¼´ÔÚÖ¸¶¨¼ÛÎ»¡¢Âú×ã×îĞ¡³É½»ÊıÁ¿ÒÔÉÏ³É½»,Ê£Óà¶©µ¥±»ÏµÍ³³·Ïú,·ñÔò±»ÏµÍ³È«²¿³·Ïú.´ËÖÖ×´¿öÏÂ,
-//ÓĞĞ§ÆÚÀàĞÍÉèÖÃÎªTHOST_FTDC_TC_IOC,ÊıÁ¿Ìõ¼şÉèÎªTHOST_FTDC_VC_MV,Í¬Ê±Éè¶¨MinVolume×Ö¶Î.
+//FAK(Fill And Kill)æŒ‡ä»¤å°±æ˜¯å°†æŠ¥å•çš„æœ‰æ•ˆæœŸè®¾ä¸ºTHOST_FTDC_TC_IOC,åŒæ—¶,æˆäº¤é‡ç±»å‹è®¾ä¸ºTHOST_FTDC_VC_AV,å³ä»»æ„æ•°é‡;
+//FOK(Fill Or Kill)æŒ‡ä»¤æ˜¯å°†æŠ¥å•çš„æœ‰æ•ˆæœŸç±»å‹è®¾ç½®ä¸ºTHOST_FTDC_TC_IOC,åŒæ—¶å°†æˆäº¤é‡ç±»å‹è®¾ç½®ä¸ºTHOST_FTDC_VC_CV,å³å…¨éƒ¨æ•°é‡.
+//æ­¤å¤–,åœ¨FAKæŒ‡ä»¤ä¸‹,è¿˜å¯æŒ‡å®šæœ€å°æˆäº¤é‡,å³åœ¨æŒ‡å®šä»·ä½ã€æ»¡è¶³æœ€å°æˆäº¤æ•°é‡ä»¥ä¸Šæˆäº¤,å‰©ä½™è®¢å•è¢«ç³»ç»Ÿæ’¤é”€,å¦åˆ™è¢«ç³»ç»Ÿå…¨éƒ¨æ’¤é”€.æ­¤ç§çŠ¶å†µä¸‹,
+//æœ‰æ•ˆæœŸç±»å‹è®¾ç½®ä¸ºTHOST_FTDC_TC_IOC,æ•°é‡æ¡ä»¶è®¾ä¸ºTHOST_FTDC_VC_MV,åŒæ—¶è®¾å®šMinVolumeå­—æ®µ.
 
 void CtpTdSpi::ReqOrdFAOK(TThostFtdcInstrumentIDType instId,TThostFtdcDirectionType dir,TThostFtdcOffsetFlagType kpp,
 			TThostFtdcPriceType price,TThostFtdcVolumeType vol,TThostFtdcVolumeConditionType volconType,TThostFtdcVolumeType minVol)
@@ -1001,7 +1001,7 @@ void CtpTdSpi::OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder,
 	{
 		if (pInputOrder->StopPrice>NEARZERO) 
 		{
-			//ÕâÀïÊÇÌõ¼şµ¥´íÎó
+			//è¿™é‡Œæ˜¯æ¡ä»¶å•é”™è¯¯
 			PARKEDEX pkEx;
 			OrdConvter(*pInputOrder,pkEx,INP2PARKED);
 			getCurDate(pkEx.InsertDate);
@@ -1048,7 +1048,7 @@ void CtpTdSpi::OnRspOrderInsert(CThostFtdcInputOrderField *pInputOrder,
 	}
 }
 
-///±¨µ¥Â¼Èë´íÎó»Ø±¨
+///æŠ¥å•å½•å…¥é”™è¯¯å›æŠ¥
 void CtpTdSpi::OnErrRtnOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThostFtdcRspInfoField *pRspInfo)
 {
 	CXTraderDlg* pDlg = g_Dlg;
@@ -1065,7 +1065,7 @@ void CtpTdSpi::OnErrRtnOrderInsert(CThostFtdcInputOrderField *pInputOrder, CThos
 	//if(g_s.m_bWarnSnd) { PlaySnd(g_s.m_szActErr); } 
 }
 
-// Èı×é¶¼¿ÉÒÔÓÃÀ´³·µ¥
+// ä¸‰ç»„éƒ½å¯ä»¥ç”¨æ¥æ’¤å•
 //InstrumentID + FrontID + SessionID + OrderRef
 //ExchangeID + TraderID + OrderLocalID
 //ExchangeID + OrderSysID
@@ -1140,7 +1140,7 @@ void CtpTdSpi::CancelAll()
 	for (vod;vod!=m_onRoadVec.end();vod++){ CancelOrd(&(*vod)); }
 }
 
-///³·µ¥´íÎó»Ø±¨
+///æ’¤å•é”™è¯¯å›æŠ¥
 void CtpTdSpi::OnErrRtnOrderAction(CThostFtdcOrderActionField *pOrderAction, CThostFtdcRspInfoField *pRspInfo) 
 {
 	if( IsErrorRspInfo(pRspInfo) || (!pOrderAction))
@@ -1150,7 +1150,7 @@ void CtpTdSpi::OnErrRtnOrderAction(CThostFtdcOrderActionField *pOrderAction, CTh
 	}	
 }
 
-///ÌáÊ¾Ìõ¼şµ¥Ğ£Ñé´íÎó
+///æç¤ºæ¡ä»¶å•æ ¡éªŒé”™è¯¯
 void CtpTdSpi::OnRtnErrorConditionalOrder(CThostFtdcErrorConditionalOrderField *pErrorConditionalOrder)
 {
 	if (pErrorConditionalOrder->ErrorID)
@@ -1173,7 +1173,7 @@ void CtpTdSpi::OnRtnErrorConditionalOrder(CThostFtdcErrorConditionalOrderField *
 	}
 }
 
-///////////////////////´Ó¿ª²ÖÉú³ÉÆ½²Öµ¥/////////////////////////////
+///////////////////////ä»å¼€ä»“ç”Ÿæˆå¹³ä»“å•/////////////////////////////
 void CtpTdSpi::GenCloseFromOrd(CThostFtdcOrderField *pOrd,int nPxTick)
 {
 	if (pOrd->CombOffsetFlag[0] == THOST_FTDC_OF_Open)
@@ -1191,7 +1191,7 @@ void CtpTdSpi::GenCloseFromOrd(CThostFtdcOrderField *pOrd,int nPxTick)
 		else
 		{ kpp=THOST_FTDC_OF_Close; }
 
-		ReqOrdLimit(pOrd->InstrumentID,cDir,kpp,dPx,pOrd->VolumeTraded); //´Ë´¦ÓĞbug
+		ReqOrdLimit(pOrd->InstrumentID,cDir,kpp,dPx,pOrd->VolumeTraded); //æ­¤å¤„æœ‰bug
 	}
 }
 
@@ -1217,7 +1217,7 @@ void CtpTdSpi::GenCloseFromTd(CThostFtdcTradeField *pTd,int nPxTick)
 	}
 }
 
-//////////////±¨µ¥»Ø±¨ÀïµÄ³Ö²Ö¶³½á´¦Àí///////////////////////////////
+//////////////æŠ¥å•å›æŠ¥é‡Œçš„æŒä»“å†»ç»“å¤„ç†///////////////////////////////
 void CtpTdSpi::UpdatePosByOrd(LPVOID pParam,const CThostFtdcOrderField *pOrder)
 {
 	CXTraderDlg* pDlg = static_cast<CXTraderDlg*>(pParam);
@@ -1240,7 +1240,7 @@ void CtpTdSpi::UpdatePosByOrd(LPVOID pParam,const CThostFtdcOrderField *pOrder)
 			}
 			else
 			{
-				//½»Ò×Ëù»Ø±¨
+				//äº¤æ˜“æ‰€å›æŠ¥
 				if (strlen(pOrder->OrderSysID))
 				{
 					if (pOrder->OrderStatus == THOST_FTDC_OST_AllTraded ||
@@ -1254,7 +1254,7 @@ void CtpTdSpi::UpdatePosByOrd(LPVOID pParam,const CThostFtdcOrderField *pOrder)
 				}
 				else
 				{
-					//CTPÆ½Ì¨»Ø±¨
+					//CTPå¹³å°å›æŠ¥
 					if(pOrder->OrderStatus==THOST_FTDC_OST_Unknown)
 					{
 						if (pOrder->Direction == THOST_FTDC_D_Buy)
@@ -1274,7 +1274,7 @@ void CtpTdSpi::UpdatePosByOrd(LPVOID pParam,const CThostFtdcOrderField *pOrder)
 	}
 }
 
-//////////////±¨µ¥»Ø±¨ÀïµÄÌõ¼şµ¥´¦Àí///////////////////////////////
+//////////////æŠ¥å•å›æŠ¥é‡Œçš„æ¡ä»¶å•å¤„ç†///////////////////////////////
 void CtpTdSpi::ProcCondOrd(LPVOID pParam,CThostFtdcOrderField *pOrder)
 {
 	CXTraderDlg* pDlg = static_cast<CXTraderDlg*>(pParam);
@@ -1282,7 +1282,7 @@ void CtpTdSpi::ProcCondOrd(LPVOID pParam,CThostFtdcOrderField *pOrder)
 
 	PARKEDEX pkEx;
 	OrdConvter(*pOrder,pkEx,ORD2PARKED);
-	if (pOrder->ContingentCondition > THOST_FTDC_CC_ParkedOrder) //Ìõ¼şµ¥
+	if (pOrder->ContingentCondition > THOST_FTDC_CC_ParkedOrder) //æ¡ä»¶å•
 	{ pkEx.ordType = COND_SERVER; }
 	else if (pOrder->ContingentCondition == THOST_FTDC_CC_Touch)
 	{ pkEx.ordType = TOUCH_ZS; }
@@ -1306,7 +1306,7 @@ void CtpTdSpi::ProcCondOrd(LPVOID pParam,CThostFtdcOrderField *pOrder)
 		pDlg->m_xLst[PKCON_IDX].SetItemCountEx(static_cast<int>(m_pkExVec.size()));
 		if(pDlg->m_xLst[PKCON_IDX].IsWindowVisible()) { pDlg->m_xLst[PKCON_IDX].Invalidate(); }
 	}
-	/////////////////////¼à²âÌõ¼şµ¥////////////////////////
+	/////////////////////ç›‘æµ‹æ¡ä»¶å•////////////////////////
 	if (/*s.m_bOrdTmOut &&*/ (pOrder->CombOffsetFlag[0]==THOST_FTDC_OF_Open)
 		&& pOrder->OrderStatus==THOST_FTDC_OST_NotTouched)
 	{
@@ -1319,7 +1319,7 @@ void CtpTdSpi::PostOrdWarnMsg(LPVOID pParam,const CThostFtdcOrderField *pOrder)
 {
 	CXTraderDlg* pDlg = static_cast<CXTraderDlg*>(pParam);
 	CAppCfgs& s = g_s;
-	//////////////////·Ç±¾µØ±¨µ¥ÌáÊ¾////////////////////////
+	//////////////////éæœ¬åœ°æŠ¥å•æç¤º////////////////////////
 	if (/*s.m_bChkNotLoc && */
 		strcmp(pOrder->IPAddress,s.m_sLocIp) || 
 		strcmp(pOrder->MacAddress,s.m_sLocMac) ||
@@ -1334,7 +1334,7 @@ void CtpTdSpi::PostOrdWarnMsg(LPVOID pParam,const CThostFtdcOrderField *pOrder)
 }
 
 /////////////////////////////////////////////////////////////////////
-///±¨µ¥»Ø±¨
+///æŠ¥å•å›æŠ¥
 void CtpTdSpi::OnRtnOrder(CThostFtdcOrderField *pOrder)
 {
     CXTraderDlg* pDlg = g_Dlg;
@@ -1348,7 +1348,7 @@ void CtpTdSpi::OnRtnOrder(CThostFtdcOrderField *pOrder)
 	else
 	{  
 		PostOrdWarnMsg(pDlg,pOrder);
-		////////////////////±¨µ¥³É¹¦ÌáÊ¾///////////////////////////
+		////////////////////æŠ¥å•æˆåŠŸæç¤º///////////////////////////
         //if(s.m_bWarnSnd) { PlaySnd(s.m_szOrdOk); }
     }
 
@@ -1363,11 +1363,11 @@ void CtpTdSpi::OnRtnOrder(CThostFtdcOrderField *pOrder)
 	if (pDlg){ pDlg->m_pTdAcc->Commission += dFee; }
 #endif
 
-	if(!IsCondOrd(pOrder)) //Ìõ¼şµ¥ÁíÍâ´¦Àí
+	if(!IsCondOrd(pOrder)) //æ¡ä»¶å•å¦å¤–å¤„ç†
 	{
 		CORDFEx order(pOrder);
 		VIT_ord vod=find(m_orderVec.begin(), m_orderVec.end(), order);
-		//////ĞŞ¸ÄÒÑ·¢³öµÄ±¨µ¥×´Ì¬
+		//////ä¿®æ”¹å·²å‘å‡ºçš„æŠ¥å•çŠ¶æ€
 		if(vod!=m_orderVec.end()) 
 		{
 			memcpy(&vod->Ord,pOrder,sizeof(CThostFtdcOrderField));
@@ -1376,11 +1376,11 @@ void CtpTdSpi::OnRtnOrder(CThostFtdcOrderField *pOrder)
 				if(pDlg->m_xLst[ORDER_IDX].IsWindowVisible()) { pDlg->m_xLst[ORDER_IDX].Invalidate(); }
 			}
 				
-			///////////////////////////Ë¢ĞÂ¹Òµ¥ÁĞ±í/////////////////////
+			///////////////////////////åˆ·æ–°æŒ‚å•åˆ—è¡¨/////////////////////
 			VIT_ord vod2 = find(m_onRoadVec.begin(), m_onRoadVec.end(),order);
 			if(vod2 != m_onRoadVec.end()) 
 			{  
-				//ÒÑ¾­ÔÚÁĞ±íµÄ Èç¹ûÍê³É ÔòÉ¾³ı
+				//å·²ç»åœ¨åˆ—è¡¨çš„ å¦‚æœå®Œæˆ åˆ™åˆ é™¤
 				if (JgOverStat(&order)){
                      m_onRoadVec.erase(vod2); 
                      if(m_onRoadVec.size()==0){ ClearVec(m_onRoadVec); }
@@ -1389,7 +1389,7 @@ void CtpTdSpi::OnRtnOrder(CThostFtdcOrderField *pOrder)
 			}
 			else
 			{
-				//Î´¼ÓÈë¹Òµ¥µÄ¼ÓÈëÁĞ±í
+				//æœªåŠ å…¥æŒ‚å•çš„åŠ å…¥åˆ—è¡¨
 				if (JgCancelStat(&order)){ m_onRoadVec.push_back(order); }
 			}
 
@@ -1399,7 +1399,7 @@ void CtpTdSpi::OnRtnOrder(CThostFtdcOrderField *pOrder)
 			}
 		} 
 		else 
-		{   ///////ĞÂÔö¼ÓÎ¯ÍĞµ¥
+		{   ///////æ–°å¢åŠ å§”æ‰˜å•
 			m_orderVec.push_back(order);
 
 			AutoDelNoLocOrd(pOrder);
@@ -1417,7 +1417,7 @@ void CtpTdSpi::OnRtnOrder(CThostFtdcOrderField *pOrder)
 				}
 			}
 		}
-		////////////////////////Ë¢ĞÂ³Ö²Ö////////////////////////////////
+		////////////////////////åˆ·æ–°æŒä»“////////////////////////////////
 		UpdatePosByOrd(pDlg,pOrder);
 	}
 	else  
@@ -1430,7 +1430,7 @@ void CtpTdSpi::UpdatePosByTd(LPVOID pParam,const CThostFtdcTradeField *pTrade)
 {
 	CTDFEx td(pTrade);
 	m_tradeVec.push_back(td);
-	////////////////////////Ë¢ĞÂ³Ö²Ö////////////////////////////////
+	////////////////////////åˆ·æ–°æŒä»“////////////////////////////////
 	CXTraderDlg* pDlg = static_cast<CXTraderDlg*>(pParam);
 	bool bExist = false;
 	int iFlag=0,iTdDelta=0;
@@ -1465,7 +1465,7 @@ void CtpTdSpi::UpdatePosByTd(LPVOID pParam,const CThostFtdcTradeField *pTrade)
 		{
 			bExist = true;
 			iFlag = (vpos->PosiDirection == THOST_FTDC_PD_Long)?1:(-1);
-			//ÉÏ´Î³Ö²Ö³É±¾
+			//ä¸Šæ¬¡æŒä»“æˆæœ¬
 			dLastCost = vpos->PositionCost;
 
 			vpos->Position -= pTrade->Volume;
@@ -1473,7 +1473,7 @@ void CtpTdSpi::UpdatePosByTd(LPVOID pParam,const CThostFtdcTradeField *pTrade)
 			vpos->CloseVolume += pTrade->Volume;
 			vpos->CloseAmount += pTrade->Price*pTrade->Volume*iMul;
 					
-			//ÎŞ×ò²ÖÔòÆ½µÄÈ«ÊÇ½ñ²Ö
+			//æ— æ˜¨ä»“åˆ™å¹³çš„å…¨æ˜¯ä»Šä»“
 			if(vpos->YdPosition==0)
 			{ 
 				iTdDelta = pTrade->Volume; 
@@ -1493,18 +1493,18 @@ void CtpTdSpi::UpdatePosByTd(LPVOID pParam,const CThostFtdcTradeField *pTrade)
 			vpos->PositionCost = GetCurPosOpenCost(&(*vpos),iMul);
 			GetInstMgr(pTrade->InstrumentID,vpos->PosiDirection,vpos->MarginRateByMoney,vpos->MarginRateByVolume);
 			vpos->UseMargin = (vpos->PositionCost*vpos->MarginRateByMoney+vpos->Position*vpos->MarginRateByVolume);
-			//Öğ±ÊÆ½²ÖÓ¯¿÷
+			//é€ç¬”å¹³ä»“ç›ˆäº
 			dClosePro = iFlag*(iMul * pTrade->Price * pTrade->Volume-(dLastCost-vpos->PositionCost));
 
-			//ÕâÀïÊÇ·ñ×¼È·?!
+			//è¿™é‡Œæ˜¯å¦å‡†ç¡®?!
 			if (pDlg) { 
 				pDlg->m_pTdAcc->Commission += dFee;
 				pDlg->m_pTdAcc->CloseProfit += dClosePro; 
 			}
 			vpos->CloseProfit += dClosePro;
-			///ÖğÈÕ¶¢ÊĞÆ½²ÖÓ¯¿÷
+			///é€æ—¥ç›¯å¸‚å¹³ä»“ç›ˆäº
 			vpos->CloseProfitByDate += dClosePro;
-			///Öğ±Ê¶Ô³åÆ½²ÖÓ¯¿÷
+			///é€ç¬”å¯¹å†²å¹³ä»“ç›ˆäº
 			vpos->CloseProfitByTrade += dClosePro;
 
 			if(vpos->Position==0) { 
@@ -1515,7 +1515,7 @@ void CtpTdSpi::UpdatePosByTd(LPVOID pParam,const CThostFtdcTradeField *pTrade)
 		}
 	}
 
-	//¼ìË÷²»µ½¾Í½¨Á¢ĞÂ²Ö
+	//æ£€ç´¢ä¸åˆ°å°±å»ºç«‹æ–°ä»“
 	if(!bExist)
 	{
 		GetfRateByInst(pTrade->InstrumentID,THOST_FTDC_OF_Open,dfRByM,dfRByV);
@@ -1549,10 +1549,10 @@ void CtpTdSpi::UpdatePosByTd(LPVOID pParam,const CThostFtdcTradeField *pTrade)
 		m_InvPosVec.push_back(newPos);
 	}
 
-	////////////////////////Ë¢ĞÂ¸÷List////////////////////////////////
-	VIT_td vtd = m_tradeVec.end()-1; //´Ë´¦×¢Òâ»á²»»áÓĞÒç³ö
+	////////////////////////åˆ·æ–°å„List////////////////////////////////
+	VIT_td vtd = m_tradeVec.end()-1; //æ­¤å¤„æ³¨æ„ä¼šä¸ä¼šæœ‰æº¢å‡º
 	vtd->dFee = dFee;
-	///////////³É½»¾ù¼Û///////////////////
+	///////////æˆäº¤å‡ä»·///////////////////
 	VIT_ord vod=find_if(m_orderVec.begin(), m_orderVec.end(), 
 		bind2nd(ptr_fun(findSeqNo),pTrade->BrokerOrderSeq));
 	if (vod!=m_orderVec.end()){ vod->dAvgPx = GetTdAvgPx(pTrade->BrokerOrderSeq); }
@@ -1565,11 +1565,11 @@ void CtpTdSpi::UpdatePosByTd(LPVOID pParam,const CThostFtdcTradeField *pTrade)
 		if(pDlg->m_xLst[TRADE_IDX].IsWindowVisible()) { pDlg->m_xLst[TRADE_IDX].Invalidate(); }
 	
 		pDlg->m_xLst[INVPOS_IDX].SetItemCountEx(static_cast<int>(m_InvPosVec.size()));
-		if(pDlg->m_xLst[INVPOS_IDX].IsWindowVisible()) { pDlg->m_xLst[INVPOS_IDX].Invalidate(); }
+		//if(pDlg->m_xLst[INVPOS_IDX].IsWindowVisible()) { pDlg->m_xLst[INVPOS_IDX].Invalidate(); }
 	}
 }
 
-///////////////////////³É½»Í¨Öª///////////////////////////
+///////////////////////æˆäº¤é€šçŸ¥///////////////////////////
 void CtpTdSpi::OnRtnTrade(CThostFtdcTradeField *pTrade)
 {
 	if(m_bAutoClose) { GenCloseFromTd(pTrade,m_iPxTick); }
@@ -1646,7 +1646,7 @@ double CtpTdSpi::GetTdFee(const CThostFtdcTradeField* pTrade)
 	MIT_if mif = m_InsinfMap.find(strkey);
 	if(mif != m_InsinfMap.end()) 
 	{
-		//ºÍÆÚÈ¨ÊÖĞø·Ñ¼ÆËãºÏ²¢
+		//å’ŒæœŸæƒæ‰‹ç»­è´¹è®¡ç®—åˆå¹¶
 		//if( mif->second.iinf.ProductClass ==THOST_FTDC_PC_Futures || 
 		//	mif->second.iinf.ProductClass ==THOST_FTDC_PC_Options ||
 		//	mif->second.iinf.ProductClass ==THOST_FTDC_PC_SpotOption)
@@ -1689,7 +1689,7 @@ double CtpTdSpi::GetMgrPx(BKRTDPARA& TdPara,const PCORDFEx pOrder)
             case THOST_FTDC_MPT_SettlementPrice:
                 dMgrPx = vmd->second.LastPrice;
                 break;
-            case THOST_FTDC_MPT_AveragePrice: //´Ë´¦Ó¦¸ÃÊÇ³É½»¾ù¼Û?
+            case THOST_FTDC_MPT_AveragePrice: //æ­¤å¤„åº”è¯¥æ˜¯æˆäº¤å‡ä»·?
                 dMgrPx = vmd->second.AveragePrice;
                 break;
             default:
@@ -1745,7 +1745,7 @@ void CtpTdSpi::GetFrozMgrFee(const PCORDFEx pOrder,BKRTDPARA& TdPara,double& dMg
 	}
 }
 
-//ÒòÎªinfmapÊÇ¾²Ì¬µÄÎŞĞè¸üĞÂ ÕâÑù»ñÈ¡Êı¾İ¸ü¿É¿¿!
+//å› ä¸ºinfmapæ˜¯é™æ€çš„æ— éœ€æ›´æ–° è¿™æ ·è·å–æ•°æ®æ›´å¯é !
 void CtpTdSpi::GetUpLoLmt(TThostFtdcInstrumentIDType instId,TThostFtdcPriceType& dUpLmt,TThostFtdcPriceType& dLoLmt)
 {
 	dLoLmt = 0.1;
@@ -1793,7 +1793,7 @@ BOOL CtpTdSpi::JgExhByInst(const TThostFtdcInstrumentIDType szInst,TThostFtdcExc
 	return FALSE;
 }
 
-//´Ëº¯ÊıÓĞÎÊÌâ,ÒòÎªÔ¤Âñ³·µ¥µÄsysid¿ÉÄÜ²»ÊÇorderµÄ±¨µ¥±àºÅ
+//æ­¤å‡½æ•°æœ‰é—®é¢˜,å› ä¸ºé¢„åŸ‹æ’¤å•çš„sysidå¯èƒ½ä¸æ˜¯orderçš„æŠ¥å•ç¼–å·
 void CtpTdSpi::GetValBySysId(TThostFtdcOrderSysIDType ordSysId,int& iVol,TThostFtdcOffsetFlagType& cOff,
 		TThostFtdcDirectionType& cDir,TThostFtdcOrderPriceTypeType& cPx,TThostFtdcHedgeFlagType& cHedge)
 {
@@ -1850,7 +1850,7 @@ void CtpTdSpi::GetSettPx(const TThostFtdcInstrumentIDType instId,double& dprePx,
 	}
 }
 
-//´Ë´¦×¢Òâ ÊÇÊÖ¶¯Ñ¡ÔñcFlag ¶ø²»ÊÇ³É½»ÀïµÄ±ê¼Ç!
+//æ­¤å¤„æ³¨æ„ æ˜¯æ‰‹åŠ¨é€‰æ‹©cFlag è€Œä¸æ˜¯æˆäº¤é‡Œçš„æ ‡è®°!
 void CtpTdSpi::GetfRateByInst(const TThostFtdcInstrumentIDType instId,TThostFtdcOffsetFlagType cFlag,
 			TThostFtdcRatioType& dfRByM,TThostFtdcRatioType& dfRByV)
 {
@@ -1893,8 +1893,8 @@ void CtpTdSpi::GetInstMgr(const TThostFtdcInstrumentIDType instId,TThostFtdcPosi
 	}
 }
 
-//ĞèÒª¿¼ÂÇ³ÖÓĞ¸ôÒ¹µ¥!Ö»ÄÜÔÚOnRtnTradeÀïµ÷ÓÃ±£Ö¤tdvecÊÇ×îĞÂ,Î´±»ĞŞ¸Ä
-//½ñ²Ö°´FIFO¼ÆËã ×ò²Ö°´½áËã¼Û¼Æ³É±¾
+//éœ€è¦è€ƒè™‘æŒæœ‰éš”å¤œå•!åªèƒ½åœ¨OnRtnTradeé‡Œè°ƒç”¨ä¿è¯tdvecæ˜¯æœ€æ–°,æœªè¢«ä¿®æ”¹
+//ä»Šä»“æŒ‰FIFOè®¡ç®— æ˜¨ä»“æŒ‰ç»“ç®—ä»·è®¡æˆæœ¬
 double CtpTdSpi::GetCurPosOpenCost(const CThostFtdcInvestorPositionField* pInv,int iMul)
 {
 	double dCost=0.0;
@@ -1907,7 +1907,7 @@ double CtpTdSpi::GetCurPosOpenCost(const CThostFtdcInvestorPositionField* pInv,i
 		TThostFtdcDirectionType  tDir = pInv->PosiDirection-2;
 		VRIT_td iter=m_tradeVec.rbegin();
 		for(iter;iter!=m_tradeVec.rend();iter++)
-		{	//ºÏÔ¼Æ¥Åä
+		{	//åˆçº¦åŒ¹é…
 			if((!strcmp(iter->trade.InstrumentID,pInv->InstrumentID)) && 
 				(iter->trade.OffsetFlag==THOST_FTDC_OF_Open) && (iter->trade.Direction==tDir))
 			{
@@ -1958,7 +1958,7 @@ BOOL CtpTdSpi::InitMgrFee()
 {
 	char szPath[MAX_PATH],szMgr[MAX_PATH],szFee[MAX_PATH],szOdf[MAX_PATH];
 
-	//mgrºÍfeeÎÄ¼ş
+	//mgrå’Œfeeæ–‡ä»¶
 	sprintf(szMgr,MGR_XML,m_sUid);
 	sprintf(szFee,FEE_XML,m_sUid);
 	sprintf(szOdf,ORDFEE_XML,m_sUid);
@@ -1978,7 +1978,7 @@ BOOL CtpTdSpi::InitMgrFee()
 	proot = doc.child("Fees");
 
 	char InvRange[4];
-	//×¢ÒâËùÓĞÍ¬Æ·ÖÖºÏÔ¼ÊÖĞø·ÑÒ»Ñù
+	//æ³¨æ„æ‰€æœ‰åŒå“ç§åˆçº¦æ‰‹ç»­è´¹ä¸€æ ·
 	FEEREX fRate;
 	string strkey;
 	for (nodeFees=proot.first_child();nodeFees;nodeFees=nodeFees.next_sibling())
@@ -2014,7 +2014,7 @@ BOOL CtpTdSpi::InitMgrFee()
 	proot = doc.child("Mgrs");
 	pFtr = proot.child("Futures");
 	pOpt = proot.child("Options");
-	//×¢ÒâÍ¬Æ·ÖÖºÏÔ¼±£Ö¤½ğ¿ÉÄÜ²»Ò»Ñù!
+	//æ³¨æ„åŒå“ç§åˆçº¦ä¿è¯é‡‘å¯èƒ½ä¸ä¸€æ ·!
 	FTMGR MgRate;
 	OPMGR OpMgr;
 	for (nodeMgrs=pFtr.first_child();nodeMgrs;nodeMgrs=nodeMgrs.next_sibling())
@@ -2065,7 +2065,7 @@ BOOL CtpTdSpi::InitMgrFee()
 	}
 	
 	proot = doc.child("Fees");
-	//×¢ÒâËùÓĞÍ¬Æ·ÖÖºÏÔ¼ÊÖĞø·ÑÒ»Ñù
+	//æ³¨æ„æ‰€æœ‰åŒå“ç§åˆçº¦æ‰‹ç»­è´¹ä¸€æ ·
 	for (nodeFees=proot.first_child();nodeFees;nodeFees=nodeFees.next_sibling())
 	{
 		fRate.OrderCommByVolume = nodeFees.attribute("OrdByVol").as_double();
@@ -2085,7 +2085,7 @@ BOOL CtpTdSpi::InitMgrFee()
 	return TRUE;
 }
 
-//°Ñ¶îÍâµÄInstInfExÊı¾İ´ÓĞĞÇéºÍÊÖĞø·Ñ±£Ö¤½ğÂÊÀï¶ÁÈ¡
+//æŠŠé¢å¤–çš„InstInfExæ•°æ®ä»è¡Œæƒ…å’Œæ‰‹ç»­è´¹ä¿è¯é‡‘ç‡é‡Œè¯»å–
 void CtpTdSpi::FiltInfEx(INSINFEX& InfEx)
 {
 	int iMul =1;
@@ -2130,8 +2130,9 @@ void CtpTdSpi::FiltInfEx(INSINFEX& InfEx)
 		else
 		{ mmd->second.AveragePrice /= iMul; }
 		
-		if(mmd->second.Turnover<NEARZERO||mmd->second.Turnover==DBL_MAX)
-		{ dAmt = mmd->second.OpenInterest*iMul*mmd->second.PreSettlementPrice; }
+		//è¿™æ˜¯æ— æ•°æ®
+		if(mmd->second.Volume<1||mmd->second.Turnover<NEARZERO||mmd->second.Turnover==DBL_MAX)
+		{ dAmt = NEARZERO*(mmd->second.OpenInterest*iMul*mmd->second.PreSettlementPrice); }
 		else
 		{ dAmt = mmd->second.Turnover; }
 			
@@ -2156,7 +2157,7 @@ void CtpTdSpi::OnHeartBeatWarning(int nTimeLapse)
 
 }
 
-///ÇëÇó²éÑ¯½»Ò×±àÂë
+///è¯·æ±‚æŸ¥è¯¢äº¤æ˜“ç¼–ç 
 void CtpTdSpi::ReqQryTdCode()
 {
 	CThostFtdcQryTradingCodeField req;
@@ -2190,7 +2191,7 @@ void CtpTdSpi::OnRspQryTradingCode(CThostFtdcTradingCodeField *pTradingCode, CTh
   if(bIsLast) SetEvent(g_hEvent);
 }
 
-///ÇëÇó²éÑ¯ºÏÔ¼±£Ö¤½ğÂÊ
+///è¯·æ±‚æŸ¥è¯¢åˆçº¦ä¿è¯é‡‘ç‡
 void CtpTdSpi::ReqQryInstMgr(TThostFtdcInstrumentIDType instId)
 {
 	CThostFtdcQryInstrumentMarginRateField req;
@@ -2220,7 +2221,7 @@ void CtpTdSpi::OnRspQryInstrumentMarginRate(CThostFtdcInstrumentMarginRateField 
     if(bIsLast) SetEvent(g_hEvent);
 }
 
-///ÇëÇó²éÑ¯ºÏÔ¼ÊÖĞø·ÑÂÊ
+///è¯·æ±‚æŸ¥è¯¢åˆçº¦æ‰‹ç»­è´¹ç‡
 void CtpTdSpi::ReqQryInstFee(TThostFtdcInstrumentIDType instId)
 {
 	CThostFtdcQryInstrumentCommissionRateField req;
@@ -2250,7 +2251,7 @@ void CtpTdSpi::OnRspQryInstrumentCommissionRate(CThostFtdcInstrumentCommissionRa
 
 }
 
-///ÇëÇó²éÑ¯±¨µ¥ÊÖĞø·Ñ
+///è¯·æ±‚æŸ¥è¯¢æŠ¥å•æ‰‹ç»­è´¹
 #ifdef _REAL_CTP_
 void CtpTdSpi::ReqQryInstOrdCommRate(TThostFtdcInstrumentIDType instId)
 {
@@ -2284,7 +2285,7 @@ void CtpTdSpi::OnRspQryInstrumentOrderCommRate(CThostFtdcInstrumentOrderCommRate
 }
 #endif
 
-/////////////ĞĞÈ¨±¨µ¥//////////////////////////////////////
+/////////////è¡ŒæƒæŠ¥å•//////////////////////////////////////
 void CtpTdSpi::ReqExecOrdInsert(TThostFtdcInstrumentIDType instId,TThostFtdcVolumeType iVol,
 	TThostFtdcOffsetFlagType tOc,TThostFtdcHedgeFlagType cTb,TThostFtdcActionTypeType cAct,
 	TThostFtdcPosiDirectionType	cPosDir,TThostFtdcExecOrderPositionFlagType	cRev,
@@ -2309,7 +2310,7 @@ void CtpTdSpi::ReqExecOrdInsert(TThostFtdcInstrumentIDType instId,TThostFtdcVolu
 	m_pApi->ReqExecOrderInsert(&req,++m_iReqId);
 }
 
-///Ö´ĞĞĞû¸æÂ¼ÈëÇëÇóÏìÓ¦
+///æ‰§è¡Œå®£å‘Šå½•å…¥è¯·æ±‚å“åº”
 void CtpTdSpi::OnRspExecOrderInsert(CThostFtdcInputExecOrderField *pInputExecOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( IsErrorRspInfo(pRspInfo) || !pInputExecOrder )
@@ -2319,20 +2320,20 @@ void CtpTdSpi::OnRspExecOrderInsert(CThostFtdcInputExecOrderField *pInputExecOrd
 	if(bIsLast) SetEvent(g_hEvent);	
 }
 
-///Ö´ĞĞĞû¸æÍ¨Öª
+///æ‰§è¡Œå®£å‘Šé€šçŸ¥
 void CtpTdSpi::OnRtnExecOrder(CThostFtdcExecOrderField *pExecOrder)
 {
 	
 }
 
-///Ö´ĞĞĞû¸æÂ¼Èë´íÎó»Ø±¨
+///æ‰§è¡Œå®£å‘Šå½•å…¥é”™è¯¯å›æŠ¥
 void CtpTdSpi::OnErrRtnExecOrderInsert(CThostFtdcInputExecOrderField *pInputExecOrder, CThostFtdcRspInfoField *pRspInfo)
 {
 	if( IsErrorRspInfo(pRspInfo) || (!pInputExecOrder))
 	{ ShowCbErrs(pRspInfo->ErrorMsg); }	
 }
 
-///×öÊĞÉÌ±¨¼Û
+///åšå¸‚å•†æŠ¥ä»·
 void CtpTdSpi::ReqQtInsert(TThostFtdcInstrumentIDType instId,TThostFtdcPriceType dAskPx,TThostFtdcPriceType dBidPx,
 	TThostFtdcVolumeType iAskVol,TThostFtdcVolumeType iBidVol,TThostFtdcOffsetFlagType tAskOc,
 	TThostFtdcOffsetFlagType tBidOc,TThostFtdcHedgeFlagType tAsktb,TThostFtdcHedgeFlagType tBidtb)
@@ -2360,7 +2361,7 @@ void CtpTdSpi::ReqQtInsert(TThostFtdcInstrumentIDType instId,TThostFtdcPriceType
 
 	m_pApi->ReqQuoteInsert(&req,++m_iReqId);
 }
-///×öÊĞÉÌ±¨¼ÛÇëÇóÏìÓ¦
+///åšå¸‚å•†æŠ¥ä»·è¯·æ±‚å“åº”
 void CtpTdSpi::OnRspQuoteInsert(CThostFtdcInputQuoteField *pInputQuote, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( IsErrorRspInfo(pRspInfo) || !pInputQuote )
@@ -2370,13 +2371,13 @@ void CtpTdSpi::OnRspQuoteInsert(CThostFtdcInputQuoteField *pInputQuote, CThostFt
 	if(bIsLast) SetEvent(g_hEvent);	
 }
 
-///×öÊĞ±¨¼ÛÍ¨Öª
+///åšå¸‚æŠ¥ä»·é€šçŸ¥
 void CtpTdSpi::OnRtnQuote(CThostFtdcQuoteField *pQuote)
 {
 
 }
 
-///±¨¼Û²Ù×÷ÇëÇóexchid,qtsysid
+///æŠ¥ä»·æ“ä½œè¯·æ±‚exchid,qtsysid
 void CtpTdSpi::ReqQtCancel(TThostFtdcInstrumentIDType instId,TThostFtdcOrderRefType sQtRef,
 						  TThostFtdcFrontIDType iFtId,TThostFtdcSessionIDType iSesId)
 {
@@ -2385,16 +2386,16 @@ void CtpTdSpi::ReqQtCancel(TThostFtdcInstrumentIDType instId,TThostFtdcOrderRefT
 	strcpy(req.BrokerID, m_sBkrId);	
 	strncpy(req.InvestorID, m_sUid,sizeof(TThostFtdcInvestorIDType));
 	strcpy(req.InstrumentID, instId);
-	strcpy(req.QuoteRef, sQtRef); //±¨µ¥ÒıÓÃ	
-	req.FrontID = iFtId;           //Ç°ÖÃ±àºÅ	
-	req.SessionID = iSesId;       //»á»°±àºÅ
+	strcpy(req.QuoteRef, sQtRef); //æŠ¥å•å¼•ç”¨	
+	req.FrontID = iFtId;           //å‰ç½®ç¼–å·	
+	req.SessionID = iSesId;       //ä¼šè¯ç¼–å·
 	
 	req.ActionFlag = THOST_FTDC_AF_Delete; 
 
 	m_pApi->ReqQuoteAction(&req,++m_iReqId);
 }
 
-///±¨¼Û²Ù×÷ÇëÇóÏìÓ¦
+///æŠ¥ä»·æ“ä½œè¯·æ±‚å“åº”
 void CtpTdSpi::OnRspQuoteAction(CThostFtdcInputQuoteActionField *pInputQuoteAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( IsErrorRspInfo(pRspInfo) || !pInputQuoteAction )
@@ -2404,7 +2405,7 @@ void CtpTdSpi::OnRspQuoteAction(CThostFtdcInputQuoteActionField *pInputQuoteActi
 	if(bIsLast) SetEvent(g_hEvent);	
 }
 
-///¿Í»§Ñ¯¼ÛÇëÇó
+///å®¢æˆ·è¯¢ä»·è¯·æ±‚
 void CtpTdSpi::ReqForQt(TThostFtdcInstrumentIDType instId)
 {
 	CThostFtdcInputForQuoteField req;
@@ -2418,7 +2419,7 @@ void CtpTdSpi::ReqForQt(TThostFtdcInstrumentIDType instId)
 	m_pApi->ReqForQuoteInsert(&req,++m_iReqId);
 }
 
-///Ñ¯¼ÛÂ¼ÈëÇëÇóÏìÓ¦
+///è¯¢ä»·å½•å…¥è¯·æ±‚å“åº”
 void CtpTdSpi::OnRspForQuoteInsert(CThostFtdcInputForQuoteField *pInputForQuote, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( IsErrorRspInfo(pRspInfo) || !pInputForQuote )
@@ -2426,7 +2427,7 @@ void CtpTdSpi::OnRspForQuoteInsert(CThostFtdcInputForQuoteField *pInputForQuote,
 	if(bIsLast) SetEvent(g_hEvent);	
 }
 
-///Ñ¯¼ÛÍ¨Öª
+///è¯¢ä»·é€šçŸ¥
 void CtpTdSpi::OnRtnForQuoteRsp(CThostFtdcForQuoteRspField *pForQuoteRsp) 
 {
 
@@ -2450,7 +2451,7 @@ void CtpTdSpi::ReqQryEWOffset(TThostFtdcInstrumentIDType instId, TThostFtdcExcha
 	} 
 }
 
-///ÇëÇó²éÑ¯²Öµ¥ÕÛµÖĞÅÏ¢ÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢ä»“å•æŠ˜æŠµä¿¡æ¯å“åº”
 void CtpTdSpi::OnRspQryEWarrantOffset(CThostFtdcEWarrantOffsetField *pEWarrantOffset, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pEWarrantOffset )
@@ -2489,7 +2490,7 @@ void CtpTdSpi::ReqQryOpTdCost(TThostFtdcInstrumentIDType instId)
 	} 
 }
 
-///ÇëÇó²éÑ¯ÆÚÈ¨½»Ò×³É±¾ÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢æœŸæƒäº¤æ˜“æˆæœ¬å“åº”
 void CtpTdSpi::OnRspQryOptionInstrTradeCost(CThostFtdcOptionInstrTradeCostField *pOptionInstrTradeCost, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pOptionInstrTradeCost )
@@ -2522,7 +2523,7 @@ void CtpTdSpi::ReqQryOpFeeRate(TThostFtdcInstrumentIDType instId)
 	}
 }
 
-///ÇëÇó²éÑ¯ÆÚÈ¨ºÏÔ¼ÊÖĞø·ÑÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢æœŸæƒåˆçº¦æ‰‹ç»­è´¹å“åº”
 void CtpTdSpi::OnRspQryOptionInstrCommRate(CThostFtdcOptionInstrCommRateField *pOptionInstrCommRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pOptionInstrCommRate )
@@ -2614,7 +2615,7 @@ void CtpTdSpi::ReqQryExecOrd(TThostFtdcInstrumentIDType instId,TThostFtdcExchang
 	}	
 }
 
-///ÇëÇó²éÑ¯Ö´ĞĞĞû¸æÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢æ‰§è¡Œå®£å‘Šå“åº”
 void CtpTdSpi::OnRspQryExecOrder(CThostFtdcExecOrderField *pExecOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pExecOrder )
@@ -2664,7 +2665,7 @@ void CtpTdSpi::ReqExecCancel(TThostFtdcExchangeIDType ExhId,TThostFtdcExecOrderS
 	m_pApi->ReqExecOrderAction(&req,++m_iReqId);
 }
 
-///Ö´ĞĞĞû¸æ²Ù×÷ÇëÇóÏìÓ¦
+///æ‰§è¡Œå®£å‘Šæ“ä½œè¯·æ±‚å“åº”
 void CtpTdSpi::OnRspExecOrderAction(CThostFtdcInputExecOrderActionField *pInputExecOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( IsErrorRspInfo(pRspInfo) || !pInputExecOrderAction )
@@ -2674,14 +2675,14 @@ void CtpTdSpi::OnRspExecOrderAction(CThostFtdcInputExecOrderActionField *pInputE
 	}
 	if(bIsLast) SetEvent(g_hEvent);
 }
-	///Ö´ĞĞĞû¸æ²Ù×÷´íÎó»Ø±¨
+	///æ‰§è¡Œå®£å‘Šæ“ä½œé”™è¯¯å›æŠ¥
 void CtpTdSpi::OnErrRtnExecOrderAction(CThostFtdcExecOrderActionField *pExecOrderAction, CThostFtdcRspInfoField *pRspInfo)
 {
 	if( IsErrorRspInfo(pRspInfo) || (!pExecOrderAction))
 	{ ShowCbErrs(pRspInfo->ErrorMsg); }	
 }
 
-//////////////////ÇëÇó²éÑ¯ÓÃ»§×ÊÁÏ/////////////
+//////////////////è¯·æ±‚æŸ¥è¯¢ç”¨æˆ·èµ„æ–™/////////////
 void CtpTdSpi::ReqQryInvest()
 {
 	CThostFtdcQryInvestorField req;
@@ -2699,7 +2700,7 @@ void CtpTdSpi::ReqQryInvest()
 	} 	
 }
 
-//¿ÉÄÜĞèÒªvecÀ´¼ÇÂ¼¶àÌõĞÅÏ¢
+//å¯èƒ½éœ€è¦vecæ¥è®°å½•å¤šæ¡ä¿¡æ¯
 void CtpTdSpi::OnRspQryInvestor(CThostFtdcInvestorField *pInvestor, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pInvestor )
@@ -2734,7 +2735,7 @@ void CtpTdSpi::ReqUserPwdUpdate(TThostFtdcPasswordType szNewPass,TThostFtdcPassw
 	m_pApi->ReqUserPasswordUpdate(&req,++m_iReqId);
 }
 
-///ÓÃ»§¿ÚÁî¸üĞÂÇëÇóÏìÓ¦
+///ç”¨æˆ·å£ä»¤æ›´æ–°è¯·æ±‚å“åº”
 void CtpTdSpi::OnRspUserPasswordUpdate(CThostFtdcUserPasswordUpdateField *pUserPasswordUpdate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pUserPasswordUpdate )
@@ -2744,7 +2745,7 @@ void CtpTdSpi::OnRspUserPasswordUpdate(CThostFtdcUserPasswordUpdateField *pUserP
 	if(bIsLast) SetEvent(g_hEvent);
 }
 
-//×Ê½ğÕË»§ÃÜÂë
+//èµ„é‡‘è´¦æˆ·å¯†ç 
 void CtpTdSpi::ReqTdAccPwdUpdate(TThostFtdcPasswordType szNewPass,TThostFtdcPasswordType szOldPass)
 {
 	CThostFtdcTradingAccountPasswordUpdateField req;
@@ -2758,7 +2759,7 @@ void CtpTdSpi::ReqTdAccPwdUpdate(TThostFtdcPasswordType szNewPass,TThostFtdcPass
 	m_pApi->ReqTradingAccountPasswordUpdate(&req,++m_iReqId);
 }
 
-///×Ê½ğÕË»§¿ÚÁî¸üĞÂÇëÇóÏìÓ¦
+///èµ„é‡‘è´¦æˆ·å£ä»¤æ›´æ–°è¯·æ±‚å“åº”
 void CtpTdSpi::OnRspTradingAccountPasswordUpdate(CThostFtdcTradingAccountPasswordUpdateField *pTradingAccountPasswordUpdate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pTradingAccountPasswordUpdate )
@@ -2793,7 +2794,7 @@ void CtpTdSpi::OnRspQryAccountregister(CThostFtdcAccountregisterField *pAccountr
 {
 	if( !IsErrorRspInfo(pRspInfo) && pAccountregister)
 	{
-		strcpy(m_sCurIdt, pAccountregister->CurrencyID);  //±ÒÖÖÀàĞÍ Î¨Ò»Âğ?
+		strcpy(m_sCurIdt, pAccountregister->CurrencyID);  //å¸ç§ç±»å‹ å”¯ä¸€å—?
 		m_AccRegVec.push_back(*pAccountregister);
 	}
 	else
@@ -2878,7 +2879,7 @@ void CtpTdSpi::ReqQryContractBk(TThostFtdcBankIDType bkId,TThostFtdcBankBrchIDTy
 	if(bIsLast) SetEvent(g_hEvent);
 }
 
-  //////////////////////////////////////////ÆÚ»õ·¢ÆğÒøĞĞ×Ê½ğ×ªÆÚ»õÇëÇó///////////////////////////////////////
+  //////////////////////////////////////////æœŸè´§å‘èµ·é“¶è¡Œèµ„é‡‘è½¬æœŸè´§è¯·æ±‚///////////////////////////////////////
 void CtpTdSpi::ReqBk2FByF(TThostFtdcBankIDType bkId,TThostFtdcPasswordType bkPwd,
 	 TThostFtdcPasswordType Pwd,TThostFtdcTradeAmountType TdAmt)
 {
@@ -2899,14 +2900,14 @@ void CtpTdSpi::ReqBk2FByF(TThostFtdcBankIDType bkId,TThostFtdcPasswordType bkPwd
 	m_pApi->ReqFromBankToFutureByFuture(&req,++m_iReqId);
 }
  
- ///ÆÚ»õ·¢ÆğÒøĞĞ×Ê½ğ×ªÆÚ»õÓ¦´ğ
+ ///æœŸè´§å‘èµ·é“¶è¡Œèµ„é‡‘è½¬æœŸè´§åº”ç­”
 void CtpTdSpi::OnRspFromBankToFutureByFuture(CThostFtdcReqTransferField *pReqTransfer, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( IsErrorRspInfo(pRspInfo) || (!pReqTransfer))
 	{ ShowCbErrs(pRspInfo->ErrorMsg); }
 	//if(bIsLast) SetEvent(g_hEvent);	 
 }
-///ÆÚ»õ·¢ÆğÒøĞĞ×Ê½ğ×ªÆÚ»õÍ¨Öª
+///æœŸè´§å‘èµ·é“¶è¡Œèµ„é‡‘è½¬æœŸè´§é€šçŸ¥
 void CtpTdSpi::OnRtnFromBankToFutureByFuture(CThostFtdcRspTransferField *pRspTransfer)
 {
 	  if(g_Dlg/* && (!m_bReconnect)*/)
@@ -2924,14 +2925,14 @@ void CtpTdSpi::OnRtnFromBankToFutureByFuture(CThostFtdcRspTransferField *pRspTra
   //SetEvent(g_hEvent);
 }
 
-///ÆÚ»õ·¢ÆğÒøĞĞ×Ê½ğ×ªÆÚ»õ´íÎó»Ø±¨
+///æœŸè´§å‘èµ·é“¶è¡Œèµ„é‡‘è½¬æœŸè´§é”™è¯¯å›æŠ¥
 void CtpTdSpi::OnErrRtnBankToFutureByFuture(CThostFtdcReqTransferField *pReqTransfer, CThostFtdcRspInfoField *pRspInfo)
 {
 	if( IsErrorRspInfo(pRspInfo) || (!pReqTransfer))
 	{ ShowCbErrs(pRspInfo->ErrorMsg); }
 }
 
-///////////////////////////////////////////ÆÚ»õ·¢ÆğÆÚ»õ×Ê½ğ×ªÒøĞĞÇëÇó///////////////////////////////////////////
+///////////////////////////////////////////æœŸè´§å‘èµ·æœŸè´§èµ„é‡‘è½¬é“¶è¡Œè¯·æ±‚///////////////////////////////////////////
 void CtpTdSpi::ReqF2BkByF(TThostFtdcBankIDType bkId,TThostFtdcPasswordType bkPwd,
 			TThostFtdcPasswordType Pwd,TThostFtdcTradeAmountType TdAmt)
  {
@@ -2952,7 +2953,7 @@ void CtpTdSpi::ReqF2BkByF(TThostFtdcBankIDType bkId,TThostFtdcPasswordType bkPwd
 	 m_pApi->ReqFromFutureToBankByFuture(&req,++m_iReqId);
  }
 
- ///ÆÚ»õ·¢ÆğÆÚ»õ×Ê½ğ×ªÒøĞĞÓ¦´ğ
+ ///æœŸè´§å‘èµ·æœŸè´§èµ„é‡‘è½¬é“¶è¡Œåº”ç­”
  void CtpTdSpi::OnRspFromFutureToBankByFuture(CThostFtdcReqTransferField *pReqTransfer, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
  {
 	 if( IsErrorRspInfo(pRspInfo) || (!pReqTransfer))
@@ -2960,7 +2961,7 @@ void CtpTdSpi::ReqF2BkByF(TThostFtdcBankIDType bkId,TThostFtdcPasswordType bkPwd
 	// if(bIsLast) SetEvent(g_hEvent);	
  }
  
-///ÆÚ»õ·¢ÆğÆÚ»õ×Ê½ğ×ªÒøĞĞÍ¨Öª
+///æœŸè´§å‘èµ·æœŸè´§èµ„é‡‘è½¬é“¶è¡Œé€šçŸ¥
 void CtpTdSpi::OnRtnFromFutureToBankByFuture(CThostFtdcRspTransferField *pRspTransfer)
 {
 	  if(g_Dlg/*&&(!m_bReconnect)*/)
@@ -2978,14 +2979,14 @@ void CtpTdSpi::OnRtnFromFutureToBankByFuture(CThostFtdcRspTransferField *pRspTra
   //SetEvent(g_hEvent);
 }
 
-///ÆÚ»õ·¢ÆğÆÚ»õ×Ê½ğ×ªÒøĞĞ´íÎó»Ø±¨
+///æœŸè´§å‘èµ·æœŸè´§èµ„é‡‘è½¬é“¶è¡Œé”™è¯¯å›æŠ¥
 void CtpTdSpi::OnErrRtnFutureToBankByFuture(CThostFtdcReqTransferField *pReqTransfer, CThostFtdcRspInfoField *pRspInfo)
 {
 	if( IsErrorRspInfo(pRspInfo) || (!pReqTransfer))
 	{ ShowCbErrs(pRspInfo->ErrorMsg); }
 }
 
- ///////////////////////////////////////////////////ÆÚ»õ·¢Æğ²éÑ¯ÒøĞĞÓà¶îÇëÇó///////////////////////////////////////////////
+ ///////////////////////////////////////////////////æœŸè´§å‘èµ·æŸ¥è¯¢é“¶è¡Œä½™é¢è¯·æ±‚///////////////////////////////////////////////
 void CtpTdSpi::ReqQryBkAccMoneyByF(TThostFtdcBankIDType bkId,TThostFtdcPasswordType bkPwd,TThostFtdcPasswordType Pwd)
 {
 	CThostFtdcReqQueryAccountField req;
@@ -3011,7 +3012,7 @@ void CtpTdSpi::ReqQryBkAccMoneyByF(TThostFtdcBankIDType bkId,TThostFtdcPasswordT
 	} 	
 }
 
-///ÆÚ»õ·¢Æğ²éÑ¯ÒøĞĞÓà¶îÓ¦´ğ
+///æœŸè´§å‘èµ·æŸ¥è¯¢é“¶è¡Œä½™é¢åº”ç­”
 void CtpTdSpi::OnRspQueryBankAccountMoneyByFuture(CThostFtdcReqQueryAccountField *pReqQueryAccount, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {	
 	if( IsErrorRspInfo(pRspInfo) || (!pReqQueryAccount))
@@ -3020,7 +3021,7 @@ void CtpTdSpi::OnRspQueryBankAccountMoneyByFuture(CThostFtdcReqQueryAccountField
 	
 }
 
-///ÆÚ»õ·¢Æğ²éÑ¯ÒøĞĞÓà¶îÍ¨Öª
+///æœŸè´§å‘èµ·æŸ¥è¯¢é“¶è¡Œä½™é¢é€šçŸ¥
 void CtpTdSpi::OnRtnQueryBankBalanceByFuture(CThostFtdcNotifyQueryAccountField *pNotifyQueryAccount)
 {
 	if(pNotifyQueryAccount->ErrorID ==0)
@@ -3036,14 +3037,14 @@ void CtpTdSpi::OnRtnQueryBankBalanceByFuture(CThostFtdcNotifyQueryAccountField *
 	//SetEvent(g_hEvent);	
 }
 
-///ÆÚ»õ·¢Æğ²éÑ¯ÒøĞĞÓà¶î´íÎó»Ø±¨
+///æœŸè´§å‘èµ·æŸ¥è¯¢é“¶è¡Œä½™é¢é”™è¯¯å›æŠ¥
 void CtpTdSpi::OnErrRtnQueryBankBalanceByFuture(CThostFtdcReqQueryAccountField *pReqQueryAccount, CThostFtdcRspInfoField *pRspInfo)
 {
 	if( IsErrorRspInfo(pRspInfo) || (!pReqQueryAccount))
 	{ ShowCbErrs(pRspInfo->ErrorMsg); }
 }
 
-///////////////////////////////////////²éÑ¯×ªÕËÁ÷Ë®////////////////////////////////////////////
+///////////////////////////////////////æŸ¥è¯¢è½¬è´¦æµæ°´////////////////////////////////////////////
 /// "204005"
 void CtpTdSpi::ReqQryTfSerial(TThostFtdcBankIDType bkId)
 {
@@ -3063,7 +3064,7 @@ void CtpTdSpi::ReqQryTfSerial(TThostFtdcBankIDType bkId)
 		{ Sleep(FLOWCTL_TO); }
 	} 
 }
-///ÇëÇó²éÑ¯×ªÕÊÁ÷Ë®ÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢è½¬å¸æµæ°´å“åº”
 void CtpTdSpi::OnRspQryTransferSerial(CThostFtdcTransferSerialField *pTransferSerial, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pTransferSerial)
@@ -3079,40 +3080,40 @@ void CtpTdSpi::OnRspQryTransferSerial(CThostFtdcTransferSerialField *pTransferSe
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///ÏµÍ³ÔËĞĞÊ±ÆÚ»õ¶ËÊÖ¹¤·¢Æğ³åÕıÒøĞĞ×ªÆÚ»õÇëÇó£¬ÒøĞĞ´¦ÀíÍê±Ïºó±¨ÅÌ·¢»ØµÄÍ¨Öª
+///ç³»ç»Ÿè¿è¡Œæ—¶æœŸè´§ç«¯æ‰‹å·¥å‘èµ·å†²æ­£é“¶è¡Œè½¬æœŸè´§è¯·æ±‚ï¼Œé“¶è¡Œå¤„ç†å®Œæ¯•åæŠ¥ç›˜å‘å›çš„é€šçŸ¥
 void CtpTdSpi::OnRtnRepealFromBankToFutureByFutureManual(CThostFtdcRspRepealField *pRspRepeal)
 {
 
 }
 
-///ÏµÍ³ÔËĞĞÊ±ÆÚ»õ¶ËÊÖ¹¤·¢Æğ³åÕıÆÚ»õ×ªÒøĞĞÇëÇó£¬ÒøĞĞ´¦ÀíÍê±Ïºó±¨ÅÌ·¢»ØµÄÍ¨Öª
+///ç³»ç»Ÿè¿è¡Œæ—¶æœŸè´§ç«¯æ‰‹å·¥å‘èµ·å†²æ­£æœŸè´§è½¬é“¶è¡Œè¯·æ±‚ï¼Œé“¶è¡Œå¤„ç†å®Œæ¯•åæŠ¥ç›˜å‘å›çš„é€šçŸ¥
 void CtpTdSpi::OnRtnRepealFromFutureToBankByFutureManual(CThostFtdcRspRepealField *pRspRepeal)
 {
 
 }
 
-///ÏµÍ³ÔËĞĞÊ±ÆÚ»õ¶ËÊÖ¹¤·¢Æğ³åÕıÒøĞĞ×ªÆÚ»õ´íÎó»Ø±¨
+///ç³»ç»Ÿè¿è¡Œæ—¶æœŸè´§ç«¯æ‰‹å·¥å‘èµ·å†²æ­£é“¶è¡Œè½¬æœŸè´§é”™è¯¯å›æŠ¥
 void CtpTdSpi::OnErrRtnRepealBankToFutureByFutureManual(CThostFtdcReqRepealField *pReqRepeal, CThostFtdcRspInfoField *pRspInfo)
 {
 
 }
 
-///ÏµÍ³ÔËĞĞÊ±ÆÚ»õ¶ËÊÖ¹¤·¢Æğ³åÕıÆÚ»õ×ªÒøĞĞ´íÎó»Ø±¨
+///ç³»ç»Ÿè¿è¡Œæ—¶æœŸè´§ç«¯æ‰‹å·¥å‘èµ·å†²æ­£æœŸè´§è½¬é“¶è¡Œé”™è¯¯å›æŠ¥
 void CtpTdSpi::OnErrRtnRepealFutureToBankByFutureManual(CThostFtdcReqRepealField *pReqRepeal, CThostFtdcRspInfoField *pRspInfo)
 {
 }
 
-///ÆÚ»õ·¢Æğ³åÕıÒøĞĞ×ªÆÚ»õÇëÇó£¬ÒøĞĞ´¦ÀíÍê±Ïºó±¨ÅÌ·¢»ØµÄÍ¨Öª
+///æœŸè´§å‘èµ·å†²æ­£é“¶è¡Œè½¬æœŸè´§è¯·æ±‚ï¼Œé“¶è¡Œå¤„ç†å®Œæ¯•åæŠ¥ç›˜å‘å›çš„é€šçŸ¥
 void CtpTdSpi::OnRtnRepealFromBankToFutureByFuture(CThostFtdcRspRepealField *pRspRepeal)
 {
 }
 
-///ÆÚ»õ·¢Æğ³åÕıÆÚ»õ×ªÒøĞĞÇëÇó£¬ÒøĞĞ´¦ÀíÍê±Ïºó±¨ÅÌ·¢»ØµÄÍ¨Öª
+///æœŸè´§å‘èµ·å†²æ­£æœŸè´§è½¬é“¶è¡Œè¯·æ±‚ï¼Œé“¶è¡Œå¤„ç†å®Œæ¯•åæŠ¥ç›˜å‘å›çš„é€šçŸ¥
 void CtpTdSpi::OnRtnRepealFromFutureToBankByFuture(CThostFtdcRspRepealField *pRspRepeal)
 {
 }
 
-///ÒøĞĞ·¢ÆğÒøÆÚ¿ª»§Í¨Öª
+///é“¶è¡Œå‘èµ·é“¶æœŸå¼€æˆ·é€šçŸ¥
 void CtpTdSpi::OnRtnOpenAccountByBank(CThostFtdcOpenAccountField *pOpenAccount)
 {
 	if(pOpenAccount && g_Dlg)
@@ -3124,7 +3125,7 @@ void CtpTdSpi::OnRtnOpenAccountByBank(CThostFtdcOpenAccountField *pOpenAccount)
 	}
 }
 
-///ÒøĞĞ·¢ÆğÒøÆÚÏú»§Í¨Öª
+///é“¶è¡Œå‘èµ·é“¶æœŸé”€æˆ·é€šçŸ¥
 void CtpTdSpi::OnRtnCancelAccountByBank(CThostFtdcCancelAccountField *pCancelAccount)
 {
 	if(pCancelAccount && g_Dlg)
@@ -3136,7 +3137,7 @@ void CtpTdSpi::OnRtnCancelAccountByBank(CThostFtdcCancelAccountField *pCancelAcc
 	}
 }
 
-///ÒøĞĞ·¢Æğ±ä¸üÒøĞĞÕËºÅÍ¨Öª
+///é“¶è¡Œå‘èµ·å˜æ›´é“¶è¡Œè´¦å·é€šçŸ¥
 void CtpTdSpi::OnRtnChangeAccountByBank(CThostFtdcChangeAccountField *pChangeAccount)
 {
 	if(pChangeAccount && g_Dlg)
@@ -3181,7 +3182,7 @@ void CtpTdSpi::OnRspQryCFMMCTradingAccountKey(CThostFtdcCFMMCTradingAccountKeyFi
 	//if(bIsLast) SetEvent(g_hEvent);	
 }
 
-//ÇëÇó±£Ö¤½ğÖĞĞÄÁîÅÆ
+//è¯·æ±‚ä¿è¯é‡‘ä¸­å¿ƒä»¤ç‰Œ
 void CtpTdSpi::ReqQryCFMMCTdAccTok()
 {
 	CThostFtdcQueryCFMMCTradingAccountTokenField req;
@@ -3198,13 +3199,13 @@ void CtpTdSpi::ReqQryCFMMCTdAccTok()
 	} 
 }
 
-///ÇëÇó²éÑ¯CFMMCÁîÅÆÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢CFMMCä»¤ç‰Œå“åº”
 void CtpTdSpi::OnRspQueryCFMMCTradingAccountToken(CThostFtdcQueryCFMMCTradingAccountTokenField *pQueryCFMMCTradingAccountToken, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if(IsErrorRspInfo(pRspInfo) || !pQueryCFMMCTradingAccountToken){ ShowCbErrs(pRspInfo->ErrorMsg); }
 }
 
-///CFMMCÓÃ»§ÁîÅÆ
+///CFMMCç”¨æˆ·ä»¤ç‰Œ
 void CtpTdSpi::OnRtnCFMMCTradingAccountToken(CThostFtdcCFMMCTradingAccountTokenField *pCFMMCTradingAccountToken)
 {
 	if(pCFMMCTradingAccountToken)
@@ -3285,7 +3286,7 @@ void CtpTdSpi::OnRspQryBrokerTradingAlgos(CThostFtdcBrokerTradingAlgosField *pBr
 	if(bIsLast) { SetEvent(g_hEvent); }
 }
 
-///Ô¤Âñµ¥Â¼ÈëÇëÇó
+///é¢„åŸ‹å•å½•å…¥è¯·æ±‚
 void CtpTdSpi::ReqParkedOrd(TThostFtdcInstrumentIDType instId,TThostFtdcDirectionType dir, 
         TThostFtdcOffsetFlagType kpp,TThostFtdcPriceType price, TThostFtdcVolumeType vol)
 {
@@ -3300,8 +3301,8 @@ void CtpTdSpi::ReqParkedOrd(TThostFtdcInstrumentIDType instId,TThostFtdcDirectio
 	
 	req.Direction = dir;	
 	req.CombOffsetFlag[0] = kpp;
-	req.LimitPrice = price;	//¼Û¸ñ
-	req.VolumeTotalOriginal = vol;	///ÊıÁ¿	
+	req.LimitPrice = price;	//ä»·æ ¼
+	req.VolumeTotalOriginal = vol;	///æ•°é‡	
 
 	req.OrderPriceType = THOST_FTDC_OPT_LimitPrice;	
 	req.TimeCondition = THOST_FTDC_TC_GFD; 
@@ -3322,7 +3323,7 @@ void CtpTdSpi::ReqParkedOrd(TThostFtdcInstrumentIDType instId,TThostFtdcDirectio
 	m_pApi->ReqParkedOrderInsert(&req, ++m_iReqId);
 }
 
-///Ô¤Âñµ¥Â¼ÈëÇëÇóÏìÓ¦
+///é¢„åŸ‹å•å½•å…¥è¯·æ±‚å“åº”
 void CtpTdSpi::OnRspParkedOrderInsert(CThostFtdcParkedOrderField *pParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pParkedOrder)
@@ -3353,7 +3354,7 @@ void CtpTdSpi::OnRspParkedOrderInsert(CThostFtdcParkedOrderField *pParkedOrder, 
 	//if(bIsLast){ SetEvent(g_hEvent); }
 }
 
-///ÇëÇó²éÑ¯Ô¤Âñµ¥
+///è¯·æ±‚æŸ¥è¯¢é¢„åŸ‹å•
 void CtpTdSpi::ReqQryParkedOrd(TThostFtdcInstrumentIDType instId,TThostFtdcExchangeIDType ExhId)
 {
 	CThostFtdcQryParkedOrderField  req;
@@ -3372,7 +3373,7 @@ void CtpTdSpi::ReqQryParkedOrd(TThostFtdcInstrumentIDType instId,TThostFtdcExcha
 	} 
 }
 
-///ÇëÇó²éÑ¯Ô¤Âñµ¥ÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢é¢„åŸ‹å•å“åº”
 void CtpTdSpi::OnRspQryParkedOrder(CThostFtdcParkedOrderField *pParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pParkedOrder)
@@ -3415,7 +3416,7 @@ void CtpTdSpi::OnRspQryParkedOrder(CThostFtdcParkedOrderField *pParkedOrder, CTh
 	if(bIsLast) SetEvent(g_hEvent);
 }
 
-///ÇëÇóÉ¾³ıÔ¤Âñµ¥
+///è¯·æ±‚åˆ é™¤é¢„åŸ‹å•
 void CtpTdSpi::ReqRmParkedOrd(TThostFtdcParkedOrderIDType ParkedOrdId)
 {
 	CThostFtdcRemoveParkedOrderField  req;
@@ -3426,7 +3427,7 @@ void CtpTdSpi::ReqRmParkedOrd(TThostFtdcParkedOrderIDType ParkedOrdId)
 	m_pApi->ReqRemoveParkedOrder(&req, ++m_iReqId);
 }
 
-///É¾³ıÔ¤Âñµ¥ÏìÓ¦
+///åˆ é™¤é¢„åŸ‹å•å“åº”
 void CtpTdSpi::OnRspRemoveParkedOrder(CThostFtdcRemoveParkedOrderField *pRemoveParkedOrder, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pRemoveParkedOrder)
@@ -3459,7 +3460,7 @@ void CtpTdSpi::OnRspRemoveParkedOrder(CThostFtdcRemoveParkedOrderField *pRemoveP
 	//if(bIsLast) SetEvent(g_hEvent);
 }
 
-///Ô¤Âñ³·µ¥Â¼ÈëÇëÇó Õâ¸ö»á±¨ÕÒ²»µ½ºÏÔ¼
+///é¢„åŸ‹æ’¤å•å½•å…¥è¯·æ±‚ è¿™ä¸ªä¼šæŠ¥æ‰¾ä¸åˆ°åˆçº¦
 void CtpTdSpi::ReqParkedOrdAct(CThostFtdcOrderFieldEx* pOrd)
 {
 	// FrontID + SessionID + OrdRef + InstrumentID or ExchangeID + OrderSysID 
@@ -3477,7 +3478,7 @@ void CtpTdSpi::ReqParkedOrdAct(CThostFtdcOrderFieldEx* pOrd)
 		strcpy(req.OrderSysID, pOrd->Ord.OrderSysID);
 	}
 	
-	req.ActionFlag = THOST_FTDC_AF_Delete;  //²Ù×÷±êÖ¾
+	req.ActionFlag = THOST_FTDC_AF_Delete;  //æ“ä½œæ ‡å¿—
 	//THOST_FTDC_UT_Investor
 	//THOST_FTDC_UT_Operator
 	//THOST_FTDC_UT_SuperUser
@@ -3488,7 +3489,7 @@ void CtpTdSpi::ReqParkedOrdAct(CThostFtdcOrderFieldEx* pOrd)
 	m_pApi->ReqParkedOrderAction(&req,++m_iReqId);
 }
 
-///Ô¤Âñ³·µ¥Â¼ÈëÇëÇó
+///é¢„åŸ‹æ’¤å•å½•å…¥è¯·æ±‚
 void CtpTdSpi::ReqParkedOrdAct2(CThostFtdcOrderFieldEx* pOrd)
 {
 	// FrontID + SessionID + OrdRef + InstrumentID or ExchangeID + OrderSysID 
@@ -3507,7 +3508,7 @@ void CtpTdSpi::ReqParkedOrdAct2(CThostFtdcOrderFieldEx* pOrd)
         req.SessionID = pOrd->Ord.SessionID;
 	}
 
-	req.ActionFlag = THOST_FTDC_AF_Delete;  //²Ù×÷±êÖ¾
+	req.ActionFlag = THOST_FTDC_AF_Delete;  //æ“ä½œæ ‡å¿—
 	//THOST_FTDC_UT_Investor
 	//THOST_FTDC_UT_Operator
 	//THOST_FTDC_UT_SuperUser
@@ -3518,7 +3519,7 @@ void CtpTdSpi::ReqParkedOrdAct2(CThostFtdcOrderFieldEx* pOrd)
 	m_pApi->ReqParkedOrderAction(&req,++m_iReqId);
 }
 
-///Ô¤Âñ³·µ¥Â¼ÈëÇëÇóÏìÓ¦
+///é¢„åŸ‹æ’¤å•å½•å…¥è¯·æ±‚å“åº”
 void CtpTdSpi::OnRspParkedOrderAction(CThostFtdcParkedOrderActionField *pParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pParkedOrderAction)
@@ -3552,7 +3553,7 @@ void CtpTdSpi::OnRspParkedOrderAction(CThostFtdcParkedOrderActionField *pParkedO
 	//if(bIsLast){ SetEvent(g_hEvent); }
 }
 
-///²éÑ¯Ô¤Âñ³·µ¥
+///æŸ¥è¯¢é¢„åŸ‹æ’¤å•
 void CtpTdSpi::ReqQryParkedOrdAct(TThostFtdcInstrumentIDType instId,TThostFtdcExchangeIDType ExhId)
 {
 	CThostFtdcQryParkedOrderActionField  req;
@@ -3571,7 +3572,7 @@ void CtpTdSpi::ReqQryParkedOrdAct(TThostFtdcInstrumentIDType instId,TThostFtdcEx
 	} 
 }
 
-///ÇëÇó²éÑ¯Ô¤Âñ³·µ¥ÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢é¢„åŸ‹æ’¤å•å“åº”
 void CtpTdSpi::OnRspQryParkedOrderAction(CThostFtdcParkedOrderActionField *pParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	if( !IsErrorRspInfo(pRspInfo) && pParkedOrderAction)
@@ -3614,7 +3615,7 @@ void CtpTdSpi::OnRspQryParkedOrderAction(CThostFtdcParkedOrderActionField *pPark
 	if(bIsLast) SetEvent(g_hEvent);
 }
 
-///ÇëÇóÉ¾³ı Ô¤Âñ³·µ¥
+///è¯·æ±‚åˆ é™¤ é¢„åŸ‹æ’¤å•
 void CtpTdSpi::ReqRmParkedOrdAct(TThostFtdcParkedOrderActionIDType ParkedOrdActId)
 {
 	CThostFtdcRemoveParkedOrderActionField  req;
@@ -3626,7 +3627,7 @@ void CtpTdSpi::ReqRmParkedOrdAct(TThostFtdcParkedOrderActionIDType ParkedOrdActI
 	m_pApi->ReqRemoveParkedOrderAction(&req, ++m_iReqId);
 }
 
-///É¾³ıÔ¤Âñ³·µ¥ÏìÓ¦
+///åˆ é™¤é¢„åŸ‹æ’¤å•å“åº”
 void CtpTdSpi::OnRspRemoveParkedOrderAction(CThostFtdcRemoveParkedOrderActionField *pRemoveParkedOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	if( !IsErrorRspInfo(pRspInfo) && pRemoveParkedOrderAction)
@@ -3676,7 +3677,7 @@ void CtpTdSpi::ReqQryProd(TThostFtdcInstrumentIDType prodId,TThostFtdcProductCla
 	} 
 }
 
-///ÇëÇó²éÑ¯²úÆ·ÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢äº§å“å“åº”
 void CtpTdSpi::OnRspQryProduct(CThostFtdcProductField *pProduct, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pProduct)
@@ -3750,7 +3751,7 @@ void CtpTdSpi::ReqQrySecAgentACIDMap(TThostFtdcCurrencyIDType curId)
 	} 
 }
 
-///ÇëÇó²éÑ¯¶ş¼¶´úÀí²Ù×÷Ô±ÒøÆÚÈ¨ÏŞÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢äºŒçº§ä»£ç†æ“ä½œå‘˜é“¶æœŸæƒé™å“åº”
 void CtpTdSpi::OnRspQrySecAgentACIDMap(CThostFtdcSecAgentACIDMapField *pSecAgentACIDMap, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pSecAgentACIDMap)
@@ -3769,7 +3770,7 @@ void CtpTdSpi::OnRspQrySecAgentACIDMap(CThostFtdcSecAgentACIDMapField *pSecAgent
 	if(bIsLast) SetEvent(g_hEvent);	
 }
 
-///ÇëÇó²éÑ¯²úÆ·×é
+///è¯·æ±‚æŸ¥è¯¢äº§å“ç»„
 void CtpTdSpi::ReqQryProdGroup(TThostFtdcInstrumentIDType prodId,TThostFtdcExchangeIDType ExhId)
 {
 	CThostFtdcQryProductGroupField req;
@@ -3787,7 +3788,7 @@ void CtpTdSpi::ReqQryProdGroup(TThostFtdcInstrumentIDType prodId,TThostFtdcExcha
 	} 	
 }
 
-///ÇëÇó²éÑ¯²úÆ·×é
+///è¯·æ±‚æŸ¥è¯¢äº§å“ç»„
 void CtpTdSpi::OnRspQryProductGroup(CThostFtdcProductGroupField *pProductGroup, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pProductGroup)
@@ -3806,7 +3807,7 @@ void CtpTdSpi::OnRspQryProductGroup(CThostFtdcProductGroupField *pProductGroup, 
 	if(bIsLast) SetEvent(g_hEvent);		
 }
 
-///ÇëÇó²éÑ¯×éºÏºÏÔ¼°²È«ÏµÊı
+///è¯·æ±‚æŸ¥è¯¢ç»„åˆåˆçº¦å®‰å…¨ç³»æ•°
 void CtpTdSpi::ReqQryCombInstGuard(TThostFtdcInstrumentIDType instId)
 {
 	CThostFtdcQryCombInstrumentGuardField req;
@@ -3824,7 +3825,7 @@ void CtpTdSpi::ReqQryCombInstGuard(TThostFtdcInstrumentIDType instId)
 	}
 }
 
-///ÇëÇó²éÑ¯×éºÏºÏÔ¼°²È«ÏµÊıÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢ç»„åˆåˆçº¦å®‰å…¨ç³»æ•°å“åº”
 void CtpTdSpi::OnRspQryCombInstrumentGuard(CThostFtdcCombInstrumentGuardField *pCombInstrumentGuard, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pCombInstrumentGuard)
@@ -3843,7 +3844,7 @@ void CtpTdSpi::OnRspQryCombInstrumentGuard(CThostFtdcCombInstrumentGuardField *p
 	if(bIsLast) SetEvent(g_hEvent);	
 }
 
-///ÇëÇó²éÑ¯ÉêÇë×éºÏ
+///è¯·æ±‚æŸ¥è¯¢ç”³è¯·ç»„åˆ
 void CtpTdSpi::ReqQryCombAct(TThostFtdcInstrumentIDType instId,TThostFtdcExchangeIDType ExhId)
 {
 	CThostFtdcQryCombActionField req;
@@ -3863,7 +3864,7 @@ void CtpTdSpi::ReqQryCombAct(TThostFtdcInstrumentIDType instId,TThostFtdcExchang
 	} 	
 }
 
-///ÇëÇó²éÑ¯ÉêÇë×éºÏÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢ç”³è¯·ç»„åˆå“åº”
 void CtpTdSpi::OnRspQryCombAction(CThostFtdcCombActionField *pCombAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pCombAction)
@@ -3882,8 +3883,8 @@ void CtpTdSpi::OnRspQryCombAction(CThostFtdcCombActionField *pCombAction, CThost
 	if(bIsLast) SetEvent(g_hEvent);	
 }
 
-///ÖĞ½ğËùÉê±¨×éºÏ/²ğ·Ö CombDirection Ö¸Áî·½Ïò-×éºÏ/²ğ·Ö
-//Éê±¨×éºÏºóÏíÊÜ±£Ö¤½ğÓÅ»İ Æ½²ÖÇ°±ØĞëÏÈÉê±¨²ğ·Ö ²»ÄÜÖ±½ÓÆ½×éºÏ 
+///ä¸­é‡‘æ‰€ç”³æŠ¥ç»„åˆ/æ‹†åˆ† CombDirection æŒ‡ä»¤æ–¹å‘-ç»„åˆ/æ‹†åˆ†
+//ç”³æŠ¥ç»„åˆåäº«å—ä¿è¯é‡‘ä¼˜æƒ  å¹³ä»“å‰å¿…é¡»å…ˆç”³æŠ¥æ‹†åˆ† ä¸èƒ½ç›´æ¥å¹³ç»„åˆ 
 void CtpTdSpi::ReqCombActInsert(TThostFtdcInstrumentIDType instId,TThostFtdcDirectionType tDir,
 	TThostFtdcVolumeType iVol,TThostFtdcCombDirectionType tCombDir,TThostFtdcHedgeFlagType tFlag)
 {
@@ -3910,7 +3911,7 @@ void CtpTdSpi::ReqCombActInsert(TThostFtdcInstrumentIDType instId,TThostFtdcDire
 	} 
 }
 
-///ÉêÇë×éºÏÉ¾³ıÇëÇóÏìÓ¦
+///ç”³è¯·ç»„åˆåˆ é™¤è¯·æ±‚å“åº”
 void CtpTdSpi::OnRspCombActionInsert(CThostFtdcInputCombActionField *pInputCombAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	if( IsErrorRspInfo(pRspInfo) || !pInputCombAction)
@@ -3921,20 +3922,20 @@ void CtpTdSpi::OnRspCombActionInsert(CThostFtdcInputCombActionField *pInputCombA
 	if(bIsLast) SetEvent(g_hEvent);		
 }
 
-///ÉêÇë×éºÏÍ¨Öª
+///ç”³è¯·ç»„åˆé€šçŸ¥
 void CtpTdSpi::OnRtnCombAction(CThostFtdcCombActionField *pCombAction)
 {
 	
 }
 
-///ÉêÇë×éºÏÂ¼Èë´íÎó»Ø±¨
+///ç”³è¯·ç»„åˆå½•å…¥é”™è¯¯å›æŠ¥
 void CtpTdSpi::OnErrRtnCombActionInsert(CThostFtdcInputCombActionField *pInputCombAction, CThostFtdcRspInfoField *pRspInfo) 
 {
 	if( IsErrorRspInfo(pRspInfo) || (!pInputCombAction))
 	{ ShowCbErrs(pRspInfo->ErrorMsg); }	
 }
 
-///ÇëÇó²éÑ¯×î´ó±¨µ¥ÊıÁ¿
+///è¯·æ±‚æŸ¥è¯¢æœ€å¤§æŠ¥å•æ•°é‡
 void CtpTdSpi::ReqQryMaxOrdVol(TThostFtdcInstrumentIDType instId,TThostFtdcDirectionType tDir,
 					TThostFtdcOffsetFlagType tOc,TThostFtdcHedgeFlagType tFlag)
 {
@@ -3957,7 +3958,7 @@ void CtpTdSpi::ReqQryMaxOrdVol(TThostFtdcInstrumentIDType instId,TThostFtdcDirec
 	} 
 }
 
-///²éÑ¯×î´ó±¨µ¥ÊıÁ¿ÏìÓ¦
+///æŸ¥è¯¢æœ€å¤§æŠ¥å•æ•°é‡å“åº”
 void CtpTdSpi::OnRspQueryMaxOrderVolume(CThostFtdcQueryMaxOrderVolumeField *pQueryMaxOrderVolume, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pQueryMaxOrderVolume)
@@ -3976,7 +3977,7 @@ void CtpTdSpi::OnRspQueryMaxOrderVolume(CThostFtdcQueryMaxOrderVolumeField *pQue
 	if(bIsLast) SetEvent(g_hEvent);	
 }
 
-///ÇëÇó²éÑ¯Í¶×ÊÕßÆ·ÖÖ/¿çÆ·ÖÖ±£Ö¤½ğ
+///è¯·æ±‚æŸ¥è¯¢æŠ•èµ„è€…å“ç§/è·¨å“ç§ä¿è¯é‡‘
 void CtpTdSpi::ReqQryInvProdGrpMrg(TThostFtdcInstrumentIDType prodId,TThostFtdcHedgeFlagType tFlag)
 {
 	CThostFtdcQryInvestorProductGroupMarginField req;
@@ -3996,7 +3997,7 @@ void CtpTdSpi::ReqQryInvProdGrpMrg(TThostFtdcInstrumentIDType prodId,TThostFtdcH
 	} 
 }
 
-///ÇëÇó²éÑ¯Í¶×ÊÕßÆ·ÖÖ/¿çÆ·ÖÖ±£Ö¤½ğÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢æŠ•èµ„è€…å“ç§/è·¨å“ç§ä¿è¯é‡‘å“åº”
 void CtpTdSpi::OnRspQryInvestorProductGroupMargin(CThostFtdcInvestorProductGroupMarginField *pInvestorProductGroupMargin, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pInvestorProductGroupMargin)
@@ -4015,7 +4016,7 @@ void CtpTdSpi::OnRspQryInvestorProductGroupMargin(CThostFtdcInvestorProductGroup
 	if(bIsLast) SetEvent(g_hEvent);	
 }
 
-///ÇëÇó²éÑ¯²úÆ·±¨¼Û»ãÂÊ
+///è¯·æ±‚æŸ¥è¯¢äº§å“æŠ¥ä»·æ±‡ç‡
 void CtpTdSpi::ReqQryProdExhRate(TThostFtdcInstrumentIDType prodId)
 {
 	CThostFtdcQryProductExchRateField req;
@@ -4031,7 +4032,7 @@ void CtpTdSpi::ReqQryProdExhRate(TThostFtdcInstrumentIDType prodId)
 	}
 	
 }
-///ÇëÇó²éÑ¯²úÆ·±¨¼Û»ãÂÊ
+///è¯·æ±‚æŸ¥è¯¢äº§å“æŠ¥ä»·æ±‡ç‡
 void CtpTdSpi::OnRspQryProductExchRate(CThostFtdcProductExchRateField *pProductExchRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pProductExchRate)
@@ -4055,7 +4056,7 @@ void CtpTdSpi::ReqBatDel()
 	ReqBatchOrdAct(m_iFrtId,m_iSesId);
 }
 
-//´óÉÌËù×¨ÓÃÅúÁ¿³·µ¥
+//å¤§å•†æ‰€ä¸“ç”¨æ‰¹é‡æ’¤å•
 void CtpTdSpi::ReqBatchOrdAct(TThostFtdcFrontIDType iFrtId,TThostFtdcSessionIDType iSesId,
 		TThostFtdcExchangeIDType ExhId)
 {
@@ -4073,7 +4074,7 @@ void CtpTdSpi::ReqBatchOrdAct(TThostFtdcFrontIDType iFrtId,TThostFtdcSessionIDTy
 	m_pApi->ReqBatchOrderAction(&req,++m_iReqId);
 }
 
-///ÅúÁ¿±¨µ¥²Ù×÷ÇëÇóÏìÓ¦
+///æ‰¹é‡æŠ¥å•æ“ä½œè¯·æ±‚å“åº”
 void CtpTdSpi::OnRspBatchOrderAction(CThostFtdcInputBatchOrderActionField *pInputBatchOrderAction, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pInputBatchOrderAction)
@@ -4092,7 +4093,7 @@ void CtpTdSpi::OnRspBatchOrderAction(CThostFtdcInputBatchOrderActionField *pInpu
 	//if(bIsLast) SetEvent(g_hEvent);	
 }
 
-///ÅúÁ¿±¨µ¥²Ù×÷´íÎó»Ø±¨
+///æ‰¹é‡æŠ¥å•æ“ä½œé”™è¯¯å›æŠ¥
 void CtpTdSpi::OnErrRtnBatchOrderAction(CThostFtdcBatchOrderActionField *pBatchOrderAction, CThostFtdcRspInfoField *pRspInfo)
 {
 	if( IsErrorRspInfo(pRspInfo) || (!pBatchOrderAction))
@@ -4122,7 +4123,7 @@ void CtpTdSpi::OnRtnInstrumentStatus(CThostFtdcInstrumentStatusField *pInstrumen
 	}
 }
 
-///½»Ò×Í¨Öª
+///äº¤æ˜“é€šçŸ¥
 void CtpTdSpi::OnRtnTradingNotice(CThostFtdcTradingNoticeInfoField *pTradingNoticeInfo)
 {
 	if(pTradingNoticeInfo && g_Dlg)
@@ -4137,7 +4138,7 @@ void CtpTdSpi::OnRtnTradingNotice(CThostFtdcTradingNoticeInfoField *pTradingNoti
 	}	
 }
 
-///ÖĞ½ğËù¹«¸æÍ¨Öª
+///ä¸­é‡‘æ‰€å…¬å‘Šé€šçŸ¥
 void CtpTdSpi::OnRtnBulletin(CThostFtdcBulletinField *pBulletin)
 {
 	if(pBulletin && g_Dlg)
@@ -4215,7 +4216,7 @@ void CtpTdSpi::ReqQryForQt(TThostFtdcInstrumentIDType instId,TThostFtdcExchangeI
 	}
 }
 
-///ÇëÇó²éÑ¯Ñ¯¼ÛÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢è¯¢ä»·å“åº”
 void CtpTdSpi::OnRspQryForQuote(CThostFtdcForQuoteField *pForQuote, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) 
 {
 	if( !IsErrorRspInfo(pRspInfo) && pForQuote)
@@ -4252,7 +4253,7 @@ void CtpTdSpi::ReqQryMMInstFeeRate(TThostFtdcInstrumentIDType instId)
 	}
 }
 
-///ÇëÇó²éÑ¯×öÊĞÉÌºÏÔ¼ÊÖĞø·ÑÂÊÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢åšå¸‚å•†åˆçº¦æ‰‹ç»­è´¹ç‡å“åº”
 void CtpTdSpi::OnRspQryMMInstrumentCommissionRate(CThostFtdcMMInstrumentCommissionRateField *pMMInstrumentCommissionRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pMMInstrumentCommissionRate)
@@ -4289,7 +4290,7 @@ void CtpTdSpi::ReqQryMMOpCommRate(TThostFtdcInstrumentIDType instId)
 	}
 }
 
-///ÇëÇó²éÑ¯×öÊĞÉÌÆÚÈ¨ºÏÔ¼ÊÖĞø·ÑÏìÓ¦
+///è¯·æ±‚æŸ¥è¯¢åšå¸‚å•†æœŸæƒåˆçº¦æ‰‹ç»­è´¹å“åº”
 void CtpTdSpi::OnRspQryMMOptionInstrCommRate(CThostFtdcMMOptionInstrCommRateField *pMMOptionInstrCommRate, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast)
 {
 	if( !IsErrorRspInfo(pRspInfo) && pMMOptionInstrCommRate)
