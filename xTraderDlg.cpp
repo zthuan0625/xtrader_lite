@@ -284,7 +284,7 @@ void CXTraderDlg::OnDestroy()
 	m_Notify.uFlags=NULL;
 	Shell_NotifyIcon(NIM_DELETE,&m_Notify);
 
-	//LOGI("³ÌĞòÍË³ö(" << this << ")");
+	//LOGI("ç¨‹åºé€€å‡º(" << this << ")");
 	//////////////////////////////////////////
 	CDialog::OnDestroy();
 }
@@ -329,7 +329,7 @@ void CXTraderDlg::SaveConfig()
 
 void CXTraderDlg::InitProfit(const CThostFtdcTradingAccountField* pAcc)
 {
-	/////////////////ÏÔÊ¾Ó¯¿÷Çé¿ö//////////////////////////////////
+	/////////////////æ˜¾ç¤ºç›ˆäºæƒ…å†µ//////////////////////////////////
 	CString szCPft,szPPft,szTdFee;
 
 	szTdFee.Format(_T("%lld"),D2Int(pAcc->Commission)); outStrAs4(szTdFee);
@@ -375,26 +375,26 @@ void CXTraderDlg::InitCtrs()
 	m_csSS1.SetText((LPCTSTR)LoadStr(IDS_STRASK1));
 	m_csS1P.SetText(_T("2279.2"),GREEN);
 	m_csS1V.SetText(_T("2"),YELLOW);
-	m_csSLast.SetText(_T("×îĞÂ"));
+	m_csSLast.SetText(_T("æœ€æ–°"));
 	m_csLastV.SetText(_T(" "),YELLOW);
 	m_csLastP.SetText(_T("2279.2"),RED);
 	m_csSB1.SetText((LPCTSTR)LoadStr(IDS_STRBID1));
 	m_csB1P.SetText(_T("2279.0"),GREEN);
 	m_csB1V.SetText(_T("6"),YELLOW);
-	m_csSUpDown.SetText(_T("ÕÇµø"));
+	m_csSUpDown.SetText(_T("æ¶¨è·Œ"));
 	m_csDUpDown.SetText(_T("-27.8"),GREEN);
 
-	m_csSHighest.SetText(_T("×î¸ß"));
+	m_csSHighest.SetText(_T("æœ€é«˜"));
 	m_csDHighest.SetText(_T("2328.6"),RED);
-	m_csSLowest.SetText(_T("×îµÍ"));
+	m_csSLowest.SetText(_T("æœ€ä½"));
 	m_csDLowest.SetText(_T("2243.6"),GREEN);
-	m_csSTotal.SetText(_T("×ÜÊÖ"));
+	m_csSTotal.SetText(_T("æ€»æ‰‹"));
 	m_csVTotal.SetText(_T("884883"),YELLOW);
-	m_csSHold.SetText(_T("³Ö²Ö"));
+	m_csSHold.SetText(_T("æŒä»“"));
 	m_csVHold.SetText(_T("88383"),YELLOW);
-	m_csSSmp.SetText(_T("·ù¶È"));
+	m_csSSmp.SetText(_T("å¹…åº¦"));
 	m_csDSmp.SetText(_T("-1.21%"),WHITE);
-	m_csSOpt.SetText(_T("½ñ¿ª"));
+	m_csSOpt.SetText(_T("ä»Šå¼€"));
 	m_csDOpt.SetText(_T("2323.0"),RED);
 	
 	m_csSUptime.SetText(_T("15:15:00.000"));
@@ -418,11 +418,11 @@ void CXTraderDlg::InitData()
 	m_iRef_tm=0;
 	m_iRef_pk=0;
 	m_iRef_tj=0;
-	//¿ÉÄÜÖØĞÂµÇÂ¼!!
+	//å¯èƒ½é‡æ–°ç™»å½•!!
 	CString str;
 	if(m_bMinGui)
 	{
-		str.Format(_T("Ó¯¿÷:%lld ·ÑÓÃ:%lld"),D2Int(m_pTdAcc->CloseProfit+m_pTdAcc->PositionProfit),
+		str.Format(_T("ç›ˆäº:%lld è´¹ç”¨:%lld"),D2Int(m_pTdAcc->CloseProfit+m_pTdAcc->PositionProfit),
 			D2Int(m_pTdAcc->Commission));
 		SetWindowText(str);
 	}
@@ -437,7 +437,7 @@ void CXTraderDlg::InitData()
 		CString szTmp = s.m_szTitle;
 		int iPos = szTmp.Find((LPCTSTR)LoadStr(IDS_TITLE));
 		CString szTips;
-		szTips.Format(_T("ÕË»§%s ÇĞ»»µÇÂ¼³É¹¦!"),szTmp.Mid(0,iPos-1));
+		szTips.Format(_T("è´¦æˆ·%s åˆ‡æ¢ç™»å½•æˆåŠŸ!"),szTmp.Mid(0,iPos-1));
 		ShowNotifyIcon(LoadStr(IDS_MY_TIPS),szTips,NIM_MODIFY); 
 	}
 
@@ -462,7 +462,7 @@ void CXTraderDlg::InitData()
 	{	
 		CTime tm(CTime::GetCurrentTime());	
 		CString	szT;
-		szT.Format(_T("%d:%02d:%02d CTPµÇÂ¼³É¹¦"), tm.GetHour(), tm.GetMinute(), tm.GetSecond());
+		szT.Format(_T("%d:%02d:%02d CTPç™»å½•æˆåŠŸ"), tm.GetHour(), tm.GetMinute(), tm.GetSecond());
 		SetStatusTxt(szT,2);
 	}
 
@@ -484,7 +484,7 @@ void CXTraderDlg::InitData()
 
 void CXTraderDlg::InitAllHdrs()
 {
-	LPCTSTR lpHdrs0[ONROAD_ITMES] = {_T("µ¥ºÅ"),_T("ºÏÔ¼"),_T("ÂòÂô"),_T("¿ªÆ½"),_T("Î´³É"),_T("¼Û¸ñ"),_T("Ê±¼ä"),_T("¶³½á±£Ö¤½ğ")};
+	LPCTSTR lpHdrs0[ONROAD_ITMES] = {_T("å•å·"),_T("åˆçº¦"),_T("ä¹°å–"),_T("å¼€å¹³"),_T("æœªæˆ"),_T("ä»·æ ¼"),_T("æ—¶é—´"),_T("å†»ç»“ä¿è¯é‡‘")};
 	int iWidths0[ONROAD_ITMES] = {1,48,36,36,36,48,60,80};
 	int i=0;
 	
@@ -493,8 +493,8 @@ void CXTraderDlg::InitAllHdrs()
 		m_xLst[ONROAD_IDX].InsertColumn(i, lpHdrs0[i],LVCFMT_RIGHT,static_cast<int>(iWidths0[i] * m_dScale));
 	}
 	/////////////////////////////////////////////////////////////////////////////////////////////
-	LPCTSTR lpHdrs1[ORDER_ITMES] = {_T("µ¥ºÅ"),_T("ºÏÔ¼"),_T("ÂòÂô"),_T("¿ªÆ½"),_T("×´Ì¬"),_T("¼Û¸ñ"),_T("±¨Á¿"),_T("Î´³É"),
-		_T("ÒÑ³É"),_T("¾ù¼Û"),_T("Ê±¼ä"),_T("¶³½á±£Ö¤½ğ"),_T("¶³½áÊÖĞø·Ñ"),_T("ÏêÏ¸×´Ì¬")};
+	LPCTSTR lpHdrs1[ORDER_ITMES] = {_T("å•å·"),_T("åˆçº¦"),_T("ä¹°å–"),_T("å¼€å¹³"),_T("çŠ¶æ€"),_T("ä»·æ ¼"),_T("æŠ¥é‡"),_T("æœªæˆ"),
+		_T("å·²æˆ"),_T("å‡ä»·"),_T("æ—¶é—´"),_T("å†»ç»“ä¿è¯é‡‘"),_T("å†»ç»“æ‰‹ç»­è´¹"),_T("è¯¦ç»†çŠ¶æ€")};
 	int iWidths1[ORDER_ITMES] = {1,48,36,36,60,48,36,36,36,60,60,80,80,180};
 	
 	for (i = 0;i<ORDER_ITMES ; i++)
@@ -503,8 +503,8 @@ void CXTraderDlg::InitAllHdrs()
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////////
-	LPCTSTR lpHdrs2[TRADE_ITMES] = {_T("ºÏÔ¼"),_T("ÂòÂô"),_T("¿ªÆ½"),_T("¼Û¸ñ"),_T("ÊÖÊı"),_T("Ê±¼ä"),_T("ÊÖĞø·Ñ"),
-		_T("Í¶±£"),_T("³É½»ÀàĞÍ"),_T("½»Ò×Ëù"),_T("³É½»±àºÅ"),_T("±¨µ¥±àºÅ")};
+	LPCTSTR lpHdrs2[TRADE_ITMES] = {_T("åˆçº¦"),_T("ä¹°å–"),_T("å¼€å¹³"),_T("ä»·æ ¼"),_T("æ‰‹æ•°"),_T("æ—¶é—´"),_T("æ‰‹ç»­è´¹"),
+		_T("æŠ•ä¿"),_T("æˆäº¤ç±»å‹"),_T("äº¤æ˜“æ‰€"),_T("æˆäº¤ç¼–å·"),_T("æŠ¥å•ç¼–å·")};
 	int iWidths2[TRADE_ITMES] = {48,36,36,48,36,60,48,36,64,48,64,64};
 	
 	for (i = 0;i<TRADE_ITMES ; i++)
@@ -513,7 +513,7 @@ void CXTraderDlg::InitAllHdrs()
 	}
 	
 	///////////////////////////////////////////////////////////////////////////////
-	LPCTSTR lpHdrs3[INVPOS_ITMES] = {_T("ºÏÔ¼"),_T("ÂòÂô"),_T("×Ü³Ö²Ö"),_T("¿ÉÆ½Á¿"),_T("³Ö²Ö¾ù¼Û"),_T("³Ö²ÖÓ¯¿÷"),_T("Õ¼±£Ö¤½ğ"),_T("×ÜÓ¯¿÷")};
+	LPCTSTR lpHdrs3[INVPOS_ITMES] = {_T("åˆçº¦"),_T("ä¹°å–"),_T("æ€»æŒä»“"),_T("å¯å¹³é‡"),_T("æŒä»“å‡ä»·"),_T("æŒä»“ç›ˆäº"),_T("å ä¿è¯é‡‘"),_T("æ€»ç›ˆäº")};
 	int iWidths3[INVPOS_ITMES] = {48,36,48,48,64,70,70,60};
 	
 	for (i = 0;i<INVPOS_ITMES ; i++)
@@ -521,8 +521,8 @@ void CXTraderDlg::InitAllHdrs()
 		m_xLst[INVPOS_IDX].InsertColumn(i, lpHdrs3[i],LVCFMT_RIGHT,static_cast<int>(iWidths3[i] * m_dScale));
 	}
 	///////////////////////////////////////////////////////////////////////////////////////
-	LPCTSTR lpHdrs4[ALLINST_ITMES] = {_T("´úÂë"),_T("ºÏÔ¼"),_T("ºÏÔ¼Ãû"),_T("½»Ò×Ëù"),_T("³ËÊı"),
-		_T("µã²î"),_T("ÀàĞÍ"),_T("×îºóÈÕÆÚ"),_T("Ö´ĞĞ¼Û¸ñ"),_T("±£Ö¤½ğÂÊ"),_T("ÊÖĞø·ÑÂÊ")};
+	LPCTSTR lpHdrs4[ALLINST_ITMES] = {_T("ä»£ç "),_T("åˆçº¦"),_T("åˆçº¦å"),_T("äº¤æ˜“æ‰€"),_T("ä¹˜æ•°"),
+		_T("ç‚¹å·®"),_T("ç±»å‹"),_T("æœ€åæ—¥æœŸ"),_T("æ‰§è¡Œä»·æ ¼"),_T("ä¿è¯é‡‘ç‡"),_T("æ‰‹ç»­è´¹ç‡")};
 	int iWidths4[ALLINST_ITMES] = {26,48,80,48,36,36,36,64,64,64,120};
 
 	for (i = 0;i<ALLINST_ITMES ; i++)
@@ -530,8 +530,8 @@ void CXTraderDlg::InitAllHdrs()
 		m_xLst[INSLST_IDX].InsertColumn(i, lpHdrs4[i],LVCFMT_RIGHT,static_cast<int>(iWidths4[i] * m_dScale));
 	}
 	
-	LPCTSTR lpHdrs5[PARKORD_ITMES] = {_T("±¨µ¥±àºÅ"),_T("ÀàĞÍ"),_T("×´Ì¬"),_T("´¥·¢Ìõ¼ş"),
-		_T("ºÏÔ¼"),_T("ÂòÂô"),	_T("¿ªÆ½"),_T("¼Û¸ñ"),_T("±¨Á¿"),_T("Í¶±£"),_T("½»Ò×Ëù"),_T("Ô¤ÂñÊ±¼ä"),_T("×´Ì¬ĞÅÏ¢")};
+	LPCTSTR lpHdrs5[PARKORD_ITMES] = {_T("æŠ¥å•ç¼–å·"),_T("ç±»å‹"),_T("çŠ¶æ€"),_T("è§¦å‘æ¡ä»¶"),
+		_T("åˆçº¦"),_T("ä¹°å–"),	_T("å¼€å¹³"),_T("ä»·æ ¼"),_T("æŠ¥é‡"),_T("æŠ•ä¿"),_T("äº¤æ˜“æ‰€"),_T("é¢„åŸ‹æ—¶é—´"),_T("çŠ¶æ€ä¿¡æ¯")};
 
 	int iWidths5[PARKORD_ITMES] = {2,60,48,92,48,36,36,48,36,36,48,64,120};
 	
@@ -840,13 +840,13 @@ BOOL CXTraderDlg::PopTrayMenu()
 	menu.CreatePopupMenu();
 	DWORD flags = (m_bLocked? (MF_POPUP|MF_BYPOSITION|MF_GRAYED):(MF_POPUP|MF_BYPOSITION));
 
-	menu.InsertMenu(0, flags, IDSHELL_RESTORE,_T("»Ö¸´´°¿Ú(&R)"));
-	menu.InsertMenu(1, flags, ID_MINI_TASK,_T("ÆÕÍ¨½çÃæ(&N)"));
+	menu.InsertMenu(0, flags, IDSHELL_RESTORE,_T("æ¢å¤çª—å£(&R)"));
+	menu.InsertMenu(1, flags, ID_MINI_TASK,_T("æ™®é€šç•Œé¢(&N)"));
 	menu.InsertMenu(2, MF_BYPOSITION | MF_SEPARATOR);
-	menu.InsertMenu(3, MF_POPUP|MF_BYPOSITION, ID_COMMCFG,_T("Ñ¡ÏîÅäÖÃ(&O)"));
-	menu.InsertMenu(4, flags, ID_RELOGIN,_T("ÇĞ»»ÕË»§(&W)"));
+	menu.InsertMenu(3, MF_POPUP|MF_BYPOSITION, ID_COMMCFG,_T("é€‰é¡¹é…ç½®(&O)"));
+	menu.InsertMenu(4, flags, ID_RELOGIN,_T("åˆ‡æ¢è´¦æˆ·(&W)"));
 	menu.InsertMenu(6, MF_BYPOSITION | MF_SEPARATOR);
-	menu.InsertMenu(7, MF_POPUP|MF_BYPOSITION, IDSHELL_EXIT,_T("ÍË³öÖÕ¶Ë(&E)"));
+	menu.InsertMenu(7, MF_POPUP|MF_BYPOSITION, IDSHELL_EXIT,_T("é€€å‡ºç»ˆç«¯(&E)"));
 
 	return menu.TrackPopupMenu(TPM_LEFTALIGN | TPM_LEFTBUTTON |TPM_RIGHTBUTTON, pt.x, pt.y, this);
 }
@@ -934,7 +934,7 @@ LRESULT CXTraderDlg::DefWindowProc(UINT Msg,WPARAM wParam,LPARAM lParam)
 
 	if (Msg == WM_DPICHANGED)
 	{
-		//ÔÚ¸ü»»ÁËDPIµÄÏÔÊ¾Æ÷ÉÏÊ±»á½ÓÊÕµ½
+		//åœ¨æ›´æ¢äº†DPIçš„æ˜¾ç¤ºå™¨ä¸Šæ—¶ä¼šæ¥æ”¶åˆ°
 		m_dScale = LMT(getMasterScale(),1.0,5.0);
 	}
 
@@ -957,7 +957,7 @@ void CXTraderDlg::OnChgEditPx()
 {
 	VerifyEdit(this,IDC_EDPRICE,true);
 	
-	//Í¬Ê±¼ì²é¿ªÆ½²ÖÌõ¼ş²¢Ë¢ĞÂ×´Ì¬ÏÔÊ¾
+	//åŒæ—¶æ£€æŸ¥å¼€å¹³ä»“æ¡ä»¶å¹¶åˆ·æ–°çŠ¶æ€æ˜¾ç¤º
 }
 
 void CXTraderDlg::SetStatusTxt(UINT uID, int nPane)
@@ -1068,7 +1068,7 @@ void CXTraderDlg::SubMdData(bool bSub)
 			char** pInst = new char*[2];
 			pInst[0] = szOldInst;
 			pInst[1] = pApp->m_cfg.m_szInst; 
-			//·ÇÅÌÖĞÊ±³Ö²ÖºÏÔ¼ÍË¶©²Å¿ÉË¢ĞÂÒ»Ö¡ĞĞÇé
+			//éç›˜ä¸­æ—¶æŒä»“åˆçº¦é€€è®¢æ‰å¯åˆ·æ–°ä¸€å¸§è¡Œæƒ…
 			//if(!IsTdPeriod()) { pInst[1] = pApp->m_cfg.m_szInst; }
 			md->UnSubscribeMarketData(pInst,2);
 			
@@ -1120,7 +1120,7 @@ void CXTraderDlg::OnBnClkChkLastPx()
 
 void CXTraderDlg::InitTabs()
 {
-	LPCTSTR lpStr[PKCON_IDX+1] = {_T("¹Òµ¥F2"),_T("Î¯ÍĞF3"),_T("³Ö²ÖF4"),_T("³É½»F5"),_T("ºÏÔ¼F6"),_T("Ìõ¼şµ¥F8")};
+	LPCTSTR lpStr[PKCON_IDX+1] = {_T("æŒ‚å•F2"),_T("å§”æ‰˜F3"),_T("æŒä»“F4"),_T("æˆäº¤F5"),_T("åˆçº¦F6"),_T("æ¡ä»¶å•F8")};
 	for (int i=ONROAD_IDX;i<=PKCON_IDX;i++) { m_TabOption.InsertItem( i, lpStr[i] ); }
 }
 
@@ -1207,9 +1207,9 @@ UINT CXTraderDlg::OrderThread(LPVOID pParam)
 	if (pOrd->ordReq.OrderPriceType == THOST_FTDC_OPT_LimitPrice)
 	{ pOrd->ordReq.LimitPrice = LMT(pOrd->ordReq.LimitPrice,dLo,dUp); }
 
-	// ²»ÄÜÖ±½ÓÓÃÉÏÈÕ³Ö²Ö,ÒªÓÃ×Ü²Ö-½ñ²Ö,YdPos = Pos - TdPos
+	// ä¸èƒ½ç›´æ¥ç”¨ä¸Šæ—¥æŒä»“,è¦ç”¨æ€»ä»“-ä»Šä»“,YdPos = Pos - TdPos
 	BOOL bRet = td->JgExhByInst(pOrd->ordReq.InstrumentID,_SFE);
-	//ÉÏÆÚËùÇÒÊĞ¼Ûµ¥,¸Ä³ÉºÏ·¨µÄÖ¸Áî
+	//ä¸ŠæœŸæ‰€ä¸”å¸‚ä»·å•,æ”¹æˆåˆæ³•çš„æŒ‡ä»¤
 	if (bRet && bAny)
 	{
 		pOrd->ordReq.LimitPrice = (pOrd->ordReq.Direction==THOST_FTDC_D_Buy)?dUp:dLo;
@@ -1219,7 +1219,7 @@ UINT CXTraderDlg::OrderThread(LPVOID pParam)
 	
 	if (pOrd->ordReq.CombOffsetFlag[0] > THOST_FTDC_OF_Open && bRet)
 	{
-		if (iOrdVol <= iYdPos) //½öÆ½×ò
+		if (iOrdVol <= iYdPos) //ä»…å¹³æ˜¨
 		{
 			pOrd->ordReq.CombOffsetFlag[0]=THOST_FTDC_OF_CloseYesterday;
 			if (iTimes>=1)
@@ -1236,7 +1236,7 @@ UINT CXTraderDlg::OrderThread(LPVOID pParam)
 				td->ReqOrds(&pOrd->ordReq);			
 			}
 		}
-		else //Æ½×ò,ÔÙÆ½½ñ
+		else //å¹³æ˜¨,å†å¹³ä»Š
 		{
 			int iVolTd = iOrdVol-iYdPos;
 
@@ -1245,10 +1245,10 @@ UINT CXTraderDlg::OrderThread(LPVOID pParam)
 			int iTimes2 = iVolTd/iMaxVol;
 			int iLeft2 = iVolTd%iMaxVol;
 
-			/////////////////////Æ½×ò///////////////////
+			/////////////////////å¹³æ˜¨///////////////////
 			if (iTimes>=1)
 			{
-				//Æ½×ò
+				//å¹³æ˜¨
 				pOrd->ordReq.CombOffsetFlag[0] = THOST_FTDC_OF_CloseYesterday; 
 				for (i=0;i<iTimes;i++)
 				{
@@ -1258,16 +1258,16 @@ UINT CXTraderDlg::OrderThread(LPVOID pParam)
 			}
 			if (iLeft>0)
 			{
-				//Æ½×ò
+				//å¹³æ˜¨
 				pOrd->ordReq.CombOffsetFlag[0] = THOST_FTDC_OF_CloseYesterday; 
 				pOrd->ordReq.VolumeTotalOriginal = iLeft;
 				td->ReqOrds(&pOrd->ordReq);			
 			}
 
-			/////////////////////Æ½½ñ///////////////////
+			/////////////////////å¹³ä»Š///////////////////
 			if (iTimes2>=1)
 			{
-				//Æ½½ñ²Ö
+				//å¹³ä»Šä»“
 				pOrd->ordReq.CombOffsetFlag[0] = THOST_FTDC_OF_CloseToday; 
 				for (i=0;i<iTimes2;i++)
 				{
@@ -1277,7 +1277,7 @@ UINT CXTraderDlg::OrderThread(LPVOID pParam)
 			}
 			if (iLeft2>0)
 			{
-				//Æ½½ñ²Ö
+				//å¹³ä»Šä»“
 				pOrd->ordReq.CombOffsetFlag[0] = THOST_FTDC_OF_CloseToday; 
 				pOrd->ordReq.VolumeTotalOriginal = iLeft2;
 				td->ReqOrds(&pOrd->ordReq);			
@@ -1439,78 +1439,78 @@ void CXTraderDlg::PopupAccDlg(CThostFtdcTradingAccountField* pAcc)
 		szLine += FormatLine(_T(""),_T(""),_T("="),42);
 		
 		szTemp.Format(_T("%.2f"),pAcc->PreBalance); outStrAs4(szTemp);
-		szLine += FormatLine(_T("  ÉÏ´Î½áËã×¼±¸½ğ:"),szTemp,_T(" "),40);
+		szLine += FormatLine(_T("  ä¸Šæ¬¡ç»“ç®—å‡†å¤‡é‡‘:"),szTemp,_T(" "),40);
 
 		szTemp.Format(_T("%.2f"),pAcc->PreCredit); outStrAs4(szTemp);
-		szLine += FormatLine(_T("- ÉÏ´ÎĞÅÓÃ¶î¶È:"),szTemp,_T(" "),40);
+		szLine += FormatLine(_T("- ä¸Šæ¬¡ä¿¡ç”¨é¢åº¦:"),szTemp,_T(" "),40);
 
 		szTemp.Format(_T("%.2f"),pAcc->PreMortgage); outStrAs4(szTemp);
-		szLine += FormatLine(_T("- ÉÏ´ÎÖÊÑº½ğ¶î:"),szTemp,_T(" "),40);
+		szLine += FormatLine(_T("- ä¸Šæ¬¡è´¨æŠ¼é‡‘é¢:"),szTemp,_T(" "),40);
 
 		szTemp.Format(_T("%.2f"),pAcc->Mortgage); outStrAs4(szTemp);
-		szLine += FormatLine(_T("+ ÖÊÑº½ğ¶î:"),szTemp,_T(" "),41);
+		szLine += FormatLine(_T("+ è´¨æŠ¼é‡‘é¢:"),szTemp,_T(" "),41);
 
 		szTemp.Format(_T("%.2f"),pAcc->Withdraw); outStrAs4(szTemp);
-		szLine += FormatLine(_T("- ½ñÈÕ³ö½ğ:"),szTemp,_T(" "),41);
+		szLine += FormatLine(_T("- ä»Šæ—¥å‡ºé‡‘:"),szTemp,_T(" "),41);
 
 		szTemp.Format(_T("%.2f"),pAcc->Deposit); outStrAs4(szTemp);
-		szLine += FormatLine(_T("+ ½ñÈÕÈë½ğ:"),szTemp,_T(" "),41);
+		szLine += FormatLine(_T("+ ä»Šæ—¥å…¥é‡‘:"),szTemp,_T(" "),41);
 
 		szLine += FormatLine(_T(""),_T(""),_T("-"),42);
 
 		double dStatProf = pAcc->PreBalance-pAcc->PreCredit-pAcc->PreMortgage+pAcc->Mortgage-pAcc->Withdraw+pAcc->Deposit;
 		szTemp.Format(_T("%.2f"),dStatProf); outStrAs4(szTemp);
-		szLine += FormatLine(_T("= ¾²Ì¬È¨Òæ:"),szTemp,_T(" "),41);
+		szLine += FormatLine(_T("= é™æ€æƒç›Š:"),szTemp,_T(" "),41);
 
 		szTemp.Format(_T("%.2f"),FiltDb(pAcc->CloseProfit)); outStrAs4(szTemp);
-		szLine += FormatLine(_T("+ Æ½²ÖÓ¯¿÷:"),szTemp,_T(" "),41);
+		szLine += FormatLine(_T("+ å¹³ä»“ç›ˆäº:"),szTemp,_T(" "),41);
 
 		szTemp.Format(_T("%.2f"),FiltDb(pAcc->PositionProfit)); outStrAs4(szTemp);
-		szLine += FormatLine(_T("+ ³Ö²ÖÓ¯¿÷:"),szTemp,_T(" "),41);
+		szLine += FormatLine(_T("+ æŒä»“ç›ˆäº:"),szTemp,_T(" "),41);
 
 		szTemp.Format(_T("%.2f"),pAcc->CashIn); outStrAs4(szTemp);
-		szLine += FormatLine(_T("+ È¨Àû½ğ:"),szTemp,_T(" "),42);
+		szLine += FormatLine(_T("+ æƒåˆ©é‡‘:"),szTemp,_T(" "),42);
 		
 		szTemp.Format(_T("%.2f"),pAcc->Commission); outStrAs4(szTemp);
-		szLine += FormatLine(_T("- ÊÖĞø·Ñ:"),szTemp,_T(" "),42);
+		szLine += FormatLine(_T("- æ‰‹ç»­è´¹:"),szTemp,_T(" "),42);
 
 		szLine += FormatLine(_T(""),_T(""),_T("-"),42);
 
 		double dDymProf = dStatProf+pAcc->CloseProfit+pAcc->PositionProfit+pAcc->CashIn-pAcc->Commission;
 		szTemp.Format(_T("%.2f"),dDymProf); outStrAs4(szTemp);
-		szLine += FormatLine(_T("= ¶¯Ì¬È¨Òæ:"),szTemp,_T(" "),41);
+		szLine += FormatLine(_T("= åŠ¨æ€æƒç›Š:"),szTemp,_T(" "),41);
 
 		szTemp.Format(_T("%.2f"),pAcc->CurrMargin); outStrAs4(szTemp);
-		szLine += FormatLine(_T("- Õ¼ÓÃ±£Ö¤½ğ:"),szTemp,_T(" "),41);
+		szLine += FormatLine(_T("- å ç”¨ä¿è¯é‡‘:"),szTemp,_T(" "),41);
 
 		szTemp.Format(_T("%.2f"),pAcc->FrozenMargin); outStrAs4(szTemp);
-		szLine += FormatLine(_T("- ¶³½á±£Ö¤½ğ:"),szTemp,_T(" "),41);
+		szLine += FormatLine(_T("- å†»ç»“ä¿è¯é‡‘:"),szTemp,_T(" "),41);
 
 		szTemp.Format(_T("%.2f"),pAcc->FrozenCommission); outStrAs4(szTemp);
-		szLine += FormatLine(_T("- ¶³½áÊÖĞø·Ñ:"),szTemp,_T(" "),41);
+		szLine += FormatLine(_T("- å†»ç»“æ‰‹ç»­è´¹:"),szTemp,_T(" "),41);
 
 		szTemp.Format(_T("%.2f"),pAcc->DeliveryMargin); outStrAs4(szTemp);
-		szLine += FormatLine(_T("- ½»¸î±£Ö¤½ğ:"),szTemp,_T(" "),41);
+		szLine += FormatLine(_T("- äº¤å‰²ä¿è¯é‡‘:"),szTemp,_T(" "),41);
 
 		szTemp.Format(_T("%.2f"),pAcc->FrozenCash); outStrAs4(szTemp);
-		szLine += FormatLine(_T("- ¶³½áÈ¨Àû½ğ:"),szTemp,_T(" "),41);
+		szLine += FormatLine(_T("- å†»ç»“æƒåˆ©é‡‘:"),szTemp,_T(" "),41);
 		
 		szTemp.Format(_T("%.2f"),pAcc->Credit); outStrAs4(szTemp);
-		szLine += FormatLine(_T("+ ĞÅÓÃ½ğ¶î:"),szTemp,_T(" "),41);
+		szLine += FormatLine(_T("+ ä¿¡ç”¨é‡‘é¢:"),szTemp,_T(" "),41);
 
 		szLine += FormatLine(_T(""),_T(""),_T("-"),42);
 
 		double dValidProf = dDymProf-pAcc->CurrMargin-pAcc->FrozenMargin-pAcc->FrozenCommission-pAcc->FrozenCash-pAcc->DeliveryMargin+pAcc->Credit;
 		szTemp.Format(_T("%.2f"),dValidProf); outStrAs4(szTemp);
-		szLine += FormatLine(_T("= ¿ÉÓÃ½ğ¶î:"),szTemp,_T(" "),41);
+		szLine += FormatLine(_T("= å¯ç”¨é‡‘é¢:"),szTemp,_T(" "),41);
 
 		szLine += FormatLine(_T(""),_T(""),_T("="),42);
 
 		szTemp.Format(_T("%.2f"),pAcc->Reserve); outStrAs4(szTemp);
-		szLine += FormatLine(_T("  ±£µ××Ê½ğ:"),szTemp,_T(" "),41);
+		szLine += FormatLine(_T("  ä¿åº•èµ„é‡‘:"),szTemp,_T(" "),41);
 
 		szTemp.Format(_T("%.2f"),pAcc->WithdrawQuota); outStrAs4(szTemp);
-		szLine += FormatLine(_T("  ¿ÉÈ¡×Ê½ğ:"),szTemp,_T(" "),41);
+		szLine += FormatLine(_T("  å¯å–èµ„é‡‘:"),szTemp,_T(" "),41);
 
 		szLine += FormatLine(_T(""),_T(""),_T("="),42);
 
@@ -1608,10 +1608,10 @@ UINT CXTraderDlg::SendTmOrd(LPVOID pParam)
 			VIT_pk vpk=gv_Pk.begin();
 			for(vpk;vpk!=gv_Pk.end();vpk++)
 			{
-				//Ïß³ÌHANDLEĞŞ¸Ä¹ı
+				//çº¿ç¨‹HANDLEä¿®æ”¹è¿‡
 				if (!memcmp(&pPa->pkReq,&(*vpk),sizeof(PARKEDEX)-2*sizeof(HANDLE)))
 				{
-					//LOGI("¶¨Ê±µ¥:(" << vpk->park.InstrumentID << ")");
+					//LOGI("å®šæ—¶å•:(" << vpk->park.InstrumentID << ")");
 					vpk->park.Status = THOST_FTDC_PAOS_Send;
 
 					pDlg->m_xLst[PKCON_IDX].SetItemCountEx(static_cast<int>(gv_Pk.size())); 
@@ -1653,7 +1653,7 @@ LRESULT CXTraderDlg::UpdateMdMsg(WPARAM wParam,LPARAM lParam)
 	{
 		CtpTdSpi* td = gc_Td;
 		int iMul = td->FindInstMul(pMd->InstrumentID);
-		//µ÷Õû³ÉÕı³£Öµ
+		//è°ƒæ•´æˆæ­£å¸¸å€¼
 		if (!strcmp(pMd->ExchangeID,_CZCE)) { pMd->Turnover *= iMul; }
 		else
 		{ pMd->AveragePrice /= iMul; }
@@ -1704,7 +1704,7 @@ void CXTraderDlg::UpdatePosProf(CThostFtdcDepthMarketDataField* pMd)
 		
 		vp->PositionProfit = FiltDb(iFlag*(theMd->LastPrice*iPos*iMul - vp->PositionCost));
 		dPosProf += vp->PositionProfit;
-		//´Ë´¦¿ÉÒÔÓÅ»¯
+		//æ­¤å¤„å¯ä»¥ä¼˜åŒ–
 		td->GetInstMgr(vp->InstrumentID,vp->PosiDirection,vp->MarginRateByMoney,vp->MarginRateByVolume);
 		vp->UseMargin = vp->PositionCost*vp->MarginRateByMoney + iPos*vp->MarginRateByVolume;
 		if (iRet==0) 
@@ -1719,7 +1719,7 @@ void CXTraderDlg::UpdatePosProf(CThostFtdcDepthMarketDataField* pMd)
 	if (m_bMinGui)
 	{
 		CString str;
-		str.Format(_T("Ó¯¿÷:%lld ·ÑÓÃ:%lld"),D2Int(m_pTdAcc->CloseProfit+m_pTdAcc->PositionProfit),
+		str.Format(_T("ç›ˆäº:%lld è´¹ç”¨:%lld"),D2Int(m_pTdAcc->CloseProfit+m_pTdAcc->PositionProfit),
 			D2Int(m_pTdAcc->Commission));
 		SetWindowText(str);
 	}
@@ -1730,12 +1730,12 @@ double CXTraderDlg::GetFreeMoney()
 	double dStatProf = m_pTdAcc->PreBalance-m_pTdAcc->PreCredit-m_pTdAcc->PreMortgage+
 		m_pTdAcc->Mortgage-m_pTdAcc->Withdraw+m_pTdAcc->Deposit;
 
-	//ÓĞÆÚÈ¨½»Ò×Ê±È¨Àû½ğCashInĞèÒª¶¯Ì¬¼ÆËã
+	//æœ‰æœŸæƒäº¤æ˜“æ—¶æƒåˆ©é‡‘CashInéœ€è¦åŠ¨æ€è®¡ç®—
 	double dDymProf = dStatProf+m_pTdAcc->CloseProfit+m_pTdAcc->PositionProfit+
 		m_pTdAcc->CashIn-m_pTdAcc->Commission;
 
-	//¶³½á±£Ö¤½ğ,¶³½áÊÖĞø·Ñ,¶³½á×Ê½ğ,ĞÅÓÃ½ğ¶î¶¼ĞèÒª¶¯Ì¬¼ÆËã
-	//Òª¿¼ÂÇ´ó±ß±£Ö¤½ğ
+	//å†»ç»“ä¿è¯é‡‘,å†»ç»“æ‰‹ç»­è´¹,å†»ç»“èµ„é‡‘,ä¿¡ç”¨é‡‘é¢éƒ½éœ€è¦åŠ¨æ€è®¡ç®—
+	//è¦è€ƒè™‘å¤§è¾¹ä¿è¯é‡‘
 	double dValidProf = dDymProf-m_pTdAcc->CurrMargin-m_pTdAcc->FrozenMargin-
 		m_pTdAcc->FrozenCommission-m_pTdAcc->FrozenCash-m_pTdAcc->DeliveryMargin+m_pTdAcc->Credit;
 
@@ -1789,11 +1789,11 @@ void CXTraderDlg::UpdateMdPane()
 	m_csS1V.SetInt(m_pDepthMd->AskVolume1,YELLOW);
 	
 	if (m_pDepthMd->LastPrice > m_dOldPrice)
-	{ m_csLastV.SetText(_T("¡ü"),RED); }
+	{ m_csLastV.SetText(_T("â†‘"),RED); }
 	else if (m_pDepthMd->LastPrice < m_dOldPrice)
-	{ m_csLastV.SetText(_T("¡ı"),GREEN); }
+	{ m_csLastV.SetText(_T("â†“"),GREEN); }
 	else
-	{ m_csLastV.SetText(_T("¨D"),WHITE); }
+	{ m_csLastV.SetText(_T("â€•"),WHITE); }
 	
 	m_csLastP.SetDouble(m_pDepthMd->LastPrice,CmpPriceColor(m_pDepthMd->LastPrice,m_dOldPrice));
 	m_csB1P.SetDouble(m_pDepthMd->BidPrice1,CmpPriceColor(m_pDepthMd->BidPrice1,dPresp));
@@ -1884,19 +1884,19 @@ void CXTraderDlg::PopupBkAccDlg(CThostFtdcNotifyQueryAccountField* pNt)
 	
 	ansi2uni(CP_ACP,pNt->BankAccount,szTemp.GetBuffer(MAX_PATH));
 	szTemp.ReleaseBuffer();
-	szLine += FormatLine(_T("  ÒøĞĞÕËºÅ:"),szTemp,_T(" "),40);
+	szLine += FormatLine(_T("  é“¶è¡Œè´¦å·:"),szTemp,_T(" "),40);
 	
 	szTemp.Format(_T("%.2f"),pNt->BankUseAmount); 
 	outStrAs4(szTemp);
-	szLine += FormatLine(_T("  ÒøĞĞ¿ÉÓÃ½ğ¶î:"),szTemp,_T(" "),39);
+	szLine += FormatLine(_T("  é“¶è¡Œå¯ç”¨é‡‘é¢:"),szTemp,_T(" "),39);
 	
 	szTemp.Format(_T("%.2f"),pNt->BankFetchAmount); 
 	outStrAs4(szTemp);
-	szLine += FormatLine(_T("  ÒøĞĞ¿ÉÈ¡½ğ¶î:"),szTemp,_T(" "),39);
+	szLine += FormatLine(_T("  é“¶è¡Œå¯å–é‡‘é¢:"),szTemp,_T(" "),39);
 	
 	ansi2uni(CP_ACP,pNt->CurrencyID,szTemp.GetBuffer(MAX_PATH));
 	szTemp.ReleaseBuffer();
-	szLine += FormatLine(_T("  ±ÒÖÖ:"),szTemp,_T(" "),41);
+	szLine += FormatLine(_T("  å¸ç§:"),szTemp,_T(" "),41);
 	
 	szLine += FormatLine(_T(""),_T(""),_T("="),42);
 	
@@ -1920,7 +1920,7 @@ LRESULT CXTraderDlg::TdReConnMsg(WPARAM wParam,LPARAM lParam)
 	m_pCliInfo->iFrtId = gc_Td->m_iFrtId;
 	m_pCliInfo->iSesId = gc_Td->m_iSesId;
 	
-	SetTipTxt(_T("½»Ò×ÔÚÏß"),IDS_TRADE_TIPS);
+	SetTipTxt(_T("äº¤æ˜“åœ¨çº¿"),IDS_TRADE_TIPS);
 	SetPaneTxtColor(1,RED);
 	
 	CString	szT;
@@ -1935,13 +1935,13 @@ LRESULT CXTraderDlg::TdReConnMsg(WPARAM wParam,LPARAM lParam)
 		if (!m_pUnSubMd) { m_pUnSubMd = AfxBeginThread((AFX_THREADPROC)UnSubscribeMD, this); }
 		if (!m_pReConQry){ m_pReConQry = AfxBeginThread((AFX_THREADPROC)ReConnTdQry, this); }
 
-		szT.Format(_T("%d:%02d:%02d CTPÖØµÇÂ¼³É¹¦"), t0.GetHour(), t0.GetMinute(), t0.GetSecond());
+		szT.Format(_T("%d:%02d:%02d CTPé‡ç™»å½•æˆåŠŸ"), t0.GetHour(), t0.GetMinute(), t0.GetSecond());
 		SetStatusTxt(szT,2);
 	}
 
 	if (m_eLogMod == CHGACC_LOG)
 	{
-		szT.Format(_T("%d:%02d:%02d ÇĞ»»ÓÃ»§³É¹¦"), t0.GetHour(), t0.GetMinute(), t0.GetSecond());
+		szT.Format(_T("%d:%02d:%02d åˆ‡æ¢ç”¨æˆ·æˆåŠŸ"), t0.GetHour(), t0.GetMinute(), t0.GetSecond());
 		SetStatusTxt(szT,2);
 	}
 
@@ -1950,19 +1950,19 @@ LRESULT CXTraderDlg::TdReConnMsg(WPARAM wParam,LPARAM lParam)
 
 LRESULT CXTraderDlg::MdReConnMsg(WPARAM wParam,LPARAM lParam)
 {
-	SetTipTxt(_T("ĞĞÇéÔÚÏß"),IDS_MD_TIPS);
+	SetTipTxt(_T("è¡Œæƒ…åœ¨çº¿"),IDS_MD_TIPS);
 	SetPaneTxtColor(0,RED);
 
 	return 0;
 }
 
-// Èç¹û½áËãºó¶Ï¿ª¾ÍÖØÖÃ
+// å¦‚æœç»“ç®—åæ–­å¼€å°±é‡ç½®
 LRESULT CXTraderDlg::TdDisConnMsg(WPARAM wParam,LPARAM lParam)
 {
-	SetTipTxt(_T("½»Ò×¶Ï¿ª"),IDS_TRADE_TIPS);
+	SetTipTxt(_T("äº¤æ˜“æ–­å¼€"),IDS_TRADE_TIPS);
 	SetPaneTxtColor(1,BLUE);
 
-	///////////////Ïß³ÌÇåÀí////////////////
+	///////////////çº¿ç¨‹æ¸…ç†////////////////
 	ClearTmOrdThd();
 	/////////////////////////////////////////
 
@@ -1972,7 +1972,7 @@ LRESULT CXTraderDlg::TdDisConnMsg(WPARAM wParam,LPARAM lParam)
 	CTime t1 = t0 - ts;
 	
 	sprintf(m_tDisStart,"%02d:%02d:%02d",t1.GetHour(), t1.GetMinute(), t1.GetSecond());
-	szT.Format(_T("%d:%02d:%02d CTPÖĞ¶ÏµÈ´ıÖØÁ¬"),t0.GetHour(), t0.GetMinute(), t0.GetSecond());
+	szT.Format(_T("%d:%02d:%02d CTPä¸­æ–­ç­‰å¾…é‡è¿"),t0.GetHour(), t0.GetMinute(), t0.GetSecond());
 	SetStatusTxt(szT,2);
 	ShowErroTips(IDS_DISCONTIPS,IDS_STRTIPS);
 
@@ -2024,7 +2024,7 @@ UINT CXTraderDlg::ReConnTdQry(LPVOID pParam)
 		//dwRet = WaitForSingleObject(g_hEvent,WAIT_MS);
 		//if (dwRet==WAIT_OBJECT_0) { ResetEvent(g_hEvent); }	
 		
-		//ÒòÎªÖ»²éÑ¯ÁËµôÏßÊ±¼ä¶ÎµÄorderºÍtdÊı¾İ
+		//å› ä¸ºåªæŸ¥è¯¢äº†æ‰çº¿æ—¶é—´æ®µçš„orderå’Œtdæ•°æ®
 		//sort(td->m_orderVec.begin(),td->m_orderVec.end(),cmpOrder);
 		//sort(td->m_tradeVec.begin(),td->m_tradeVec.end(),cmpTrade);
 		
@@ -2047,7 +2047,7 @@ UINT CXTraderDlg::ReConnTdQry(LPVOID pParam)
 
 LRESULT CXTraderDlg::MdDisConnMsg(WPARAM wParam,LPARAM lParam)
 {
-	SetTipTxt( _T("ĞĞÇé¶Ï¿ª"),IDS_MD_TIPS);
+	SetTipTxt( _T("è¡Œæƒ…æ–­å¼€"),IDS_MD_TIPS);
 	SetPaneTxtColor(0,BLUE);
 
 	return 0;
@@ -2074,7 +2074,7 @@ UINT CXTraderDlg::EnterTdQryPk(LPVOID pParam)
 {
 	CXTraderDlg* pDlg = static_cast<CXTraderDlg*>(pParam);
 
-	//ÑÓ³ÙÁ½Ãë
+	//å»¶è¿Ÿä¸¤ç§’
 	Sleep(2000);
 	gc_Td->ReqQryParkedOrd(NULL,NULL);
 	DWORD dwRet = WaitForSingleObject(g_hEvent,WAIT_MS);
@@ -2099,7 +2099,7 @@ LRESULT CXTraderDlg::ExhStatusMsg(WPARAM wParam,LPARAM lParam)
 	szMsg.Format(_T("%s %s:%s"),szTm,szExh,szStat);
 	SetStatusTxt(szMsg,2);
 
-	//¿ªÅÌÊ±·¢±¾µØÔ¤Âñµ¥,²¢²éÑ¯ÒÑ¾­Ô¤ÂñµÄÊÇ·ñ·¢ËÍ³É¹¦
+	//å¼€ç›˜æ—¶å‘æœ¬åœ°é¢„åŸ‹å•,å¹¶æŸ¥è¯¢å·²ç»é¢„åŸ‹çš„æ˜¯å¦å‘é€æˆåŠŸ
 	switch (pStat->InstrumentStatus)
 	{
 		case THOST_FTDC_IS_Continous:
@@ -2149,11 +2149,11 @@ void CXTraderDlg::PopupNoticeDlg(CThostFtdcTradingNoticeInfoField* pMsg)
 		szLine += szTemp;
 
 		ansi2uni(CP_ACP,pMsg->SendTime,szCont);
-		szTemp.Format(_T("ĞÅÏ¢Ê±¼ä:  %s\r\n"),szCont);
+		szTemp.Format(_T("ä¿¡æ¯æ—¶é—´:  %s\r\n"),szCont);
 		szLine += szTemp;
 		
 		ansi2uni(CP_ACP,pMsg->FieldContent,szCont);
-		szTemp.Format(_T("ĞÅÏ¢ÄÚÈİ:\r\n\r\n\t%s\r\n"),szCont);
+		szTemp.Format(_T("ä¿¡æ¯å†…å®¹:\r\n\r\n\t%s\r\n"),szCont);
 		szLine += szTemp;
 
 		szTemp = FormatLine(_T(""),_T(""),_T("="),60);
@@ -2365,7 +2365,7 @@ void CXTraderDlg::OnRevOrd()
 
 void CXTraderDlg::OnCsvExport()
 {
-	CString  strFilter = _T("ÎÄ±¾ÎÄ¼ş(*.csv;*.txt)|*.csv;*.txt|ËùÓĞÎÄ¼ş(*.*)|*.*||");
+	CString  strFilter = _T("æ–‡æœ¬æ–‡ä»¶(*.csv;*.txt)|*.csv;*.txt|æ‰€æœ‰æ–‡ä»¶(*.*)|*.*||");
 
 	CFileDialog* dlgSave = new CFileDialog(FALSE, _T("*.csv"),  m_szExpDef, OFN_PATHMUSTEXIST | OFN_EXPLORER, strFilter, this);
 	dlgSave->m_ofn.lStructSize=sizeof(OPENFILENAME);		//use the 2k+ open file dialog
@@ -2404,46 +2404,46 @@ void CXTraderDlg::PopupPrivInf(CThostFtdcInvestorField* pInf)
 	
 	szLine += FormatLine(_T(""),_T(""),_T("="),48);
 	
-	szLine += FormatLine(_T(" ÆÚ»õ¾­¼Í:"),s.GetBkrById(pInf->BrokerID),_T(" "),42);
+	szLine += FormatLine(_T(" æœŸè´§ç»çºª:"),s.GetBkrById(pInf->BrokerID),_T(" "),42);
 	
 	ansi2uni(CP_ACP,pInf->InvestorID,szTemp);
-	szLine += FormatLine(_T(" ÆÚ»õÕË»§:"),szTemp,_T(" "),46);
+	szLine += FormatLine(_T(" æœŸè´§è´¦æˆ·:"),szTemp,_T(" "),46);
 	
 	ansi2uni(CP_ACP,pInf->OpenDate,szTemp);
-	szLine += FormatLine(_T(" ¿ª»§ÈÕÆÚ:"),szTemp,_T(" "),46);
+	szLine += FormatLine(_T(" å¼€æˆ·æ—¥æœŸ:"),szTemp,_T(" "),46);
 	
 	szLine += FormatLine(_T(""),_T(""),_T("="),48);
 	ansi2uni(CP_ACP,pInf->InvestorName,szTemp);
-	szLine += FormatLine(_T(" ¿Í»§ĞÕÃû:"),szTemp,_T(" "),44);
+	szLine += FormatLine(_T(" å®¢æˆ·å§“å:"),szTemp,_T(" "),44);
 	
 	_tcscpy(szTemp, (LPCTSTR)JgCardType(pInf->IdentifiedCardType));
-	szLine += FormatLine(_T(" Ö¤¼şÀàĞÍ:"),szTemp,_T(" "),43);
+	szLine += FormatLine(_T(" è¯ä»¶ç±»å‹:"),szTemp,_T(" "),43);
 	
 	ansi2uni(CP_ACP,pInf->IdentifiedCardNo,szTemp);
-	szLine += FormatLine(_T(" Ö¤¼şºÅÂë:"),szTemp,_T(" "),46);
+	szLine += FormatLine(_T(" è¯ä»¶å·ç :"),szTemp,_T(" "),46);
 	
-	if (pInf->IsActive){ _tcscpy(szTemp,_T("ÊÇ")); }
+	if (pInf->IsActive){ _tcscpy(szTemp,_T("æ˜¯")); }
 	else
-	{ _tcscpy(szTemp,_T("·ñ")); }
+	{ _tcscpy(szTemp,_T("å¦")); }
 	
-	szLine += FormatLine(_T(" ÊÇ·ñ»îÔ¾:"),szTemp,_T(" "),45);
+	szLine += FormatLine(_T(" æ˜¯å¦æ´»è·ƒ:"),szTemp,_T(" "),45);
 	
 	if (strlen(pInf->Telephone))
 	{
 		ansi2uni(CP_ACP,pInf->Telephone,szTemp);
-		szLine += FormatLine(_T(" ÁªÏµµç»°:"),szTemp,_T(" "),46);
+		szLine += FormatLine(_T(" è”ç³»ç”µè¯:"),szTemp,_T(" "),46);
 	}
 
 	if (strlen(pInf->Mobile))
 	{
 		ansi2uni(CP_ACP,pInf->Mobile,szTemp);
-		szLine += FormatLine(_T(" ÁªÏµÊÖ»ú:"),szTemp,_T(" "),46);
+		szLine += FormatLine(_T(" è”ç³»æ‰‹æœº:"),szTemp,_T(" "),46);
 	}
 
 	if (strlen(pInf->Address))
 	{
 		ansi2uni(CP_ACP,pInf->Address,szTemp);
-		szLine += FormatLine(_T(" Í¨Ñ¶µØÖ·:"),szTemp,_T(" "),31);
+		szLine += FormatLine(_T(" é€šè®¯åœ°å€:"),szTemp,_T(" "),31);
 	}
 	
 	szLine += FormatLine(_T(""),_T(""),_T("="),48);
@@ -2451,7 +2451,7 @@ void CXTraderDlg::PopupPrivInf(CThostFtdcInvestorField* pInf)
 	for (UINT i=0;i<td->m_TdCodeVec.size();i++)
 	{
 		ansi2uni(CP_ACP,td->m_TdCodeVec[i].ClientID,szTemp);
-		szItem.Format(_T(" %s%s±àÂë:"),JgExchage(td->m_TdCodeVec[i].ExchangeID),
+		szItem.Format(_T(" %s%sç¼–ç :"),JgExchage(td->m_TdCodeVec[i].ExchangeID),
 			JgTdCodeType(td->m_TdCodeVec[i].ClientIDType));
 		szLine += FormatLine((LPCTSTR)szItem, szTemp, _T(" "), 44);
 	}
@@ -2496,7 +2496,7 @@ void CXTraderDlg::OnNMClkLstOnroad(NMHDR *pNMHDR, LRESULT *pResult)
 		if ((nItem>=0) && (iCount>0))
 		{
 			m_xLst[ONROAD_IDX].SetItemState(nItem, LVIS_SELECTED|LVIS_FOCUSED, LVIS_SELECTED|LVIS_FOCUSED);
-			m_szInst=m_xLst[ONROAD_IDX].GetItemText(nItem,1); //ºÏÔ¼
+			m_szInst=m_xLst[ONROAD_IDX].GetItemText(nItem,1); //åˆçº¦
 			
 			GetDlgItem(IDC_INST)->SetWindowText(m_szInst);
 		}
@@ -2524,7 +2524,7 @@ void CXTraderDlg::OnNMRClkLstOnroad(NMHDR *pNMHDR, LRESULT *pResult)
 		
 		if ((nItem>=0) && (iCount>0))
 		{
-			m_szExpDef = GenDef(_T("¹Òµ¥ÁĞ±í"),_T("csv"));
+			m_szExpDef = GenDef(_T("æŒ‚å•åˆ—è¡¨"),_T("csv"));
 			m_iActIdx = iCount-1-nItem;
 
 			CMenu PopMenu,*pSubMenu;
@@ -2603,7 +2603,7 @@ void CXTraderDlg::OnNMClkLstOrdInf(NMHDR *pNMHDR, LRESULT *pResult)
 		if ((nItem>=0) && (iCount>0))
 		{
 			m_xLst[ORDER_IDX].SetItemState(nItem, LVIS_SELECTED|LVIS_FOCUSED, LVIS_SELECTED|LVIS_FOCUSED);
-			m_szInst=m_xLst[ORDER_IDX].GetItemText(nItem,1); //ºÏÔ¼
+			m_szInst=m_xLst[ORDER_IDX].GetItemText(nItem,1); //åˆçº¦
 			
 			GetDlgItem(IDC_INST)->SetWindowText(m_szInst);
 		}
@@ -2629,7 +2629,7 @@ void CXTraderDlg::OnNMRClkLstOrdInf(NMHDR *pNMHDR, LRESULT *pResult)
 		if ((nItem>=0) && (iCount>0))
 		{
 			m_iActIdx = iCount-1-nItem;
-			m_szExpDef = GenDef(_T("Î¯ÍĞÁĞ±í"),_T("csv"));
+			m_szExpDef = GenDef(_T("å§”æ‰˜åˆ—è¡¨"),_T("csv"));
 
 			CPoint pt;
 			GetCursorPos(&pt);
@@ -2638,13 +2638,13 @@ void CXTraderDlg::OnNMRClkLstOrdInf(NMHDR *pNMHDR, LRESULT *pResult)
 			menu.CreatePopupMenu();
 
 			DWORD flags = (JgCancelStat(&gv_Ord[m_iActIdx]))? (MF_POPUP|MF_BYPOSITION):(MF_POPUP|MF_BYPOSITION|MF_GRAYED);
-			menu.InsertMenu(0, flags, ID_CANCEL_ORD,_T("³·µ¥"));
-			menu.InsertMenu(1, flags, ID_PK_CANCEL,_T("³·µ¥Ô¤Âñ"));
+			menu.InsertMenu(0, flags, ID_CANCEL_ORD,_T("æ’¤å•"));
+			menu.InsertMenu(1, flags, ID_PK_CANCEL,_T("æ’¤å•é¢„åŸ‹"));
 			menu.InsertMenu(2, MF_BYPOSITION | MF_SEPARATOR);
-			menu.InsertMenu(3, flags, ID_MOD_DSJ,_T("¶Ô¼Û¸Äµ¥"));
-			menu.InsertMenu(4, flags, ID_REVORD,_T("·´Ïò¸Äµ¥"));
+			menu.InsertMenu(3, flags, ID_MOD_DSJ,_T("å¯¹ä»·æ”¹å•"));
+			menu.InsertMenu(4, flags, ID_REVORD,_T("åå‘æ”¹å•"));
 			menu.InsertMenu(5, MF_BYPOSITION | MF_SEPARATOR);
-			menu.InsertMenu(6, MF_POPUP|MF_BYPOSITION, ID_CSV_EXPORT,_T("µ¼³öÁĞ±í"));
+			menu.InsertMenu(6, MF_POPUP|MF_BYPOSITION, ID_CSV_EXPORT,_T("å¯¼å‡ºåˆ—è¡¨"));
 			menu.InsertMenu(7, MF_BYPOSITION | MF_SEPARATOR);
 				
 			menu.TrackPopupMenu(TPM_LEFTALIGN | TPM_LEFTBUTTON |TPM_RIGHTBUTTON, pt.x, pt.y, this);
@@ -2671,7 +2671,7 @@ void CXTraderDlg::OnNMDblclkTdInf(NMHDR *pNMHDR, LRESULT *pResult)
 	*pResult = 0;
 }
 
-//µ¥»÷¶©ÔÄĞĞÇé
+//å•å‡»è®¢é˜…è¡Œæƒ…
 void CXTraderDlg::OnNMClkLstTdInf(NMHDR *pNMHDR, LRESULT *pResult)
 {
 	LPNMITEMACTIVATE pNMIA = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
@@ -2688,7 +2688,7 @@ void CXTraderDlg::OnNMClkLstTdInf(NMHDR *pNMHDR, LRESULT *pResult)
 		if ((nItem>=0) && (iCount>0))
 		{
 			m_xLst[TRADE_IDX].SetItemState(nItem, LVIS_SELECTED|LVIS_FOCUSED, LVIS_SELECTED|LVIS_FOCUSED);
-			m_szInst=m_xLst[TRADE_IDX].GetItemText(nItem,0); //ºÏÔ¼
+			m_szInst=m_xLst[TRADE_IDX].GetItemText(nItem,0); //åˆçº¦
 			
 			GetDlgItem(IDC_INST)->SetWindowText(m_szInst);
 		}
@@ -2715,14 +2715,14 @@ void CXTraderDlg::OnNMRClkLstTdInf(NMHDR *pNMHDR, LRESULT *pResult)
 
 		if (iCount>0)
 		{
-			m_szExpDef = GenDef(_T("³É½»ÁĞ±í"),_T("csv"));
+			m_szExpDef = GenDef(_T("æˆäº¤åˆ—è¡¨"),_T("csv"));
 
 			CPoint pt;
 			GetCursorPos(&pt);
 			
 			CMenu menu;
 			menu.CreatePopupMenu();
-			menu.InsertMenu(0, MF_POPUP|MF_BYPOSITION, ID_CSV_EXPORT,_T("µ¼³öÁĞ±í"));
+			menu.InsertMenu(0, MF_POPUP|MF_BYPOSITION, ID_CSV_EXPORT,_T("å¯¼å‡ºåˆ—è¡¨"));
 			menu.InsertMenu(1, MF_BYPOSITION | MF_SEPARATOR);
 			menu.TrackPopupMenu(TPM_LEFTALIGN | TPM_LEFTBUTTON |TPM_RIGHTBUTTON, pt.x, pt.y, this);
 		}
@@ -2730,7 +2730,7 @@ void CXTraderDlg::OnNMRClkLstTdInf(NMHDR *pNMHDR, LRESULT *pResult)
 	*pResult = 0;
 }
 
-//Ë«»÷³Ö²ÖÌõÄ¿ Æ½²Ö
+//åŒå‡»æŒä»“æ¡ç›® å¹³ä»“
 void CXTraderDlg::OnNMDblclkInvPInf(NMHDR *pNMHDR, LRESULT *pResult)
 {
 	LPNMITEMACTIVATE pNMIA = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
@@ -2756,10 +2756,10 @@ void CXTraderDlg::OnNMDblclkInvPInf(NMHDR *pNMHDR, LRESULT *pResult)
 
 void CXTraderDlg::ChgStatByBsOc(TThostFtdcDirectionType cDir,TThostFtdcOffsetFlagType cKp,int iVol)
 {
-	//´Ë´¦µ÷Õû¿ªÆ½²ÖÑ¡ÖĞÊ±×´Ì¬ÎÄ×Ö±ä»¯
+	//æ­¤å¤„è°ƒæ•´å¼€å¹³ä»“é€‰ä¸­æ—¶çŠ¶æ€æ–‡å­—å˜åŒ–
 	CString szDetail;
-	szDetail.Format(_T("%s%s:%dÊÖ"),(cDir==THOST_FTDC_D_Buy)?_T("Âò"):_T("Âô"),
-		(cKp==THOST_FTDC_OF_Open)?_T("¿ª"):_T("Æ½"),iVol); 
+	szDetail.Format(_T("%s%s:%dæ‰‹"),(cDir==THOST_FTDC_D_Buy)?_T("ä¹°"):_T("å–"),
+		(cKp==THOST_FTDC_OF_Open)?_T("å¼€"):_T("å¹³"),iVol); 
 	
 	SetDlgItemText(IDC_STAVOL,szDetail);
 }
@@ -2771,20 +2771,20 @@ void CXTraderDlg::ChgStatByInvPos(const CThostFtdcInvestorPositionField* pInvPos
 	int iHoldPos=GetHoldPos(pInvPos);
 
 	m_SpinVol.SetPos(iHoldPos);
-	//½ö½öÇø·ÖÉÏÆÚËù,ĞèÒªĞŞ¸Ä
+	//ä»…ä»…åŒºåˆ†ä¸ŠæœŸæ‰€,éœ€è¦ä¿®æ”¹
 	CString szDetail;
-	int iTdPos = pInvPos->TodayPosition;	//½ñ²Ö
-	int iYdPos = pInvPos->Position-pInvPos->TodayPosition;	//×ò²Ö
+	int iTdPos = pInvPos->TodayPosition;	//ä»Šä»“
+	int iYdPos = pInvPos->Position-pInvPos->TodayPosition;	//æ˜¨ä»“
 	if (bRet)
 	{
-		if (iTdPos==0){ szDetail.Format(_T("×ò:%d"),iYdPos); }
+		if (iTdPos==0){ szDetail.Format(_T("æ˜¨:%d"),iYdPos); }
 
-		if (iYdPos==0){ szDetail.Format(_T("½ñ:%d"),iTdPos); }
+		if (iYdPos==0){ szDetail.Format(_T("ä»Š:%d"),iTdPos); }
 
-		if (iTdPos>0 && iYdPos>0){ szDetail.Format(_T("½ñ:%d,×ò:%d"),iTdPos,iYdPos); }
+		if (iTdPos>0 && iYdPos>0){ szDetail.Format(_T("ä»Š:%d,æ˜¨:%d"),iTdPos,iYdPos); }
 	}
 	else
-	{ szDetail.Format(_T("Æ½²Ö:%d"),iHoldPos); }
+	{ szDetail.Format(_T("å¹³ä»“:%d"),iHoldPos); }
 
 	SetDlgItemText(IDC_STAVOL,szDetail);
 
@@ -2792,11 +2792,11 @@ void CXTraderDlg::ChgStatByInvPos(const CThostFtdcInvestorPositionField* pInvPos
 
 	m_CombBS.SetCurSel(iDir);
 	m_cDir = (iDir+THOST_FTDC_D_Buy);
-	m_CombOC.SetCurSel(1); //Æ½²Ö
+	m_CombOC.SetCurSel(1); //å¹³ä»“
 	m_cKpp = THOST_FTDC_OF_Close;
 }
 
-//µ¥»÷³Ö²ÖÌõÄ¿¶©ÔÄĞĞÇé
+//å•å‡»æŒä»“æ¡ç›®è®¢é˜…è¡Œæƒ…
 void CXTraderDlg::OnNMClkLstInvPInf(NMHDR *pNMHDR, LRESULT *pResult)
 {
 	LPNMITEMACTIVATE pNMIA = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
@@ -2815,7 +2815,7 @@ void CXTraderDlg::OnNMClkLstInvPInf(NMHDR *pNMHDR, LRESULT *pResult)
 			m_xLst[INVPOS_IDX].SetItemState(nItem, LVIS_SELECTED|LVIS_FOCUSED, LVIS_SELECTED|LVIS_FOCUSED);
 
 			m_iActIdx = iCount-1-nItem;
-			m_szInst=m_xLst[INVPOS_IDX].GetItemText(nItem,0); //ºÏÔ¼
+			m_szInst=m_xLst[INVPOS_IDX].GetItemText(nItem,0); //åˆçº¦
 			
 			GetDlgItem(IDC_INST)->SetWindowText(m_szInst);
 
@@ -2825,7 +2825,7 @@ void CXTraderDlg::OnNMClkLstInvPInf(NMHDR *pNMHDR, LRESULT *pResult)
 	*pResult = 0;
 }
 
-//ÓÒ»÷³Ö²ÖÌõÄ¿ÊĞ¼Û(ÕÇµøÍ£°å)·´ÊÖ
+//å³å‡»æŒä»“æ¡ç›®å¸‚ä»·(æ¶¨è·Œåœæ¿)åæ‰‹
 void CXTraderDlg::OnNMRClkLstInvPInf(NMHDR *pNMHDR, LRESULT *pResult)
 {
 	LPNMITEMACTIVATE pNMIA = reinterpret_cast<LPNMITEMACTIVATE>(pNMHDR);
@@ -2846,16 +2846,16 @@ void CXTraderDlg::OnNMRClkLstInvPInf(NMHDR *pNMHDR, LRESULT *pResult)
 		if (nItem>=0 && iCount)
 		{
 			m_iActIdx = iCount-1-nItem;
-			m_szExpDef = GenDef(_T("³Ö²ÖÁĞ±í"),_T("csv"));
+			m_szExpDef = GenDef(_T("æŒä»“åˆ—è¡¨"),_T("csv"));
 
 			CPoint pt;
 			GetCursorPos(&pt);
 			
 			CMenu menu;
 			menu.CreatePopupMenu();
-			menu.InsertMenu(0, MF_POPUP|MF_BYPOSITION, ID_REV_ANYPX,_T("ÊĞ¼Û·´ÊÖ"));
+			menu.InsertMenu(0, MF_POPUP|MF_BYPOSITION, ID_REV_ANYPX,_T("å¸‚ä»·åæ‰‹"));
 			menu.InsertMenu(1, MF_BYPOSITION | MF_SEPARATOR);
-			menu.InsertMenu(2, MF_POPUP|MF_BYPOSITION, ID_CSV_EXPORT,_T("µ¼³öÁĞ±í"));
+			menu.InsertMenu(2, MF_POPUP|MF_BYPOSITION, ID_CSV_EXPORT,_T("å¯¼å‡ºåˆ—è¡¨"));
 			menu.TrackPopupMenu(TPM_LEFTALIGN | TPM_LEFTBUTTON |TPM_RIGHTBUTTON, pt.x, pt.y, this);
 		}
 	}
@@ -2878,7 +2878,7 @@ void CXTraderDlg::OnNMClkLstInsts(NMHDR *pNMHDR, LRESULT *pResult)
 		if (nItem>=0 && iCount)
 		{
 			m_xLst[INSLST_IDX].SetItemState(nItem, LVIS_SELECTED|LVIS_FOCUSED, LVIS_SELECTED|LVIS_FOCUSED);
-			m_szInst=m_xLst[INSLST_IDX].GetItemText(nItem,1); //ºÏÔ¼	
+			m_szInst=m_xLst[INSLST_IDX].GetItemText(nItem,1); //åˆçº¦	
 			
 			GetDlgItem(IDC_INST)->SetWindowText(m_szInst);
 		}
@@ -2904,13 +2904,13 @@ void CXTraderDlg::OnNMRClkLstInsts(NMHDR *pNMHDR, LRESULT *pResult)
 		
 		if (iCount)
 		{
-			m_szExpDef = GenDef(_T("ºÏÔ¼ÁĞ±í"),_T("csv"));
+			m_szExpDef = GenDef(_T("åˆçº¦åˆ—è¡¨"),_T("csv"));
 
 			CPoint pt;
 			GetCursorPos(&pt);
 			CMenu menu;
 			menu.CreatePopupMenu();
-			menu.InsertMenu(0, MF_POPUP|MF_BYPOSITION, ID_CSV_EXPORT,_T("µ¼³öÁĞ±í"));
+			menu.InsertMenu(0, MF_POPUP|MF_BYPOSITION, ID_CSV_EXPORT,_T("å¯¼å‡ºåˆ—è¡¨"));
 			menu.InsertMenu(1, MF_BYPOSITION | MF_SEPARATOR);
 			menu.TrackPopupMenu(TPM_LEFTALIGN | TPM_LEFTBUTTON |TPM_RIGHTBUTTON, pt.x, pt.y, this);
 		}
@@ -2955,7 +2955,7 @@ void CXTraderDlg::OnNMClkParkOrd(NMHDR *pNMHDR, LRESULT *pResult)
 		if ((nItem>=0) && (iCount>0))
 		{
 			m_xLst[PKCON_IDX].SetItemState(nItem, LVIS_SELECTED|LVIS_FOCUSED, LVIS_SELECTED|LVIS_FOCUSED);
-			m_szInst=m_xLst[PKCON_IDX].GetItemText(nItem,4); //ºÏÔ¼	
+			m_szInst=m_xLst[PKCON_IDX].GetItemText(nItem,4); //åˆçº¦	
 			
 			GetDlgItem(IDC_INST)->SetWindowText(m_szInst);
 		}
@@ -2981,7 +2981,7 @@ void CXTraderDlg::OnNMRClkParkOrd(NMHDR *pNMHDR, LRESULT *pResult)
 		if (nItem>=0 && iCount)
 		{
 			m_iActIdx = iCount-1-nItem;
-			m_szExpDef = GenDef(_T("Ìõ¼şµ¥ÁĞ±í"),_T("csv"));
+			m_szExpDef = GenDef(_T("æ¡ä»¶å•åˆ—è¡¨"),_T("csv"));
 			
 			DWORD dwPkRmv = (JgPkRmvStat(&gv_Pk[m_iActIdx]))? (MF_POPUP|MF_BYPOSITION):(MF_POPUP|MF_BYPOSITION|MF_GRAYED);
 			DWORD dwCanSend = (JgPkCanSend(&gv_Pk[m_iActIdx]))? (MF_POPUP|MF_BYPOSITION):(MF_POPUP|MF_BYPOSITION|MF_GRAYED);
@@ -2991,14 +2991,14 @@ void CXTraderDlg::OnNMRClkParkOrd(NMHDR *pNMHDR, LRESULT *pResult)
 			GetCursorPos(&pt);
 			CMenu menu;
 			menu.CreatePopupMenu();
-			menu.InsertMenu(0, dwCanSend, ID_LOCAL_SEND,_T("·¢ËÍ±¨µ¥"));
-			menu.InsertMenu(1, dwCanSend, ID_LOCAL_REMV,_T("É¾³ı±¨µ¥"));
-			menu.InsertMenu(2, dwCondAct, ID_COND_ACT,_T("³·Ìõ¼şµ¥"));
+			menu.InsertMenu(0, dwCanSend, ID_LOCAL_SEND,_T("å‘é€æŠ¥å•"));
+			menu.InsertMenu(1, dwCanSend, ID_LOCAL_REMV,_T("åˆ é™¤æŠ¥å•"));
+			menu.InsertMenu(2, dwCondAct, ID_COND_ACT,_T("æ’¤æ¡ä»¶å•"));
 			menu.InsertMenu(3, MF_BYPOSITION | MF_SEPARATOR);
-			menu.InsertMenu(4, dwPkRmv, ID_PK_REMV,_T("É¾³ıÔ¤Âñ"));
-			menu.InsertMenu(5, dwPkRmv, ID_PK_DELCANCEL,_T("É¾³ı³·µ¥"));
+			menu.InsertMenu(4, dwPkRmv, ID_PK_REMV,_T("åˆ é™¤é¢„åŸ‹"));
+			menu.InsertMenu(5, dwPkRmv, ID_PK_DELCANCEL,_T("åˆ é™¤æ’¤å•"));
 			menu.InsertMenu(6, MF_BYPOSITION | MF_SEPARATOR);
-			menu.InsertMenu(7, MF_POPUP|MF_BYPOSITION, ID_CSV_EXPORT,_T("µ¼³öÁĞ±í"));
+			menu.InsertMenu(7, MF_POPUP|MF_BYPOSITION, ID_CSV_EXPORT,_T("å¯¼å‡ºåˆ—è¡¨"));
 			menu.InsertMenu(8, MF_BYPOSITION | MF_SEPARATOR);
 			menu.TrackPopupMenu(TPM_LEFTALIGN | TPM_LEFTBUTTON |TPM_RIGHTBUTTON, pt.x, pt.y, this);
 		}	
@@ -3134,7 +3134,7 @@ void CXTraderDlg::Go2MiniGui()
 
 	m_bMinGui = true;
 	CString str;
-	str.Format(_T("Ó¯¿÷:%lld ·ÑÓÃ:%lld"),D2Int(m_pTdAcc->CloseProfit+m_pTdAcc->PositionProfit),
+	str.Format(_T("ç›ˆäº:%lld è´¹ç”¨:%lld"),D2Int(m_pTdAcc->CloseProfit+m_pTdAcc->PositionProfit),
 		D2Int(m_pTdAcc->Commission));
 	SetWindowText(str);
 }
@@ -3263,7 +3263,7 @@ void CXTraderDlg::OnToolParked()
 	GetWindowRect(rc0);
 	Dlg->Create(IDD_PARKORD_DLG);
 	Dlg->GetWindowRect(rc1);
-	//³¬³öÆÁÄ»Ôò´Ó×ó²àµ¯³ö
+	//è¶…å‡ºå±å¹•åˆ™ä»å·¦ä¾§å¼¹å‡º
 	int xPos = rc0.right,yPos = rc0.bottom-rc1.Height();
 	if ((rc0.right+rc1.Width())>GetSystemMetrics(SM_CXSCREEN)) 
 	{ 
@@ -3291,7 +3291,7 @@ void CXTraderDlg::ClearTmOrdThd()
 void CXTraderDlg::OnReLogin()
 {
 	if (!m_pUnSubMd) { m_pUnSubMd = AfxBeginThread((AFX_THREADPROC)UnSubscribeMD, this); }
-	///////////////Ïß³ÌÇåÀí////////////////
+	///////////////çº¿ç¨‹æ¸…ç†////////////////
 	ClearTmOrdThd();
 	/////////////////////////////////////////
 	m_eLogMod = CHGACC_LOG;
@@ -3342,7 +3342,7 @@ LRESULT CXTraderDlg::TdNtMsg(WPARAM wParam,LPARAM lParam)
 
 	szTemp = FormatLine(_T(""),_T(""),_T("="),60);
 	szLine += szTemp;
-	//Ã¿ÌõĞÅÏ¢¶¼ÊÇÍêÕûµÄ¶ø²»ÊÇ·Ö²½
+	//æ¯æ¡ä¿¡æ¯éƒ½æ˜¯å®Œæ•´çš„è€Œä¸æ˜¯åˆ†æ­¥
 	CThostFtdcTradingNoticeField* pTdNt;
 	CtpTdSpi* td = gc_Td;
 	for (UINT i=0;i<td->m_TdNoticeVec.size();i++)
@@ -3351,11 +3351,11 @@ LRESULT CXTraderDlg::TdNtMsg(WPARAM wParam,LPARAM lParam)
 		if (strlen(pTdNt->FieldContent))
 		{
 			ansi2uni(CP_ACP,pTdNt->SendTime,szCont);
-			szTemp.Format(_T("ĞÅÏ¢Ê±¼ä:  %s\r\n"),szCont);
+			szTemp.Format(_T("ä¿¡æ¯æ—¶é—´:  %s\r\n"),szCont);
 			szLine += szTemp;
 			
 			ansi2uni(CP_ACP,pTdNt->FieldContent,szCont);
-			szTemp.Format(_T("ĞÅÏ¢ÄÚÈİ:\r\n\r\n\t%s\r\n"),szCont);
+			szTemp.Format(_T("ä¿¡æ¯å†…å®¹:\r\n\r\n\t%s\r\n"),szCont);
 			szLine += szTemp;
 			
 			szTemp = FormatLine(_T(""),_T(""),_T("="),60);
@@ -3422,7 +3422,7 @@ LRESULT CXTraderDlg::BkrNtMsg(WPARAM wParam,LPARAM lParam)
 	}
 	else
 	{
-		pDlg->m_sContent.Format(_T("<p align=center><b><font size=20>ÎŞ·çÏÕÌáÊ¾</font></b><BR><a href=\"file://%sdemo.htm\">demo.htm</a></p>"),GetProgramDir());
+		pDlg->m_sContent.Format(_T("<p align=center><b><font size=20>æ— é£é™©æç¤º</font></b><BR><a href=\"file://%sdemo.htm\">demo.htm</a></p>"),GetProgramDir());
 	}
 
 	BOOL res=pDlg->Create(IDD_DLG_BKRNT,NULL);
@@ -3465,7 +3465,7 @@ LRESULT CXTraderDlg::QryTokMsg(WPARAM wParam,LPARAM lParam)
 	return 0;
 }
 
-//½øÈëÆÚ»õ(±£Ö¤½ğ)¼à¿ØÖĞĞÄ
+//è¿›å…¥æœŸè´§(ä¿è¯é‡‘)ç›‘æ§ä¸­å¿ƒ
 void CXTraderDlg::OnCfmmc()
 {
 	if (!m_pQryTdTok) { m_pQryTdTok = AfxBeginThread((AFX_THREADPROC)QryTdTokThread, this); }
@@ -3486,10 +3486,10 @@ CString CXTraderDlg::GetStatMsg(PCORDFEx pOrder)
 		if ((m_pCliInfo->iFrtId != pOrder->Ord.FrontID) || (m_pCliInfo->iSesId != pOrder->Ord.SessionID))
 		{
 			ansi2uni(CP_ACP,pOrder->Ord.UserProductInfo,szPinf);
-			szInf.Format(_T("ÖØµÇÂ¼:%s"),szPinf);
+			szInf.Format(_T("é‡ç™»å½•:%s"),szPinf);
 		}
 		else
-		{ szInf.Format(_T("µ±Ç°:%s"),m_pCliInfo->ProdInf); }
+		{ szInf.Format(_T("å½“å‰:%s"),m_pCliInfo->ProdInf); }
 		
 		szOut.Format(_T("%s,%s"),JgOrdSubmitStat(pOrder->Ord.OrderSubmitStatus),szInf);
 	}
@@ -3508,7 +3508,8 @@ void CXTraderDlg::OnDispOnRoad(NMHDR *pNMHDR, LRESULT *pResult)
 
 	CtpTdSpi* td = gc_Td;
 	VRIT_ord vod = td->m_onRoadVec.rbegin()+iItem;
-	if(pItem->mask & LVIF_TEXT)
+	//å¯èƒ½ä¼šè¶Šç•Œ
+	if(vod != td->m_onRoadVec.rend() && (pItem->mask & LVIF_TEXT))
 	{
 		CString szTemp = _T("");
 		int iLen=0;
@@ -3634,7 +3635,7 @@ void CXTraderDlg::OnDispOrdInf(NMHDR *pNMHDR, LRESULT *pResult)
 
                 szTemp=JgOrdStatType(vod->Ord.OrderStatus);
                 if (vod->Ord.OrderStatus==THOST_FTDC_OST_Canceled && (vod->Ord.VolumeTraded>=1))
-                { szTemp=_T("ÒÑ³·Óàµ¥"); }
+                { szTemp=_T("å·²æ’¤ä½™å•"); }
                 break;
             case COL_ORDPX2:
                 if (vod->Ord.OrderPriceType == THOST_FTDC_OPT_LimitPrice)
@@ -3721,8 +3722,8 @@ void CXTraderDlg::OnDispInvPos(NMHDR *pNMHDR, LRESULT *pResult)
 	CtpTdSpi* td = gc_Td;
 	VRIT_pos vps = td->m_InvPosVec.rbegin()+iItem;
 	rBg = (iItem%2)?LITGRAY:WHITE;
-	
-	if(pItem->mask & LVIF_TEXT)
+	//é™åˆ¶ä¸è¦è¶Šç•Œ
+	if(vps != td->m_InvPosVec.rend() && (pItem->mask & LVIF_TEXT))
 	{
 		CString szTemp = _T("");
 		int iLen=0;
@@ -4127,7 +4128,7 @@ void CXTraderDlg::OnDispParked(NMHDR *pNMHDR, LRESULT *pResult)
                 szTemp = (vpk->ordType==PARKED_ACT)?JgParkOrdStat(vpk->pkAct.Status):JgParkOrdStat(vpk->park.Status);
                 break;
             case COL_PKCOND6:
-                if (vpk->ordType==PARKED_ACT){ szTemp = _T("¡ª"); }
+                if (vpk->ordType==PARKED_ACT){ szTemp = _T("â€”"); }
                 else if (vpk->ordType==TMORD_LOCAL)
                 {
                     ansi2uni(CP_ACP,vpk->park.ErrorMsg,szTemp.GetBuffer(MAX_PATH));
@@ -4137,7 +4138,7 @@ void CXTraderDlg::OnDispParked(NMHDR *pNMHDR, LRESULT *pResult)
                     TrimTime(szTemp);
                 }
 				else if (vpk->ordType==ENTERTD_LOCAL || vpk->ordType==PARKED_SERVER)
-				{ szTemp = _T("ÔÙ´Î¿ªÅÌ"); }
+				{ szTemp = _T("å†æ¬¡å¼€ç›˜"); }
                 else
                 {
                     dStopPx = vpk->park.StopPrice;
@@ -4177,16 +4178,16 @@ void CXTraderDlg::OnDispParked(NMHDR *pNMHDR, LRESULT *pResult)
             case COL_PKPX6:
                 if (vpk->ordType==PARKED_ACT)
                 {
-                    if (cPx == THOST_FTDC_OPT_AnyPrice){ szTemp = _T("ÊĞ¼Û"); }
+                    if (cPx == THOST_FTDC_OPT_AnyPrice){ szTemp = _T("å¸‚ä»·"); }
                     else
                     { szTemp = FiltPx(vpk->pkAct.LimitPrice); }	
                 }
                 else
                 {
-                    if (vpk->park.OrderPriceType == THOST_FTDC_OPT_AnyPrice) { szTemp = _T("ÊĞ¼Û"); }
+                    if (vpk->park.OrderPriceType == THOST_FTDC_OPT_AnyPrice) { szTemp = _T("å¸‚ä»·"); }
                     else
                     { 
-                        if (vpk->park.LimitPrice<-NEARZERO){ szTemp = _T("¶Ô¼Û"); }
+                        if (vpk->park.LimitPrice<-NEARZERO){ szTemp = _T("å¯¹ä»·"); }
                         else
                         { szTemp = FiltPx(vpk->park.LimitPrice); }
                     }	
@@ -4300,7 +4301,7 @@ void CXTraderDlg::OnPkRemv()
 	if(JgPkRmvStat(&td->m_pkExVec[m_iActIdx])){ td->ReqRmParkedOrd(td->m_pkExVec[m_iActIdx].park.ParkedOrderID); }
 }
 
-//³·µ¥Ô¤Âñ
+//æ’¤å•é¢„åŸ‹
 void CXTraderDlg::OnPkAct()
 {
 	CtpTdSpi* td = gc_Td;
@@ -4314,7 +4315,7 @@ void CXTraderDlg::OnPkAct()
 	}
 }
 
-//Ìõ¼şÔ¤Âñµ¥listÀïµÄ¸÷ÖÖ³·µ¥
+//æ¡ä»¶é¢„åŸ‹å•listé‡Œçš„å„ç§æ’¤å•
 void CXTraderDlg::OnCondAct()
 {
 	CtpTdSpi* td = gc_Td;
