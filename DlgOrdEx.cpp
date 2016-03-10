@@ -285,7 +285,7 @@ void DlgOrdEx::GenOrder()
 
 	if (iValidVol<1 ){ return; }
 
-	pOrdPara->ordReq.VolumeTotalOriginal = iValidVol;
+	pOrdEx->ordReq.VolumeTotalOriginal = iValidVol;
 	AfxBeginThread((AFX_THREADPROC)CXTraderDlg::OrderThread,pOrdEx);
 }
 
