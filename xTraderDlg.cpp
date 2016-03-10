@@ -643,6 +643,10 @@ BOOL CXTraderDlg::OnInitDialog()
 
 	SetDlgIcon(IDR_MAINFRAME);
 
+	#ifndef _REAL_CTP_
+	GetMenu()->GetSubMenu(0)->EnableMenuItem(ID_TRANSBF,MF_BYCOMMAND|MF_GRAYED);
+	#endif
+	
     CAppCfgs& s = g_s;
 
 	InitAllVecs();
@@ -1344,7 +1348,7 @@ void CXTraderDlg::GenOrdFromPara(TThostFtdcInstrumentIDType instId,TThostFtdcDir
 		
 		int iValidVol = GetValidVol(pOrdPara->ordReq.InstrumentID,cDir,
 			cOff,iVol,pOrdPara->iTdPos,pOrdPara->iYdPos);
-		if (iValidVol<1 /*&& cOff>THOST_FTDC_OF_Open*/){ return; }
+		if (iValidVol<1 ){ return; }
 
 		pOrdPara->ordReq.VolumeTotalOriginal = iValidVol;
 		
@@ -1578,9 +1582,11 @@ void CXTraderDlg::GenOrdFromPk(PARKEDEX pkReq)
 	if(pOrdPara->ordReq.LimitPrice <-NEARZERO) 
 	{ pOrdPara->ordReq.LimitPrice = GetDsjByInst(pkReq.park.InstrumentID,pkReq.park.Direction); }
 
-	pOrdPara->ordReq.VolumeTotalOriginal = GetValidVol(pOrdPara->ordReq.InstrumentID,pOrdPara->ordReq.Direction,
-			pOrdPara->ordReq.CombOffsetFlag[0],pkReq.park.VolumeTotalOriginal,pOrdPara->iTdPos,pOrdPara->iYdPos);
+	int iValidVol = GetValidVol(pOrdPara->ordReq.InstrumentID,pOrdPara->ordReq.Direction,
+		pOrdPara->ordReq.CombOffsetFlag[0],pkReq.park.VolumeTotalOriginal,pOrdPara->iTdPos,pOrdPara->iYdPos);
+	if (iValidVol<1 ){ return; }
 
+		pOrdPara->ordReq.VolumeTotalOriginal = iValidVol;
 	m_pOrder = AfxBeginThread((AFX_THREADPROC)OrderThread,pOrdPara);
 }
 
@@ -1647,9 +1653,12 @@ LRESULT CXTraderDlg::UpdateMdMsg(WPARAM wParam,LPARAM lParam)
 	{
 		CtpTdSpi* td = gc_Td;
 		int iMul = td->FindInstMul(pMd->InstrumentID);
+		//调整成正常值
 		if (!strcmp(pMd->ExchangeID,_CZCE)) { pMd->Turnover *= iMul; }
 		else
 		{ pMd->AveragePrice /= iMul; }
+		
+        if(pMd->Volume<1||pMd->LastPrice==DBL_MAX) { pMd->LastPrice = pMd->PreSettlementPrice; }
 
 		string strkey(pMd->InstrumentID);
 		MIT_md vmd = td->m_DepthMdMap.find(strkey);
@@ -1669,7 +1678,6 @@ LRESULT CXTraderDlg::UpdateMdMsg(WPARAM wParam,LPARAM lParam)
 	}
 	return 0;
 }
-
 void CXTraderDlg::UpdatePosProf(CThostFtdcDepthMarketDataField* pMd)
 {
 	CtpTdSpi* td = gc_Td;

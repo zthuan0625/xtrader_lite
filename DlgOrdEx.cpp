@@ -280,9 +280,12 @@ void DlgOrdEx::GenOrder()
 	pOrdEx->ordReq.TimeCondition = m_cTmcType;
 	pOrdEx->ordReq.VolumeCondition = m_cVolcType;
 	
-	pOrdEx->ordReq.VolumeTotalOriginal = g_Dlg->GetValidVol(pOrdEx->ordReq.InstrumentID,pOrdEx->ordReq.Direction,
+	int iValidVol = g_Dlg->GetValidVol(pOrdEx->ordReq.InstrumentID,pOrdEx->ordReq.Direction,
 			pOrdEx->ordReq.CombOffsetFlag[0],m_iVol,pOrdEx->iTdPos,pOrdEx->iYdPos);
 
+	if (iValidVol<1 ){ return; }
+
+	pOrdPara->ordReq.VolumeTotalOriginal = iValidVol;
 	AfxBeginThread((AFX_THREADPROC)CXTraderDlg::OrderThread,pOrdEx);
 }
 
